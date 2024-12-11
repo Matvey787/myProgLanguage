@@ -27,7 +27,11 @@ enum types {
     ND_SEP = 108,
     ND_POADD = 109,
     ND_ISEQ = 110,
-    ND_NISEQ = 111
+    ND_NISEQ = 111,
+    ND_LS = 112,
+    ND_AB = 113,
+    ND_LSE = 114,
+    ND_ABE = 115
 };
 
 struct nameTable_t
@@ -49,14 +53,5 @@ struct node_t
     node_t* left;
     node_t* right;
 };
-
-void createTree(char** buffer, node_t* node);
-node_t* crTree_by_recursiveDescent(char** buffer);
-node_t* crTree_by_tokens(node_t* nodes, char* buffer);
-
-void delTree(node_t* node);
-node_t* newNode(types type, const char* variable, double number, node_t* node_l, node_t* node_r);
-node_t* copySubtree(node_t* node);
-node_t* copyNode(node_t* node);
 
 #endif

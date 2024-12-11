@@ -5,6 +5,7 @@
 #include "constants.h"
 #include "readFile.h"
 #include "refactorToTokens.h"
+#include "predprocessing.h"
 
 const char* c_default_directory_for_saving_pictures = "png_files/";
 
@@ -29,10 +30,18 @@ int main(int argc, char *argv[]){
     if (readFile(&buffer, "program.myl", &numOfSmbls, &numOfStrs) != NO_ERRORS){
         return 1;
     }
+    nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
+    node_t* tokens = createTokens(buffer, numOfSmbls, nameTable, "tokens.dot", c_default_directory_for_saving_pictures);
 
-    createTokens(buffer, numOfSmbls, "tokens.dot", c_default_directory_for_saving_pictures);
-
+    node_t* predprocessingTree = createPredprocessingTree(tokens);
+    
+    free(tokens);
+    free(nameTable);
+    free(predprocessingTree);
     free(buffer);
+    predprocessingTree = nullptr;
+    tokens = nullptr;
+    nameTable = nullptr;
     buffer = nullptr;
     return 0;
 }

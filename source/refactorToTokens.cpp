@@ -15,12 +15,12 @@ static bool bufferIsEmpty(char* buffer, char* last_addr);
 static int writePngFile(const char* dotFile, const char* directory);
 static const char* getVariableFromTable(nameTable_t* nameTable, size_t index);
 
-void createTokens(char* buffer, const size_t l_buff, const char* tokensDotFile, const char* directoryForSavingPictures)
+//TODO nameTable + tokens
+node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, const char* tokensDotFile, const char* directoryForSavingPictures)
 {
     char* last_addr = buffer + l_buff;
 
     node_t* tokens = (node_t*)calloc(100, sizeof(node_t));
-    nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
     size_t i_toks = 0;
     size_t i_nameTab = 0;
 
@@ -80,14 +80,41 @@ void createTokens(char* buffer, const size_t l_buff, const char* tokensDotFile, 
             tokens[i_toks++] = {ND_POADD, {0}, nullptr, nullptr};
             buffer += 2;
         }
-        
+        // it is needed for scaning interval in for
+        else if (strncmp(buffer, "..", 2) == 0)
+        {
+            buffer += 2;
+        }
+
+        else if (strncmp(buffer, "<=", 2) == 0)
+        {
+            tokens[i_toks++] = {ND_LSE, {0}, nullptr, nullptr};
+            buffer += 2;
+        }
+        else if (strncmp(buffer, ">=", 2) == 0)
+        {
+            tokens[i_toks++] = {ND_ABE, {0}, nullptr, nullptr};
+            buffer += 2;
+        }
+
         else if (*buffer == '=')
         {
             tokens[i_toks++] = {ND_EQ, {0}, nullptr, nullptr};
             buffer += 2;
-            printf("%s\n", convertTypeToStr(tokens[i_toks-1].type));
+            //printf("%s\n", convertTypeToStr(tokens[i_toks-1].type));
         }
-        
+        else if (*buffer == '<')
+        {
+            tokens[i_toks++] = {ND_LS, {0}, nullptr, nullptr};
+            buffer += 2;
+            //printf("%s\n", convertTypeToStr(tokens[i_toks-1].type));
+        }
+        else if (*buffer == '>')
+        {
+            tokens[i_toks++] = {ND_AB, {0}, nullptr, nullptr};
+            buffer += 2;
+            //printf("%s\n", convertTypeToStr(tokens[i_toks-1].type));
+        }
 
         else if (*buffer == '(')
         {
@@ -171,8 +198,8 @@ void createTokens(char* buffer, const size_t l_buff, const char* tokensDotFile, 
             tokens[i_toks] = {ND_NUM, {0}, nullptr, nullptr};
             tokens[i_toks].data.num = tmpNum;
             
-            printf("---------%g\n", tmpNum);
-            printf("%lg\n", tokens[i_toks].data.num);
+            //printf("---------%g\n", tmpNum);
+            //printf("%lg\n", tokens[i_toks].data.num);
             snprintf(tmpStr, 100, "%lg", tmpNum);
             buffer += strlen(tmpStr);
             ++i_toks;
@@ -182,14 +209,12 @@ void createTokens(char* buffer, const size_t l_buff, const char* tokensDotFile, 
             buffer += 1;
         }
     }
+    tokens[i_toks++] = {ND_EOT, {0}, nullptr, nullptr};
     //printf("%d\n", i_nameTab);
     wrTokensToDot(tokens, i_toks, nameTable, i_nameTab, tokensDotFile);
     writePngFile(tokensDotFile, directoryForSavingPictures);
 
-    free(nameTable);
-    free(tokens);
-    tokens = nullptr;
-    nameTable = nullptr;
+    return tokens;
 }
 
 static bool bufferIsEmpty(char* buffer, char* last_addr)
@@ -218,7 +243,7 @@ static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameT
 
     for (size_t i = 0; i < numOfTokens; i++)
     {
-        printf("%s ----> %lg\n", convertTypeToStr(tokens[i].type), tokens[i].data.num);
+        //printf("%s ----> %lg\n", convertTypeToStr(tokens[i].type), tokens[i].data.num);
         if (tokens[i].type == ND_NUM)
             fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ %s | %lg }\" ];\n", i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type), tokens[i].data.num);
         else
@@ -390,9 +415,10 @@ static const char* convertTypeToStr(types type)
         return "newLine";
         break;
     case ND_EOT:
+        return "EOT";
+        break;
     default:
         break;
     }
     return "error";
 }
-
