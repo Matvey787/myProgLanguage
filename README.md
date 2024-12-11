@@ -19,6 +19,13 @@ MATH_LEVEL_60 ::= [a-z]+
 ```
 yourVariable = 90
 ```
+- You can create if-constructions which get only numbers
+```
+if yourVariable ==  90 // you can also use '!=' '<' '>' '<=' '>='
+{
+    make = 1
+}
+```
 
 - You can create functions which get only one iterator
 ```

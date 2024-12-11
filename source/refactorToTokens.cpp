@@ -88,6 +88,7 @@ node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, 
 
         else if (strncmp(buffer, "<=", 2) == 0)
         {
+            printf("<= has been getted\n");
             tokens[i_toks++] = {ND_LSE, {0}, nullptr, nullptr};
             buffer += 2;
         }
@@ -335,6 +336,10 @@ static const char* getColor(types type)
         
     case ND_ISEQ:
     case ND_NISEQ:
+    case ND_AB:
+    case ND_LS:
+    case ND_ABE:
+    case ND_LSE:
         return "orange";
         break;
     case ND_EOT:
@@ -392,6 +397,18 @@ static const char* convertTypeToStr(types type)
         break;
     case ND_NISEQ:
         return "!=";
+        break;
+    case ND_LS:
+        return "<";
+        break;
+    case ND_AB:
+        return ">";
+        break;
+    case ND_ABE:
+        return ">=";
+        break;
+    case ND_LSE:
+        return "<=";
         break;
     case ND_RCIB:
         return ")";

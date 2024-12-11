@@ -46,10 +46,14 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
     case ND_IF:
     case ND_EQ:
     case ND_FOR:
-    case ND_ISEQ:
     case ND_EOT:
     case ND_SEP:
+    case ND_ISEQ:
     case ND_NISEQ:
+    case ND_AB:
+    case ND_LS:
+    case ND_ABE:
+    case ND_LSE:
         fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | %s | {<n%p_l> left | <n%p_r> right}} \" ];\n", 
                           node, getColor(node->type), rank, node, convertTypeToStr(node->type), node, node);
         break;
@@ -114,6 +118,10 @@ static const char* getColor(types type)
         
     case ND_ISEQ:
     case ND_NISEQ:
+    case ND_AB:
+    case ND_LS:
+    case ND_ABE:
+    case ND_LSE:
         return "orange";
         break;
     case ND_EOT:
@@ -140,7 +148,7 @@ static const char* convertTypeToStr(types type)
         return "*";
         break;
     case ND_DIV:
-        return "/";\
+        return "/";
         break; 
     case ND_NUM:
         return "num";
@@ -171,6 +179,18 @@ static const char* convertTypeToStr(types type)
         break;
     case ND_NISEQ:
         return "!=";
+        break;
+    case ND_LS:
+        return "<";
+        break;
+    case ND_AB:
+        return ">";
+        break;
+    case ND_ABE:
+        return ">=";
+        break;
+    case ND_LSE:
+        return "<=";
         break;
     case ND_RCIB:
         return ")";
