@@ -3,6 +3,7 @@
 
 #include "tree.h"
 #include "constants.h"
+#include "writeASMfile.h"
 #include "readFile.h"
 #include "refactorToTokens.h"
 #include "predprocessing.h"
@@ -34,10 +35,11 @@ int main(int argc, char *argv[]){
     node_t* tokens = createTokens(buffer, numOfSmbls, nameTable, "tokens.dot", c_default_directory_for_saving_pictures);
 
     node_t* predprocessingTree = createPredprocessingTree(tokens);
+    writeASMfile(predprocessingTree, nameTable);
     
-    free(tokens);
     free(nameTable);
-    free(predprocessingTree);
+    delTree(predprocessingTree);
+    free(tokens);
     free(buffer);
     predprocessingTree = nullptr;
     tokens = nullptr;

@@ -194,14 +194,16 @@ node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, 
         else if (isdigit(*buffer))
         {
             double tmpNum = 0;
-            char tmpStr[100] = {0};
+            const size_t TMP_STR_SIZE = 100;
+            char tmpStr[TMP_STR_SIZE] = {0};
             sscanf(buffer, "%lg", &tmpNum);
+            
             tokens[i_toks] = {ND_NUM, {0}, nullptr, nullptr};
             tokens[i_toks].data.num = tmpNum;
             
             //printf("---------%g\n", tmpNum);
             //printf("%lg\n", tokens[i_toks].data.num);
-            snprintf(tmpStr, 100, "%lg", tmpNum);
+            snprintf(tmpStr, TMP_STR_SIZE, "%lg", tmpNum);
             buffer += strlen(tmpStr);
             ++i_toks;
         }
@@ -246,9 +248,9 @@ static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameT
     {
         //printf("%s ----> %lg\n", convertTypeToStr(tokens[i].type), tokens[i].data.num);
         if (tokens[i].type == ND_NUM)
-            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ %s | %lg }\" ];\n", i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type), tokens[i].data.num);
+            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ (%s) | %lg }\" ];\n", i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type), tokens[i].data.num);
         else
-            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ %s }\" ];\n", i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type));
+            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ (%s) }\" ];\n", i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type));
     }
     fprintf(wFile, "}\n");
     
@@ -320,18 +322,25 @@ static const char* getColor(types type)
     case ND_LOG:
         return "white";
         break;
+
     case ND_NUM:
     case ND_VAR:
         return "blue";
         break;
+
     case ND_RCIB:
     case ND_LCIB:
     case ND_LCUB:
     case ND_RCUB:
+        return "yellow";
+        break;
+
     case ND_EQ:
     case ND_IF:
     case ND_FOR:
-        return "yellow";
+    case ND_START:
+    case ND_END:
+        return "green";
         break;
         
     case ND_ISEQ:
@@ -433,6 +442,12 @@ static const char* convertTypeToStr(types type)
         break;
     case ND_EOT:
         return "EOT";
+        break;
+    case ND_START:
+        return "start";
+        break;
+    case ND_END:
+        return "end";  
         break;
     default:
         break;

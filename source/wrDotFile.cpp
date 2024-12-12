@@ -54,9 +54,11 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
     case ND_LS:
     case ND_ABE:
     case ND_LSE:
-        fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | %s | {<n%p_l> left | <n%p_r> right}} \" ];\n", 
+        fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | (%s) | {<n%p_l> left | <n%p_r> right}} \" ];\n", 
                           node, getColor(node->type), rank, node, convertTypeToStr(node->type), node, node);
         break;
+    case ND_START:
+    case ND_END:
     case ND_NUM:
         fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | %s | %lg | {<n%p_l> left | <n%p_r> right}} \" ];\n", 
                           node, getColor(node->type), rank, node, convertTypeToStr(node->type), node->data.num, node, node);
@@ -102,18 +104,25 @@ static const char* getColor(types type)
     case ND_LOG:
         return "white";
         break;
+
     case ND_NUM:
     case ND_VAR:
         return "blue";
         break;
+
     case ND_RCIB:
     case ND_LCIB:
     case ND_LCUB:
     case ND_RCUB:
+        return "yellow";
+        break;
+
     case ND_EQ:
     case ND_IF:
     case ND_FOR:
-        return "yellow";
+    case ND_START:
+    case ND_END:
+        return "green";
         break;
         
     case ND_ISEQ:
@@ -215,6 +224,12 @@ static const char* convertTypeToStr(types type)
         break;
     case ND_EOT:
         return "EOT";
+        break;
+    case ND_START:
+        return "start";
+        break;
+    case ND_END:
+        return "end";  
         break;
     default:
         break;

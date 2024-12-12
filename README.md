@@ -29,7 +29,7 @@ if yourVariable ==  90 // you can also use '!=' '<' '>' '<=' '>='
 
 - You can create functions which get only one iterator
 ```
-for i = 0..4 ++ 
+for i = 0..4 ++
 {
     b = 99
 }

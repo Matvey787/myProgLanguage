@@ -113,7 +113,7 @@ static node_t* getNewLine(node_t** nodes)
         (*nodes)++;
         node_t* r_subtree = A_or_IF_or_FOR(nodes);
         
-        if (r_subtree->type == ND_RCUB)
+        if (r_subtree != nullptr && r_subtree->type == ND_RCUB)
             break;
 
         l_subtree = newNode(ND_SEP, {0}, l_subtree, r_subtree);
@@ -131,7 +131,6 @@ static node_t* A_or_IF_or_FOR(node_t** nodes)
         return getIF(nodes);
     else if ((*nodes)->type == ND_FOR)
         {
-            printf("oooooooooooooook\n");
             return getFor(nodes);
         }
     else
@@ -148,9 +147,11 @@ static node_t* getFor(node_t** nodes)
         *nodes += 1;
         node_t* start = getNum(nodes);
         node_t* end = getNum(nodes);
+        start->type = ND_START;
+        end->type = ND_END;
         printf("+++++++++%lg %lg\n", start->data.num, end->data.num);
         node_t* step = getE(nodes);
-        *nodes += 1;
+        *nodes += 2;
         iterator->left = newNode(ND_SEP, {0}, start, end);
         iterator->right = step;
         return newNode(ND_FOR, {0}, iterator, getP(nodes)); 
@@ -174,6 +175,7 @@ node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** no
 {
     *nodes += 1;
     node_t* r_subtree = getE(nodes);
+    //if ((*nodes)->type == ND_)
     *nodes += 1;
     switch (type)
     {
@@ -215,6 +217,8 @@ node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** no
     case ND_SEP:
     case ND_POADD:
     case ND_ADD:
+    case ND_START:
+    case ND_END:
     default:
         return copyNode(*nodes);
         break;
@@ -243,6 +247,7 @@ static node_t* getE(node_t** nodes)
 {
     assert(nodes != nullptr);
     node_t* l_subtree = getT(nodes);
+    printf("getE type !!!!!  %d\n", (*nodes)->type);
     while ((*nodes)->type == ND_ADD || (*nodes)->type == ND_SUB)
     {
         types op = (*nodes)->type;
@@ -250,9 +255,7 @@ static node_t* getE(node_t** nodes)
         node_t* r_subtree = getT(nodes);
 
         if (op == ND_ADD)
-        {
             l_subtree = newNode(ND_ADD, {0}, l_subtree, r_subtree);
-        }
         else
             l_subtree = newNode(ND_SUB, {0}, l_subtree, r_subtree);
     }
@@ -297,11 +300,26 @@ static node_t* getP(node_t** nodes)
 
     if ((*nodes)->type == ND_LCIB || (*nodes)->type == ND_LCUB)
     {
-        (*nodes)+=2;
-        node_t* val = getNewLine(nodes);
+        node_t* val = nullptr;
+        if ((*nodes)->type == ND_LCUB)
+        {
+            (*nodes)+=2;
+            printf("777777777  %d\n", (*nodes)->type);
+            val = getNewLine(nodes);
+            printf("888888888  %d %d\n", (*nodes)->type, val->type);
+        }
+        else if ((*nodes)->type == ND_LCIB)
+        {
+            (*nodes)+=1;
+            val = getE(nodes);
+        }
+        
         if ((*nodes)->type != ND_RCIB && (*nodes)->type != ND_RCUB)
             syntaxError();
         (*nodes)++;
+        writeDotFile(val, "predProcessing.dot");
+        writePngFile("predProcessing.dot", "png_files");
+        getchar();
         return val;
     }
     else
@@ -366,8 +384,10 @@ static node_t* Num_OR_Var(node_t** nodes)
         return getNum(nodes);
     else if ((*nodes)->type == ND_VAR)
         return getVar(nodes);
-    else
-        return *nodes;
+    else if ((*nodes)->type != ND_EOT)
+        return copyNode(*nodes);
+    else 
+        return nullptr;
 }
 
 
@@ -377,7 +397,7 @@ static node_t* getNum(node_t** nodes)
     printf("get number %lg\n", (*nodes)->data.num);
     node_t* number = *nodes;
     (*nodes)++;
-    return number;
+    return copyNode(number);
 }
 
 // function for getting variable
@@ -386,7 +406,7 @@ static node_t* getVar(node_t** nodes)
     printf("get variable %s\n", (*nodes)->data.var->str);
     node_t* var = *nodes;
     (*nodes)++;
-    return var;
+    return copyNode(var);
 }
 
 static void syntaxError()

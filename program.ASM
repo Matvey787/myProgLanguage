@@ -1,0 +1,13 @@
+PUSH 9
+POP [0]
+PUSH [0]
+PUSH [0]
+ADD
+POP [0]
+PUSH [0]
+PUSH 9
+JNE label1:
+PUSH 9
+POP [5]
+label1:
+HLT

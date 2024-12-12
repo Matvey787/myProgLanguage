@@ -1,6 +1,8 @@
 #ifndef TREE
 #define TREE
 
+#include "errors.h"
+
 enum types {
     ND_ADD=1,
     ND_SUB=2,
@@ -31,7 +33,9 @@ enum types {
     ND_LS = 112,
     ND_AB = 113,
     ND_LSE = 114,
-    ND_ABE = 115
+    ND_ABE = 115,
+    ND_START = 116,
+    ND_END = 117
 };
 
 struct nameTable_t
@@ -53,5 +57,7 @@ struct node_t
     node_t* left;
     node_t* right;
 };
+
+error delTree(node_t* node);
 
 #endif
