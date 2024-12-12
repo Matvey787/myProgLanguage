@@ -1,0 +1,3 @@
+[submodule "myProcessor"]
+	path = myProcessor
+	url = https://github.com/Matvey787/myProcessor.git
