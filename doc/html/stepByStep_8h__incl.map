@@ -1,0 +1,16 @@
+<map id="myProcessor/Processor/h_files/stepByStep.h" name="myProcessor/Processor/h_files/stepByStep.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="67,5,240,45"/>
+<area shape="rect" id="Node000002" href="$spu_8h.html" title=" " alt="" coords="125,93,182,119"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="156,46,156,79,151,79,151,46"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="5,255,72,280"/>
+<area shape="poly" id="edge2_Node000002_Node000003" title=" " alt="" coords="126,117,83,135,62,150,46,168,39,185,35,204,36,241,31,241,30,204,34,184,42,165,59,146,80,131,124,112"/>
+<area shape="rect" id="Node000004" href="$stackConstructor_8h.html" title=" " alt="" coords="57,167,250,207"/>
+<area shape="poly" id="edge3_Node000002_Node000004" title=" " alt="" coords="156,119,156,153,151,153,151,119"/>
+<area shape="rect" id="Node000007" href="$Processor_2h__files_2registers_8h.html" title=" " alt="" coords="275,174,424,199"/>
+<area shape="poly" id="edge7_Node000002_Node000007" title=" " alt="" coords="183,116,309,166,307,171,181,121"/>
+<area shape="poly" id="edge5_Node000004_Node000003" title=" " alt="" coords="127,209,68,249,65,245,124,205"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="107,255,178,280"/>
+<area shape="poly" id="edge4_Node000004_Node000005" title=" " alt="" coords="153,207,149,241,143,240,148,207"/>
+<area shape="rect" id="Node000006" href="$workWithStack_2h__files_2macros_8h.html" title=" " alt="" coords="203,255,285,280"/>
+<area shape="poly" id="edge6_Node000004_Node000006" title=" " alt="" coords="177,205,222,243,218,248,174,209"/>
+</map>

@@ -1,0 +1,31 @@
+<map id="myProcessor/workWithStack/cpp_files/stackInitDestroy.cpp" name="myProcessor/workWithStack/cpp_files/stackInitDestroy.cpp">
+<area shape="rect" id="Node000001" title=" " alt="" coords="341,5,560,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="315,240,381,265"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="341,30,247,35,149,46,65,66,34,79,13,95,9,103,9,112,26,131,59,152,103,172,208,209,303,237,301,242,207,214,101,177,56,156,22,135,4,114,3,102,9,92,31,74,63,61,148,41,246,30,341,25"/>
+<area shape="rect" id="Node000003" title=" " alt="" coords="793,93,863,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="542,43,774,91,779,92,778,97,773,96,541,48"/>
+<area shape="rect" id="Node000004" title=" " alt="" coords="741,167,816,192"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="561,32,645,52,686,69,724,91,752,120,771,152,766,155,748,123,721,95,684,74,643,57,560,37"/>
+<area shape="rect" id="Node000005" href="$countHash_8h.html" title=" " alt="" coords="37,93,198,119"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="372,48,180,93,179,88,370,43"/>
+<area shape="rect" id="Node000006" href="$stackConstructor_8h.html" title=" " alt="" coords="175,167,318,192"/>
+<area shape="poly" id="edge13_Node000001_Node000006" title=" " alt="" coords="342,31,251,36,157,48,77,67,47,80,27,95,18,111,20,125,30,136,49,146,101,161,162,170,161,175,100,167,47,151,27,141,15,127,13,110,23,92,44,75,75,62,156,42,250,31,341,26"/>
+<area shape="rect" id="Node000008" href="$workWithStack_2h__files_2macros_8h.html" title=" " alt="" coords="447,240,529,265"/>
+<area shape="poly" id="edge19_Node000001_Node000008" title=" " alt="" coords="559,43,633,63,662,77,681,92,692,116,689,139,675,161,654,181,597,214,538,238,536,233,595,209,651,176,671,158,684,138,687,117,677,95,659,81,631,68,558,48"/>
+<area shape="rect" id="Node000009" href="$stackAssertFunction_8h.html" title=" " alt="" coords="222,93,445,119"/>
+<area shape="poly" id="edge9_Node000001_Node000009" title=" " alt="" coords="424,48,363,88,360,84,421,43"/>
+<area shape="rect" id="Node000010" href="$stackInitDestroy_8h.html" title=" " alt="" coords="469,93,667,119"/>
+<area shape="poly" id="edge14_Node000001_Node000010" title=" " alt="" coords="481,43,541,84,538,88,478,48"/>
+<area shape="poly" id="edge5_Node000005_Node000006" title=" " alt="" coords="139,116,215,157,212,162,137,121"/>
+<area shape="poly" id="edge7_Node000006_Node000002" title=" " alt="" coords="265,190,322,230,319,234,262,194"/>
+<area shape="rect" id="Node000007" title=" " alt="" coords="211,240,282,265"/>
+<area shape="poly" id="edge6_Node000006_Node000007" title=" " alt="" coords="249,192,249,226,244,226,244,192"/>
+<area shape="poly" id="edge8_Node000006_Node000008" title=" " alt="" coords="286,189,436,233,435,239,285,195"/>
+<area shape="poly" id="edge10_Node000009_Node000002" title=" " alt="" coords="337,119,348,226,343,227,332,119"/>
+<area shape="poly" id="edge12_Node000009_Node000006" title=" " alt="" coords="321,121,273,160,270,156,318,117"/>
+<area shape="poly" id="edge11_Node000009_Node000008" title=" " alt="" coords="348,117,467,228,464,232,344,121"/>
+<area shape="poly" id="edge15_Node000010_Node000002" title=" " alt="" coords="552,121,379,235,376,230,549,117"/>
+<area shape="poly" id="edge18_Node000010_Node000004" title=" " alt="" coords="603,116,733,160,731,165,601,121"/>
+<area shape="poly" id="edge17_Node000010_Node000006" title=" " alt="" coords="517,121,313,166,311,161,516,116"/>
+<area shape="poly" id="edge16_Node000010_Node000008" title=" " alt="" coords="564,120,503,229,499,227,559,118"/>
+</map>

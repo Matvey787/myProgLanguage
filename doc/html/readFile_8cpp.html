@@ -81,31 +81,34 @@ $(function() {
 <div class="textblock"><code>#include &lt;stdio.h&gt;</code><br />
 <code>#include &lt;stdlib.h&gt;</code><br />
 <code>#include &lt;assert.h&gt;</code><br />
-<code>#include &quot;<a class="el" href="readFile_8h_source.html">readFile.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="workWithFile_8h_source.html">workWithFile.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for readFile.cpp:</div>
 <div class="dyncontent">
 <div class="center"><img src="readFile_8cpp__incl.png" border="0" usemap="#asource_2readFile_8cpp" alt=""/></div>
 <map name="asource_2readFile_8cpp" id="asource_2readFile_8cpp">
-<area shape="rect" title=" " alt="" coords="106,5,254,31"/>
-<area shape="rect" title=" " alt="" coords="5,79,72,104"/>
-<area shape="poly" title=" " alt="" coords="158,33,75,75,73,70,156,28"/>
-<area shape="rect" title=" " alt="" coords="97,79,167,104"/>
-<area shape="poly" title=" " alt="" coords="174,33,150,69,145,66,170,30"/>
-<area shape="rect" title=" " alt="" coords="192,79,267,104"/>
-<area shape="poly" title=" " alt="" coords="190,29,216,66,211,69,186,33"/>
-<area shape="rect" href="readFile_8h.html" title=" " alt="" coords="291,79,378,104"/>
-<area shape="poly" title=" " alt="" coords="206,28,298,70,296,75,204,33"/>
-<area shape="rect" href="errors_8h.html" title=" " alt="" coords="253,152,325,177"/>
-<area shape="poly" title=" " alt="" coords="329,106,306,142,302,139,325,103"/>
-<area shape="rect" href="tree_8h.html" title=" " alt="" coords="350,152,410,177"/>
-<area shape="poly" title=" " alt="" coords="344,103,368,139,363,142,340,106"/>
+<area shape="rect" title=" " alt="" coords="32,5,180,31"/>
+<area shape="rect" title=" " alt="" coords="62,152,129,177"/>
+<area shape="poly" title=" " alt="" coords="73,33,39,52,24,64,12,80,9,98,18,115,36,130,57,143,54,148,32,135,14,118,4,99,8,78,20,61,36,47,70,28"/>
+<area shape="rect" title=" " alt="" coords="23,79,93,104"/>
+<area shape="poly" title=" " alt="" coords="100,33,76,69,71,66,96,30"/>
+<area shape="rect" title=" " alt="" coords="118,79,193,104"/>
+<area shape="poly" title=" " alt="" coords="116,29,142,66,137,69,112,33"/>
+<area shape="rect" href="workWithFile_8h.html" title=" " alt="" coords="217,79,336,104"/>
+<area shape="poly" title=" " alt="" coords="134,28,237,71,235,76,132,33"/>
+<area shape="poly" title=" " alt="" coords="249,107,139,149,137,144,247,102"/>
+<area shape="rect" href="errors_8h.html" title=" " alt="" coords="239,225,311,251"/>
+<area shape="poly" title=" " alt="" coords="277,105,270,152,270,183,273,211,268,212,265,183,265,152,272,104"/>
+<area shape="rect" href="tree_8h.html" title=" " alt="" coords="280,152,340,177"/>
+<area shape="poly" title=" " alt="" coords="285,103,301,139,296,141,280,105"/>
+<area shape="poly" title=" " alt="" coords="307,179,289,214,285,212,302,176"/>
 </map>
 </div>
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:aa83b04a823b13707d2fbd6f207ed162e" id="r_aa83b04a823b13707d2fbd6f207ed162e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="errors_8h.html#af10dacfa214e2575bb2e0ee407c242e0">error</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="readFile_8cpp.html#aa83b04a823b13707d2fbd6f207ed162e">readFile</a> (char **buffer, const char *file_name, size_t *numOfSymbols, size_t *numOfStrs)</td></tr>
+<tr class="memdesc:aa83b04a823b13707d2fbd6f207ed162e"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function reads the contents of a file into a string.  <br /></td></tr>
 <tr class="separator:aa83b04a823b13707d2fbd6f207ed162e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -146,6 +149,18 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function reads the contents of a file into a string. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>A pointer to a pointer to a character array where the file contents will be stored. </td></tr>
+    <tr><td class="paramname">file_name</td><td>The path to the file to be read. </td></tr>
+    <tr><td class="paramname">numOfSymbols</td><td>The number of symbols in the file. (just only where to put the information) </td></tr>
+    <tr><td class="paramname">numOfStrs</td><td>The number of strings in the file. (just only where to put the information)</td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>A string containing the contents of the file, or an empty string if the file could not be read. </dd></dl>
 
 </div>
 </div>

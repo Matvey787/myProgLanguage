@@ -4,14 +4,12 @@
 #include "tree.h"
 #include "constants.h"
 #include "writeASMfile.h"
-#include "readFile.h"
+#include "workWithFile.h"
 #include "refactorToTokens.h"
 #include "predprocessing.h"
 
-const char* c_default_directory_for_saving_pictures = "png_files/";
-
 int main(int argc, char *argv[]){
-    char directory[c_length_of_strs] = {0};
+    char directory[c_lendth_of_commandStrs] = {0};
     
     if (argc > 1)
     {
@@ -20,7 +18,9 @@ int main(int argc, char *argv[]){
     else 
     {
         sprintf(directory, "%s", c_default_directory_for_saving_pictures);
-        char command[c_length_of_strs] = {0};
+        char command[c_lendth_of_commandStrs] = {0};
+
+        // create folder for saving pictures (png_files) if user didn't get special folder name
         sprintf(command, "mkdir -p %s", c_default_directory_for_saving_pictures);
         system(command);
     }

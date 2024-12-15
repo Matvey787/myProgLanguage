@@ -27,10 +27,17 @@ if yourVariable ==  90 // you can also use '!=' '<' '>' '<=' '>='
 }
 ```
 
-- You can create functions which get only one iterator
+- You can create cycles which get only one iterator
 ```
 for i = 0..4 ++
 {
     b = 99
+}
+```
+- You can create functions which get only one parametr
+```
+func myFunc(a)
+{
+    a = a + 1
 }
 ```

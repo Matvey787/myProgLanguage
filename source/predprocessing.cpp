@@ -5,16 +5,16 @@
 #include <assert.h>
 #include <math.h>
 #include "tree.h"
-#include "readFile.h"
+#include "workWithFile.h"
 #include "errors.h"
 #include "predprocessing.h"
 
-
-static node_t* getG(node_t** exp);
-static node_t* getE(node_t** exp);
-static node_t* getT(node_t** exp);
-static node_t* getP(node_t** exp);
-static node_t* getA(node_t** nodes);
+// Functions that allow recursive descent and construction of a program tree.
+static node_t* getGeneral(node_t** exp);
+static node_t* getAddSub(node_t** exp);
+static node_t* getMulDiv(node_t** exp);
+static node_t* getSubModule(node_t** exp);
+static node_t* getAppropriation(node_t** nodes);
 static node_t* Num_OR_Var(node_t** exp);
 static node_t* getNum(node_t** exp);
 static node_t* getVar(node_t** exp);
@@ -26,88 +26,44 @@ static node_t* getNewLine(node_t** nodes);
 static node_t* A_or_IF_or_FOR(node_t** nodes);
 static node_t* getIF(node_t** nodes);
 static node_t* getFor(node_t** nodes);
+static node_t* getPrint(node_t** nodes);
+static node_t* getFunc(node_t** nodes);
+static node_t* getReturn(node_t** nodes);
+static node_t* getCallOfFunc(node_t** nodes);
 
-/**
- * @brief Creates a new node with the given type, data, and child nodes.
- * 
- * @param type The type of the node.
- * @param data The data of the node.
- * @param node_l The left child of the node.
- * @param node_r The right child of the node.
- * @return A pointer to the newly created node.
- */
-static node_t* newNode(types type, data_u data, node_t* node_l, node_t* node_r);
+// Handles syntax errors by printing an error message and exiting the program.
 
-/**
- * @brief Creates a copy of the given node.
- * 
- * @param node The node to be copied.
- * @return A pointer to the copy of the node.
- */
-static node_t* copyNode(node_t* node);
-
-/**
- * @brief Creates a copy of the subtree starting from the given node.
- * 
- * @param node The root node of the subtree to be copied.
- * @return A pointer to the copy of the subtree.
- */
-static node_t* copySubtree(node_t* node);
-
-/**
- * @brief Writes a PNG file from a dot file.
- * 
- * @param dotFile The path to the dot file.
- * @param directory The directory where the PNG file should be saved.
- * @return The number of times the function has been called.
- */
-static int writePngFile(const char* dotFile, const char* directory);
-
-/**
- * @brief Handles syntax errors by printing an error message and exiting the program.
- */
 static void syntaxError();
+
+// Function is used in case ND_IF for creating subtree in if clauses
 
 node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** nodes);
 
 node_t* createPredprocessingTree(node_t* tokens)
 {
     assert(tokens != nullptr);
-    node_t* tree = getG(&tokens);
+    node_t* tree = getGeneral(&tokens);
     writeDotFile(tree, "predprocessingTree.dot");
-    writePngFile("predprocessingTree.dot", "png_files");
+    writePngFile("predprocessingTree.dot", "png_files", "white");
 
     return tree;
 }
 
-static int writePngFile(const char* dotFile, const char* directory)
-{    
-    assert(directory != nullptr);
-    assert(dotFile != nullptr);
-    static int numOfCall = 0;
-
-    char command[100] = {0};
-    sprintf(command, "dot %s -Tpng -o %s/%s.png", dotFile, directory, dotFile);
-    system(command);
-
-    return numOfCall;
-}
-
-
-static node_t* getG(node_t** nodes)
+// main function of recursive descent. Do nothing... just call other functions.
+static node_t* getGeneral(node_t** nodes)
 {
     assert(nodes != nullptr);
     node_t* subtree = getNewLine(nodes);
-    printf("getG end\n");
     return subtree;
 }
 
+// Function check if the current token is a separator and if so, create ND_SEP node.
 static node_t* getNewLine(node_t** nodes)
 {
     assert(nodes != nullptr);
+
     node_t* l_subtree = A_or_IF_or_FOR(nodes);
-    fprintf(stderr, "%d\n", l_subtree->type);
-    fprintf(stderr, "%d\n", (*nodes)->type);
+    
     while ((*nodes)->type == ND_SEP)
     {
         (*nodes)++;
@@ -126,16 +82,68 @@ static node_t* A_or_IF_or_FOR(node_t** nodes)
     assert(nodes != nullptr);
 
     if ((*nodes)->type == ND_VAR)
-        return getA(nodes);
+    {
+        //printf("not fun call at %s\n", (*nodes)->data.var->str);
+        return getAppropriation(nodes);
+    }
+
     else if ((*nodes)->type == ND_IF)
         return getIF(nodes);
     else if ((*nodes)->type == ND_FOR)
-        {
-            return getFor(nodes);
-        }
+    {
+        return getFor(nodes);
+    }
+    else if ((*nodes)->type == ND_PR)
+    {
+        return getPrint(nodes);
+    }
+    else if ((*nodes)->type == ND_FUN)
+    {
+        return getFunc(nodes);
+    }
+    else if ((*nodes)->type == ND_RET)
+    {
+        return getReturn(nodes);
+    }
+    
     else
-        return getE(nodes);
+        return getAddSub(nodes);
 }
+
+static node_t* getFunc(node_t** nodes)
+{
+    assert(nodes != nullptr);
+    node_t* funcNode = copyNode(*nodes);
+    
+    *nodes += 1;
+    assert(funcNode != nullptr);
+    printf("%d %s\n", (*nodes)->type, (*nodes)->data.var->str);
+    funcNode->data.var = (nameTable_t*)calloc(1, sizeof(nameTable_t));
+    (funcNode->data.var)->str = (*nodes)->data.var->str;
+    *nodes += 1;
+    node_t* parameters = getSubModule(nodes);
+    *nodes += 1;
+    node_t* funcBody = getSubModule(nodes);
+    funcNode->left = parameters; // create left subtree of parameters in funcNode
+    funcNode->right = funcBody; // create right subtree of func body in funcNode
+    return funcNode;
+}   
+
+static node_t* getCallOfFunc(node_t** nodes)
+{
+    assert(nodes != nullptr);
+    node_t* funcCallNode = copyNode(*nodes);
+    // because firstly it was a ND_VAR. But we need to change it to  ND_FUNCALL
+    funcCallNode->type = ND_FUNCALL;
+    char tmpStr[100] = {0};
+    snprintf(tmpStr, 100, "call %s", (*nodes)->data.var->str);
+    (funcCallNode->data.var)->str = (*nodes)->data.var->str;
+    *nodes += 1;
+    node_t* passedParameters = getSubModule(nodes);
+    funcCallNode->left = passedParameters;
+    return funcCallNode;
+}
+
 
 static node_t* getFor(node_t** nodes)
 {
@@ -149,12 +157,12 @@ static node_t* getFor(node_t** nodes)
         node_t* end = getNum(nodes);
         start->type = ND_START;
         end->type = ND_END;
-        printf("+++++++++%lg %lg\n", start->data.num, end->data.num);
-        node_t* step = getE(nodes);
+        //printf("+++++++++%lg %lg\n", start->data.num, end->data.num);
+        node_t* step = getAddSub(nodes);
         *nodes += 2;
         iterator->left = newNode(ND_SEP, {0}, start, end);
         iterator->right = step;
-        return newNode(ND_FOR, {0}, iterator, getP(nodes)); 
+        return newNode(ND_FOR, {0}, iterator, getSubModule(nodes)); 
     }
     else 
     {
@@ -167,38 +175,61 @@ static node_t* getIF(node_t** nodes)
 {
     assert(nodes != nullptr);
     *nodes += 1;
-    node_t* l_subtree = getE(nodes);
+    node_t* l_subtree = getAddSub(nodes);
     return newNode_by_ComparisonOperator((*nodes)->type, l_subtree, nodes);
+}
+
+static node_t* getPrint(node_t** nodes)
+{
+    assert(nodes != nullptr);
+    assert(*nodes != nullptr);
+    *nodes += 1;
+    node_t* l_subtree = getAddSub(nodes);
+    return newNode(ND_PR, {0}, l_subtree, nullptr);
+}
+
+static node_t* getReturn(node_t** nodes)
+{
+    assert(nodes != nullptr);
+    assert(*nodes != nullptr);
+    *nodes += 1;
+    node_t* l_subtree = getAddSub(nodes);
+    return newNode(ND_RET, {0}, l_subtree, nullptr);
 }
 
 node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** nodes)
 {
+    assert(l_subtree != nullptr);
+    assert(nodes != nullptr);
+    assert(*nodes != nullptr);
+
     *nodes += 1;
-    node_t* r_subtree = getE(nodes);
-    //if ((*nodes)->type == ND_)
+    node_t* r_subtree = getAddSub(nodes);
+
     *nodes += 1;
     switch (type)
     {
     case ND_ISEQ:
-        return newNode(ND_IF, {0}, newNode(ND_ISEQ, {0}, l_subtree, r_subtree), getP(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_ISEQ, {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_NISEQ:
-        return newNode(ND_IF, {0}, newNode(ND_NISEQ, {0}, l_subtree, r_subtree), getP(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_NISEQ, {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_LS:
-        return newNode(ND_IF, {0}, newNode(ND_LS, {0}, l_subtree, r_subtree), getP(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_LS, {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_AB:
-        return newNode(ND_IF, {0}, newNode(ND_AB, {0}, l_subtree, r_subtree), getP(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_AB, {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_LSE:
-        return newNode(ND_IF, {0}, newNode(ND_LSE, {0}, l_subtree, r_subtree), getP(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_LSE, {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_ABE:
-        return newNode(ND_IF, {0}, newNode(ND_ABE, {0}, l_subtree, r_subtree), getP(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_ABE, {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_SUB:
     case ND_DIV:
+    case ND_RET:
     case ND_MUL:
     case ND_NUM:
     case ND_VAR:
@@ -210,6 +241,8 @@ node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** no
     case ND_RCIB:
     case ND_LCUB:
     case ND_RCUB:
+    case ND_FUN:
+    case ND_FUNCALL:
     case ND_EOT:
     case ND_IF:
     case ND_EQ:
@@ -219,40 +252,41 @@ node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** no
     case ND_ADD:
     case ND_START:
     case ND_END:
+    case ND_PR:
     default:
         return copyNode(*nodes);
         break;
     }
 }
 
-static node_t* getA(node_t** nodes)
+static node_t* getAppropriation(node_t** nodes)
 {
     assert(nodes != nullptr);
-    node_t* l_subtree = getE(nodes);
+    node_t* l_subtree = getAddSub(nodes);
     if ((*nodes)->type != ND_EQ)
     {
-        return getE(nodes);
+        return getAddSub(nodes);
     } 
     else
     {
-        printf("I see eq !!!\n");
+        //printf("I see eq !!!\n");
         *nodes += 1;
-        node_t* r_subtree = getE(nodes);
+        node_t* r_subtree = getAddSub(nodes);
         return newNode(ND_EQ, {0}, l_subtree, r_subtree);
 
     }
 }
 
-static node_t* getE(node_t** nodes)
+static node_t* getAddSub(node_t** nodes)
 {
     assert(nodes != nullptr);
-    node_t* l_subtree = getT(nodes);
-    printf("getE type !!!!!  %d\n", (*nodes)->type);
+    node_t* l_subtree = getMulDiv(nodes);
+    //printf("getAddSub type !!!!!  %d\n", (*nodes)->type);
     while ((*nodes)->type == ND_ADD || (*nodes)->type == ND_SUB)
     {
         types op = (*nodes)->type;
         (*nodes)++;
-        node_t* r_subtree = getT(nodes);
+        node_t* r_subtree = getMulDiv(nodes);
 
         if (op == ND_ADD)
             l_subtree = newNode(ND_ADD, {0}, l_subtree, r_subtree);
@@ -262,7 +296,7 @@ static node_t* getE(node_t** nodes)
     return l_subtree;
 }
 
-static node_t* getT(node_t** nodes)
+static node_t* getMulDiv(node_t** nodes)
 {
     assert(nodes != nullptr);
     node_t* l_subtree = getPOW(nodes);
@@ -284,18 +318,18 @@ static node_t* getPOW(node_t** nodes)
 {
     assert(nodes != nullptr);
 
-    node_t* l_subtree = getP(nodes);
+    node_t* l_subtree = getSubModule(nodes);
     while ((*nodes)->type == ND_POW)
     {
         (*nodes)++;
-        node_t* r_subtree = getP(nodes);
+        node_t* r_subtree = getSubModule(nodes);
 
         l_subtree = newNode(ND_POW, {0}, l_subtree, r_subtree);
     }
     return l_subtree;
 }
 
-static node_t* getP(node_t** nodes)
+static node_t* getSubModule(node_t** nodes)
 {
 
     if ((*nodes)->type == ND_LCIB || (*nodes)->type == ND_LCUB)
@@ -303,28 +337,28 @@ static node_t* getP(node_t** nodes)
         node_t* val = nullptr;
         if ((*nodes)->type == ND_LCUB)
         {
-            (*nodes)+=2;
-            printf("777777777  %d\n", (*nodes)->type);
+            (*nodes) += 2;
             val = getNewLine(nodes);
-            printf("888888888  %d %d\n", (*nodes)->type, val->type);
         }
         else if ((*nodes)->type == ND_LCIB)
         {
-            (*nodes)+=1;
-            val = getE(nodes);
+            ++*nodes;
+            val = getAddSub(nodes);
         }
         
         if ((*nodes)->type != ND_RCIB && (*nodes)->type != ND_RCUB)
+        {
+            printf("Hmmm... Something wrong with brackets\n");
             syntaxError();
-        (*nodes)++;
-        writeDotFile(val, "predProcessing.dot");
-        writePngFile("predProcessing.dot", "png_files");
-        getchar();
+        }
+        ++*nodes;
+        /* writeDotFile(val, "predProcessing.dot");
+        writePngFile("predProcessing.dot", "png_files"); */
+        //getchar();
         return val;
     }
     else
     {
-        //return Num_OR_Var(nodes);
         return getSin(nodes);
     }
 }
@@ -335,7 +369,7 @@ static node_t* getSin(node_t** nodes)
     {
         node_t* sin = *nodes;
         (*nodes)++;
-        sin->left = getP(nodes);
+        sin->left = getSubModule(nodes);
         return copyNode(sin);
     }
     else
@@ -350,7 +384,7 @@ static node_t* getCos(node_t** nodes)
     {
         node_t* cos = *nodes;
         (*nodes)++;
-        cos->left = getP(nodes);
+        cos->left = getSubModule(nodes);
         return copyNode(cos);
     }
     else
@@ -368,7 +402,7 @@ static node_t* getLog(node_t** nodes)
         node_t* log = *nodes;
         (*nodes)++;
         log->right = Num_OR_Var(nodes);
-        log->left = getP(nodes);
+        log->left = getSubModule(nodes);
         return copyNode(log);
     }
     else
@@ -380,6 +414,7 @@ static node_t* getLog(node_t** nodes)
 // function for understanf if node is number or variable
 static node_t* Num_OR_Var(node_t** nodes)
 {
+
     if ((*nodes)->type == ND_NUM)
         return getNum(nodes);
     else if ((*nodes)->type == ND_VAR)
@@ -394,7 +429,6 @@ static node_t* Num_OR_Var(node_t** nodes)
 // function for getting number
 static node_t* getNum(node_t** nodes)
 {
-    printf("get number %lg\n", (*nodes)->data.num);
     node_t* number = *nodes;
     (*nodes)++;
     return copyNode(number);
@@ -403,7 +437,10 @@ static node_t* getNum(node_t** nodes)
 // function for getting variable
 static node_t* getVar(node_t** nodes)
 {
-    printf("get variable %s\n", (*nodes)->data.var->str);
+    if (*nodes + 1 != nullptr && (*nodes + 1)->type == ND_LCIB)
+    {
+        return getCallOfFunc(nodes);
+    }
     node_t* var = *nodes;
     (*nodes)++;
     return copyNode(var);
@@ -413,58 +450,4 @@ static void syntaxError()
 {
     printf("error!\n");
     exit(1);
-}
-
-// Function get node_l and node_r. Then new head (node) is formed from node_l and node_r (node_l go to head left daughter, node_r go to head right daughter). 
-
-static node_t* newNode(types type, data_u data, node_t* node_l, node_t* node_r)
-{
-    node_t* varNewNode = (node_t*)calloc(1, sizeof(node_t));
-
-    varNewNode->type = type;
-    varNewNode->data = data;
-    
-    varNewNode->left = node_l;
-    varNewNode->right = node_r;
-    return varNewNode;
-}
-
-static node_t* copyNode(node_t* node){
-    assert(node != nullptr);
-    node_t* varCopyNode = (node_t*)calloc(1, sizeof(node_t));
-    assert(varCopyNode != nullptr);
-    varCopyNode->type = node->type;
-    varCopyNode->data = node->data;
-    varCopyNode->left = node->left;
-    varCopyNode->right = node->right;
-    return varCopyNode;
-    
-}
-
-// Function get node and returns a copy of the subtree starting from the one passed node.
-
-static node_t* copySubtree(node_t* node){
-    assert(node != nullptr);
-    node_t* varCopyNode = (node_t*)calloc(1, sizeof(node_t));
-    
-    if (varCopyNode == nullptr)
-        printf("allocate memory fail\n");
-
-    varCopyNode->type = node->type;
-    varCopyNode->data = node->data;
-
-    if (node->left != nullptr)
-    {
-        varCopyNode->left = copySubtree(node->left);
-    }
-    else
-        varCopyNode->left = nullptr;
-
-    if (node->right != nullptr)
-    {
-        varCopyNode->right = copySubtree(node->right);
-    }  
-    else
-        varCopyNode->right = nullptr;
-    return varCopyNode;
 }

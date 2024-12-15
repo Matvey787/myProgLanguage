@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['split_5fon_5fstrs_5ffail_0',['SPLIT_ON_STRS_FAIL',['../errors_8h.html#af10dacfa214e2575bb2e0ee407c242e0a8dedbdaa9ec9c0bb0d8b700d3a533ce0',1,'errors.h']]]
+  ['dx_0',['dx',['../Assembler_2h__files_2registers_8h.html#a0eeb8505336965013ef70ab66625bb8da22dc95a35fbd833d9908928812979156',1,'DX:&#160;registers.h'],['../Processor_2h__files_2registers_8h.html#a0eeb8505336965013ef70ab66625bb8da22dc95a35fbd833d9908928812979156',1,'DX:&#160;registers.h']]]
 ];

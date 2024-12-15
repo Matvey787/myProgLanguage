@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['str_0',['str',['../structnameTable__t.html#a28816c2494301b6c076a1e89795d9f69',1,'nameTable_t']]]
+  ['mode_0',['mode',['../structcommand__t.html#adaf923a81b05913bfd0abfb0414b9d78',1,'command_t']]]
 ];

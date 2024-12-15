@@ -1,0 +1,17 @@
+<map id="myProcessor/Processor/h_files/getCommands.h" name="myProcessor/Processor/h_files/getCommands.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="5,5,184,45"/>
+<area shape="rect" id="Node000002" title=" " alt="" coords="79,255,145,280"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="99,45,113,241,108,241,93,46"/>
+<area shape="rect" id="Node000003" href="$spu_8h.html" title=" " alt="" coords="158,93,215,119"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="119,44,164,82,161,86,115,48"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="176,121,157,142,140,168,126,206,118,242,113,241,120,204,135,165,153,138,172,117"/>
+<area shape="rect" id="Node000004" href="$stackConstructor_8h.html" title=" " alt="" coords="150,167,343,207"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="198,117,226,154,222,157,193,120"/>
+<area shape="rect" id="Node000007" href="$Processor_2h__files_2registers_8h.html" title=" " alt="" coords="368,174,517,199"/>
+<area shape="poly" id="edge8_Node000003_Node000007" title=" " alt="" coords="216,114,393,167,392,173,215,119"/>
+<area shape="poly" id="edge6_Node000004_Node000002" title=" " alt="" coords="216,209,145,250,142,245,213,204"/>
+<area shape="rect" id="Node000005" title=" " alt="" coords="190,255,261,280"/>
+<area shape="poly" id="edge5_Node000004_Node000005" title=" " alt="" coords="244,208,235,242,230,240,239,206"/>
+<area shape="rect" id="Node000006" href="$workWithStack_2h__files_2macros_8h.html" title=" " alt="" coords="285,255,368,280"/>
+<area shape="poly" id="edge7_Node000004_Node000006" title=" " alt="" coords="268,205,307,243,303,247,264,209"/>
+</map>

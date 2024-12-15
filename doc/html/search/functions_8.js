@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['writedotfile_0',['writedotfile',['../readFile_8h.html#ae74cdb04fca2bad31f1a62e3c0f1de2c',1,'writeDotFile(node_t *node, const char *fileName):&#160;wrDotFile.cpp'],['../wrDotFile_8cpp.html#ae74cdb04fca2bad31f1a62e3c0f1de2c',1,'writeDotFile(node_t *node, const char *fileName):&#160;wrDotFile.cpp']]],
-  ['writepngfile_1',['writepngfile',['../predprocessing_8cpp.html#a26d3a53ef454848bbc19bb4016beb88d',1,'writePngFile(const char *dotFile, const char *directory):&#160;predprocessing.cpp'],['../refactorToTokens_8cpp.html#a26d3a53ef454848bbc19bb4016beb88d',1,'writePngFile(const char *dotFile, const char *directory):&#160;refactorToTokens.cpp']]],
-  ['writetreetodotfile_2',['writeTreeToDotFile',['../wrDotFile_8cpp.html#a1297768b9703451cd86c401ba63b7250',1,'wrDotFile.cpp']]],
-  ['wrtokenstodot_3',['wrTokensToDot',['../refactorToTokens_8cpp.html#ad8349f53635f6bb4dc781289b83576ec',1,'refactorToTokens.cpp']]]
+  ['main_0',['main',['../myProcessor_2Assembler_2cpp__files_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp'],['../myProcessor_2Processor_2cpp__files_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp'],['../myProcessor_2workWithStack_2cpp__files_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4',1,'main():&#160;main.cpp'],['../source_2main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;main.cpp']]],
+  ['mycallocofcommands_1',['myCallocOfCommands',['../myProcessor_2Assembler_2cpp__files_2main_8cpp.html#a91ede12b982dbba714b768b9b7d52904',1,'main.cpp']]],
+  ['mycallocoflabels_2',['myCallocOfLabels',['../myProcessor_2Assembler_2cpp__files_2main_8cpp.html#a5d69f67a9725b4b85c7fa150874ab0ca',1,'main.cpp']]]
 ];

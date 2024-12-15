@@ -1,4 +1,8 @@
 {
+    "doxygen_runner.configuration_file_override": "${workspaceFolder}/Doxyfile"
+}
+
+{
     "git.detectSubmodules": true
 }
   

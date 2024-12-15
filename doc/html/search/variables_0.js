@@ -1,8 +1,20 @@
 var searchData=
 [
-  ['c_5fcomparezero_0',['c_compareZero',['../constants_8h.html#a4ddbfeaddc43a0c77fb2394bc7c52e15',1,'constants.h']]],
-  ['c_5fdefault_5fdirectory_5ffor_5fsaving_5fpictures_1',['c_default_directory_for_saving_pictures',['../main_8cpp.html#ad339d2214b0e6536e11b3ab80a44dd86',1,'main.cpp']]],
-  ['c_5fexp_2',['c_exp',['../constants_8h.html#a0360631ca1b21cd5408172d5b2d77c03',1,'constants.h']]],
-  ['c_5flength_5fof_5fstrs_3',['c_length_of_strs',['../constants_8h.html#abac2a55245ad9861ea678b61d12779a1',1,'constants.h']]],
-  ['c_5ftab_4',['c_tab',['../constants_8h.html#af809b202990a43c6df9fab28760e72c5',1,'constants.h']]]
+  ['c_5fcomparezero_0',['c_comparezero',['../constants_8h.html#a4ddbfeaddc43a0c77fb2394bc7c52e15',1,'c_compareZero:&#160;constants.h'],['../runCode_8cpp.html#a4ddbfeaddc43a0c77fb2394bc7c52e15',1,'c_compareZero:&#160;runCode.cpp'],['../stepByStep_8cpp.html#a4ddbfeaddc43a0c77fb2394bc7c52e15',1,'c_compareZero:&#160;stepByStep.cpp']]],
+  ['c_5fdefault_5fasm_5ffilename_1',['c_default_asm_FileName',['../myProcessor_2Assembler_2cpp__files_2main_8cpp.html#ae208d7b60f490d10def0bed361dc2265',1,'main.cpp']]],
+  ['c_5fdefault_5fdirectory_5ffor_5fsaving_5fpictures_2',['c_default_directory_for_saving_pictures',['../constants_8h.html#ad339d2214b0e6536e11b3ab80a44dd86',1,'constants.h']]],
+  ['c_5fexp_3',['c_exp',['../constants_8h.html#a0360631ca1b21cd5408172d5b2d77c03',1,'constants.h']]],
+  ['c_5flendth_5fof_5fcommandstrs_4',['c_lendth_of_commandStrs',['../constants_8h.html#ac4e5d51c3bd95d6e2d5e6335802cbd16',1,'constants.h']]],
+  ['c_5flength_5fof_5fstrs_5',['c_length_of_strs',['../constants_8h.html#abac2a55245ad9861ea678b61d12779a1',1,'constants.h']]],
+  ['c_5fnumofcommmands_6',['c_numOfCommmands',['../getCommands_8cpp.html#a069605c69c2a5d472c968f56e9632859',1,'getCommands.cpp']]],
+  ['c_5fnumoflbls_7',['c_numOfLbls',['../myProcessor_2Assembler_2cpp__files_2main_8cpp.html#a38325b3e6a43157c3beaa19861546f42',1,'main.cpp']]],
+  ['c_5fsizeofram_8',['c_sizeOfRam',['../myProcessor_2Processor_2cpp__files_2main_8cpp.html#a8804ed45d7109f58834a4df5b3e4c2cb',1,'main.cpp']]],
+  ['c_5fstartcapacity_9',['c_startCapacity',['../stackInitDestroy_8cpp.html#a493226d5042b7f560ec043b6076a1996',1,'stackInitDestroy.cpp']]],
+  ['c_5ftab_10',['c_tab',['../constants_8h.html#af809b202990a43c6df9fab28760e72c5',1,'constants.h']]],
+  ['canaryconst_11',['canaryConst',['../stackConstructor_8h.html#a9100d707cca7d93746ee91a171aa7542',1,'stackConstructor.h']]],
+  ['capacity_12',['capacity',['../structstack__t.html#a7f3d3c6c1dae62a024c22af8bfc85309',1,'stack_t']]],
+  ['code_13',['code',['../structspu__t.html#adaf29069f1655fbd3edd8634b231ade3',1,'spu_t']]],
+  ['codelength_14',['codeLength',['../structspu__t.html#ac134d42851c033159177ef20a0ebc83a',1,'spu_t']]],
+  ['com_15',['com',['../structcommand__t.html#a41e37797c3e46a35e0c702d64ef82d9f',1,'command_t']]],
+  ['comparezero_16',['compareZero',['../putDataToFile_8cpp.html#ab2ff0059e7b3d9a6abda112f360d1b56',1,'putDataToFile.cpp']]]
 ];

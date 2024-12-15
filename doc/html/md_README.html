@@ -72,8 +72,38 @@ $(function() {
   <div class="headertitle"><div class="title">Description of the language structure in the form of RBNF</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a>MAIN ::= DEF_VAR ::= ID '=' E DEF_FOR ::= 'for' DEF_VAR '..' MATH_LEVEL_4 { DEF_VAR '..' MATH_LEVEL_4}*</p>
-<p>MATH_LEVEL_1 ::= MATH_LEVEL_2 { [+-] MATH_LEVEL_2 }* MATH_LEVEL_2 ::= MATH_LEVEL_3 { [*/] MATH_LEVEL_3 }* MATH_LEVEL_3 ::= '(' MATH_LEVEL_1 ')' | MATH_LEVEL_4 MATH_LEVEL_4 ::= [0-9]+ MATH_LEVEL_5 ::= [a-z]+ </p>
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p><div class="fragment"><div class="line">MAIN ::= </div>
+<div class="line">DEF_IF ::= &#39;if&#39; MATH_LEVEL_60 &#39;==&#39; MATH_LEVEL_50 &#39;{&#39; MAIN &#39;}&#39;</div>
+<div class="line">DEF_VAR ::= ID &#39;=&#39; E</div>
+<div class="line">DEF_FOR ::= &#39;for&#39; DEF_VAR &#39;..&#39; MATH_LEVEL_4 { MAIN }* </div>
+<div class="line"> </div>
+<div class="line">MATH_LEVEL_10 ::= MATH_LEVEL_2 { [+-] MATH_LEVEL_2 }*</div>
+<div class="line">MATH_LEVEL_20 ::= MATH_LEVEL_3 { [*/] MATH_LEVEL_3 }*</div>
+<div class="line">MATH_LEVEL_30 ::= &#39;(&#39; MATH_LEVEL_1 &#39;)&#39; | MATH_LEVEL_4</div>
+<div class="line">MATH_LEVEL_40 ::= MATH_LEVEL_50 | MATH_LEVEL_60</div>
+<div class="line">MATH_LEVEL_50 ::= [0-9]+</div>
+<div class="line">MATH_LEVEL_60 ::= [a-z]+</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md1"></a>
+Сurrent language capabilities</h1>
+<ul>
+<li>You can create variables which get only numbers <div class="fragment"><div class="line">yourVariable = 90</div>
+</div><!-- fragment --></li>
+<li>You can create if-constructions which get only numbers <div class="fragment"><div class="line">if yourVariable ==  90 // you can also use &#39;!=&#39; &#39;&lt;&#39; &#39;&gt;&#39; &#39;&lt;=&#39; &#39;&gt;=&#39;</div>
+<div class="line">{</div>
+<div class="line">    make = 1</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li>You can create cycles which get only one iterator <div class="fragment"><div class="line">for i = 0..4 ++</div>
+<div class="line">{</div>
+<div class="line">    b = 99</div>
+<div class="line">}</div>
+</div><!-- fragment --></li>
+<li>You can create functions which get only one parametr <div class="fragment"><div class="line">func myFunc(a)</div>
+<div class="line">{</div>
+<div class="line">    a = a + 1</div>
+<div class="line">}</div>
+</div><!-- fragment --> </li>
+</ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

@@ -1,0 +1,19 @@
+<map id="myProcessor/Assembler/h_files/registers.h" name="myProcessor/Assembler/h_files/registers.h">
+<area shape="rect" id="Node000001" title=" " alt="" coords="112,5,291,45"/>
+<area shape="rect" id="Node000002" href="$convertAsmToCommands_8cpp.html" title=" " alt="" coords="5,269,285,309"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="189,59,166,115,148,182,144,229,146,269,141,269,139,229,143,181,161,114,184,57"/>
+<area shape="rect" id="Node000003" href="$Assembler_2h__files_2commands_8h.html" title=" " alt="" coords="219,93,397,133"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="237,52,286,91,283,95,234,56"/>
+<area shape="poly" id="edge3_Node000003_Node000002" title=" " alt="" coords="230,141,199,159,173,183,161,204,153,227,148,270,142,269,148,226,156,202,169,180,196,155,227,137"/>
+<area shape="rect" id="Node000004" href="$myProcessor_2Assembler_2cpp__files_2main_8cpp.html" title=" " alt="" coords="345,269,524,309"/>
+<area shape="poly" id="edge4_Node000003_Node000004" title=" " alt="" coords="396,137,425,155,448,180,456,203,456,227,446,270,441,268,451,226,451,204,443,183,421,159,394,141"/>
+<area shape="rect" id="Node000005" href="$convertAsmToCommands_8h.html" title=" " alt="" coords="183,181,433,221"/>
+<area shape="poly" id="edge5_Node000003_Node000005" title=" " alt="" coords="311,147,311,181,305,181,305,147"/>
+<area shape="rect" id="Node000006" href="$putDataToFile_8h.html" title=" " alt="" coords="508,181,687,221"/>
+<area shape="poly" id="edge8_Node000003_Node000006" title=" " alt="" coords="385,135,535,179,533,184,384,140"/>
+<area shape="poly" id="edge6_Node000005_Node000002" title=" " alt="" coords="262,230,182,272,180,267,259,225"/>
+<area shape="poly" id="edge7_Node000005_Node000004" title=" " alt="" coords="349,227,408,267,405,271,346,232"/>
+<area shape="poly" id="edge9_Node000006_Node000004" title=" " alt="" coords="551,230,472,272,469,267,548,225"/>
+<area shape="rect" id="Node000007" href="$putDataToFile_8cpp.html" title=" " alt="" coords="548,269,751,309"/>
+<area shape="poly" id="edge10_Node000006_Node000007" title=" " alt="" coords="618,232,640,268,636,271,614,234"/>
+</map>

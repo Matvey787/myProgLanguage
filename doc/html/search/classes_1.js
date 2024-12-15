@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['nametable_5ft_0',['nameTable_t',['../structnameTable__t.html',1,'']]],
-  ['node_5ft_1',['node_t',['../structnode__t.html',1,'']]]
+  ['data_5fu_0',['data_u',['../uniondata__u.html',1,'']]]
 ];

@@ -2,9 +2,5 @@ digraph
 { 
 rankdir=HR;
 
-node0x5030000002b0 [ shape=record, color = green rank = 1, label= "{ 0x5030000002b0 | (=) | {<n0x5030000002b0_l> left | <n0x5030000002b0_r> right}} " ];
-node0x503000000250 [ shape=record, color = blue rank = 2, label= "{ 0x503000000250 | var | r | {<n0x503000000250_l> left | <n0x503000000250_r> right}} " ];
-node0x5030000002b0:<n0x5030000002b0_l>:s -> node0x503000000250:n [ color = black; ]
-node0x503000000280 [ shape=record, color = blue rank = 3, label= "{ 0x503000000280 | num | 9 | {<n0x503000000280_l> left | <n0x503000000280_r> right}} " ];
-node0x5030000002b0:<n0x5030000002b0_r>:s -> node0x503000000280:n [ color = black; ]
+node0x503000000490 [ shape=record, color = blue rank = 1, label= "{ 0x503000000490 | var | q | {<n0x503000000490_l> left | <n0x503000000490_r> right}} " ];
 }

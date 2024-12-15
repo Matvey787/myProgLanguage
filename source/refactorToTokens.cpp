@@ -7,17 +7,31 @@
 #include "tree.h"
 #include "errors.h"
 #include "refactorToTokens.h"
+#include "choose_color_and_name_byType.h"
+#include "workWithFile.h"
 
-static const char* getColor(types type);
-static const char* convertTypeToStr(types type);
+// Special local function for correct write tokens to .dot file
 static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameTable_t* nameTable, const size_t lengthOfNameTable, const char* tokensDotFile);
+
+// Local function for checking if buffer is not empty.
+// Return 1 if we can continue our parsing or return 0 if the end of buff
 static bool bufferIsEmpty(char* buffer, char* last_addr);
-static int writePngFile(const char* dotFile, const char* directory);
+
+// Local function for getting variable name from buffer by info in nameTable_t 
 static const char* getVariableFromTable(nameTable_t* nameTable, size_t index);
+
+#define processToken_(type, symbolStrs)                            \
+    else if (strncmp(buffer, symbolStrs, strlen(symbolStrs)) == 0) \
+    {                                                              \
+        tokens[i_toks++] = {ND_##type, {0}, nullptr, nullptr};     \
+        buffer += strlen(symbolStrs);                              \
+    }
+
 
 //TODO nameTable + tokens
 node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, const char* tokensDotFile, const char* directoryForSavingPictures)
 {
+    // need for scanning end of buffer
     char* last_addr = buffer + l_buff;
 
     node_t* tokens = (node_t*)calloc(100, sizeof(node_t));
@@ -26,156 +40,20 @@ node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, 
 
     while (!bufferIsEmpty(buffer, last_addr))
     {
-        /* if (strncmp(buffer, "sin", 3) == 0)
-        {
-            tokens[i_toks++] = {ND_SIN, {0}, nullptr, nullptr};
-            buffer += 3;
-        }
-
-        else if (strncmp(buffer, "cos", 3) == 0)
-        {
-            tokens[i_toks++] = {ND_COS, {0}, nullptr, nullptr};
-            buffer += 3;
-        }
-
-        else if (strncmp(buffer, "log", 3) == 0)
-        {
-            tokens[i_toks++] = {ND_LOG, {0}, nullptr, nullptr};
-            buffer += 3;
-        } */
-        /* printf("--------%c\n", *buffer);
-        getchar(); */
-        if (strncmp(buffer, "if", 2) == 0)
-        {
-            tokens[i_toks++] = {ND_IF, {0}, nullptr, nullptr};
-            buffer += 2;
-        }
-
-        if (strncmp(buffer, "==", 2) == 0)
-        {
-            tokens[i_toks++] = {ND_ISEQ, {0}, nullptr, nullptr};
-            buffer += 2;
-        }
-
-        if (strncmp(buffer, "!=", 2) == 0)
-        {
-            tokens[i_toks++] = {ND_NISEQ, {0}, nullptr, nullptr};
-            buffer += 2;
-        }
-
-        else if (strncmp(buffer, "for", 3) == 0)
-        {
-            tokens[i_toks++] = {ND_FOR, {0}, nullptr, nullptr};
-            buffer += 3;
-        }
-
-        else if (strncmp(buffer, "var", 3) == 0)
-        {
-            tokens[i_toks++] = {ND_VAR, {0}, nullptr, nullptr};
-            buffer += 3;
-        }
-
-        else if (strncmp(buffer, "++", 2) == 0)
-        {
-            tokens[i_toks++] = {ND_POADD, {0}, nullptr, nullptr};
-            buffer += 2;
-        }
         // it is needed for scaning interval in for
-        else if (strncmp(buffer, "..", 2) == 0)
+        if (strncmp(buffer, "..", 2) == 0)
         {
             buffer += 2;
         }
 
-        else if (strncmp(buffer, "<=", 2) == 0)
-        {
-            printf("<= has been getted\n");
-            tokens[i_toks++] = {ND_LSE, {0}, nullptr, nullptr};
-            buffer += 2;
-        }
-        else if (strncmp(buffer, ">=", 2) == 0)
-        {
-            tokens[i_toks++] = {ND_ABE, {0}, nullptr, nullptr};
-            buffer += 2;
-        }
-
-        else if (*buffer == '=')
-        {
-            tokens[i_toks++] = {ND_EQ, {0}, nullptr, nullptr};
-            buffer += 2;
-            //printf("%s\n", convertTypeToStr(tokens[i_toks-1].type));
-        }
-        else if (*buffer == '<')
-        {
-            tokens[i_toks++] = {ND_LS, {0}, nullptr, nullptr};
-            buffer += 2;
-            //printf("%s\n", convertTypeToStr(tokens[i_toks-1].type));
-        }
-        else if (*buffer == '>')
-        {
-            tokens[i_toks++] = {ND_AB, {0}, nullptr, nullptr};
-            buffer += 2;
-            //printf("%s\n", convertTypeToStr(tokens[i_toks-1].type));
-        }
-
-        else if (*buffer == '(')
-        {
-            tokens[i_toks++] = {ND_LCIB, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (*buffer == ')')
-        {
-            tokens[i_toks++] = {ND_RCIB, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (*buffer == '{')
-        {
-            tokens[i_toks++] = {ND_LCUB, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (*buffer == '}')
-        {
-            tokens[i_toks++] = {ND_RCUB, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (*buffer == '+')
-        {
-            tokens[i_toks++] = {ND_ADD, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (*buffer == '-')
-        {
-            tokens[i_toks++] = {ND_SUB, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (*buffer == '/')
-        {
-            tokens[i_toks++] = {ND_DIV, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-        
-        else if (*buffer == '*')
-        {
-            tokens[i_toks++] = {ND_MUL, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (*buffer == '^')
-        {
-            tokens[i_toks++] = {ND_POW, {0}, nullptr, nullptr};
-            buffer += 1;
-        }
-
-        else if (i_toks != 0 && *(buffer) == '\n')
+        else if (*buffer == '\n')
         {
             tokens[i_toks++] = {ND_SEP, {0}, nullptr, nullptr};
             buffer += 1;
         }
+
+        // code generation. This is where the macros are deployed
+        #include "codeGeneration_(refactorToTokens).h"
 
         else if (isalpha(*buffer))
         {
@@ -201,8 +79,6 @@ node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, 
             tokens[i_toks] = {ND_NUM, {0}, nullptr, nullptr};
             tokens[i_toks].data.num = tmpNum;
             
-            //printf("---------%g\n", tmpNum);
-            //printf("%lg\n", tokens[i_toks].data.num);
             snprintf(tmpStr, TMP_STR_SIZE, "%lg", tmpNum);
             buffer += strlen(tmpStr);
             ++i_toks;
@@ -212,13 +88,15 @@ node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, 
             buffer += 1;
         }
     }
+    //                    \/ End of translation
     tokens[i_toks++] = {ND_EOT, {0}, nullptr, nullptr};
-    //printf("%d\n", i_nameTab);
     wrTokensToDot(tokens, i_toks, nameTable, i_nameTab, tokensDotFile);
-    writePngFile(tokensDotFile, directoryForSavingPictures);
+    writePngFile(tokensDotFile, directoryForSavingPictures, "black");
 
     return tokens;
 }
+
+#undef processTocen_
 
 static bool bufferIsEmpty(char* buffer, char* last_addr)
 {
@@ -246,18 +124,21 @@ static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameT
 
     for (size_t i = 0; i < numOfTokens; i++)
     {
-        //printf("%s ----> %lg\n", convertTypeToStr(tokens[i].type), tokens[i].data.num);
         if (tokens[i].type == ND_NUM)
-            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ (%s) | %lg }\" ];\n", i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type), tokens[i].data.num);
+            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ (%s) | %lg }\" ];\n",
+            i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type), tokens[i].data.num);
         else
-            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ (%s) }\" ];\n", i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type));
+            fprintf(wFile, "\ttoken_%lu [ shape=record, color = %s, fontcolor = %s, label = \"{ (%s) }\" ];\n",
+            i, getColor(tokens[i].type), getColor(tokens[i].type), convertTypeToStr(tokens[i].type));
     }
     fprintf(wFile, "}\n");
     
     fprintf(wFile, "{\n\trank=same; \n");
     for (size_t i = 0; i < lengthOfNameTable; i++)
     {
-        fprintf(wFile, "\ttableCell_%p [ shape=record, color = %s, fontcolor = %s, label = \"{ buffer addr: %p | length: %lu }\" ];\n", nameTable[i].str, "green", "green", nameTable[i].str, nameTable[i].numOfSymbols);
+        fprintf(wFile, "\ttableCell_%p [ shape=record, color = %s, fontcolor = %s, label = \" \
+        { buffer addr: %p | length: %lu }\" ];\n",
+        nameTable[i].str, "green", "green", nameTable[i].str, nameTable[i].numOfSymbols);
     }
     fprintf(wFile, "}\n");
 
@@ -265,7 +146,8 @@ static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameT
     fprintf(wFile, "{\n\trank=same; \n");
     for (size_t i = 0; i < lengthOfNameTable; i++)
     {
-        fprintf(wFile, "\topenTableCell_%p [ shape=record, color = %s, fontcolor = %s, label = \"{ %s }\" ];\n", nameTable[i].str, "green", "green", getVariableFromTable(nameTable, i));
+        fprintf(wFile, "\topenTableCell_%p [ shape=record, color = %s, fontcolor = %s, label = \"{ %s }\" ];\n",
+        nameTable[i].str, "green", "green", getVariableFromTable(nameTable, i));
     }
     fprintf(wFile, "}\n");
 
@@ -292,165 +174,4 @@ static const char* getVariableFromTable(nameTable_t* nameTable, size_t index)
 {
     *(nameTable[index].str + nameTable[index].numOfSymbols) = '\0';
     return nameTable[index].str;
-}
-
-static int writePngFile(const char* dotFile, const char* directory)
-{    
-    assert(dotFile != nullptr);
-    static int numOfCall = 0;
-
-    char command[100] = {0};
-    sprintf(command, "dot %s -Tpng -Gbgcolor=black -o %spicture%d.png", dotFile, directory, numOfCall++);
-    system(command);
-
-    return numOfCall;
-}
-
-
-static const char* getColor(types type)
-{
-    switch (type)
-    {
-    case ND_POADD:
-    case ND_ADD:
-    case ND_SUB:
-    case ND_DIV:
-    case ND_MUL:
-    case ND_POW:
-    case ND_SIN:
-    case ND_COS:
-    case ND_LOG:
-        return "white";
-        break;
-
-    case ND_NUM:
-    case ND_VAR:
-        return "blue";
-        break;
-
-    case ND_RCIB:
-    case ND_LCIB:
-    case ND_LCUB:
-    case ND_RCUB:
-        return "yellow";
-        break;
-
-    case ND_EQ:
-    case ND_IF:
-    case ND_FOR:
-    case ND_START:
-    case ND_END:
-        return "green";
-        break;
-        
-    case ND_ISEQ:
-    case ND_NISEQ:
-    case ND_AB:
-    case ND_LS:
-    case ND_ABE:
-    case ND_LSE:
-        return "orange";
-        break;
-    case ND_EOT:
-    case ND_SEP:
-        return "red";
-        break;
-    default:
-        return "blue";
-        break;
-    }
-}
-
-static const char* convertTypeToStr(types type)
-{
-    switch (type)
-    {
-    case ND_ADD:
-        return "+";
-        break;
-    case ND_SUB:
-        return "-";
-        break;
-    case ND_MUL:
-        return "*";
-        break;
-    case ND_DIV:
-        return "/";\
-        break; 
-    case ND_NUM:
-        return "num";
-        break;
-    case ND_POW:
-        return "^";
-        break;
-    case ND_SIN:
-        return "sin";
-        break;
-    case ND_COS:
-        return "cos";
-        break;
-    case ND_LOG:
-        return "log";
-        break;
-    case ND_VAR:
-        return "var";
-        break;
-    case ND_POADD:
-        return "++";
-        break;
-    case ND_LCIB:
-        return "(";
-        break;
-    case ND_ISEQ:
-        return "==";
-        break;
-    case ND_NISEQ:
-        return "!=";
-        break;
-    case ND_LS:
-        return "<";
-        break;
-    case ND_AB:
-        return ">";
-        break;
-    case ND_ABE:
-        return ">=";
-        break;
-    case ND_LSE:
-        return "<=";
-        break;
-    case ND_RCIB:
-        return ")";
-        break;
-    case ND_LCUB:
-        return "fig braket";
-        break;
-    case ND_RCUB:
-        return "fig braket";
-        break;
-    case ND_FOR:
-        return "for";
-        break;
-    case ND_IF:
-        return "if";
-        break;
-    case ND_EQ:
-        return "=";
-        break;
-    case ND_SEP:
-        return "newLine";
-        break;
-    case ND_EOT:
-        return "EOT";
-        break;
-    case ND_START:
-        return "start";
-        break;
-    case ND_END:
-        return "end";  
-        break;
-    default:
-        break;
-    }
-    return "error";
 }

@@ -1,13 +1,9 @@
-PUSH 9
+PUSH 100
 POP [0]
 PUSH [0]
+PUSH 40
+JNE label0:
 PUSH [0]
-ADD
-POP [0]
-PUSH [0]
-PUSH 9
-JNE label1:
-PUSH 9
-POP [5]
-label1:
+OUT
+label0:
 HLT
