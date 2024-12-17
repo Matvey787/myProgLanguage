@@ -1,11 +1,6 @@
 {
     "doxygen_runner.configuration_file_override": "${workspaceFolder}/Doxyfile"
 }
-
-{
-    "git.detectSubmodules": true
-}
-
 {
     "Codegeex.RepoIndex": true,
     "Codegeex.CommitMessage.LanguagePreference": "English"
