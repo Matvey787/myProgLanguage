@@ -1,6 +1,0 @@
-digraph
-{ 
-rankdir=HR;
-
-node0x503000000490 [ shape=record, color = blue rank = 1, label= "{ 0x503000000490 | var | q | {<n0x503000000490_l> left | <n0x503000000490_r> right}} " ];
-}
