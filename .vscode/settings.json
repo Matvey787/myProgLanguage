@@ -1,7 +1,126 @@
 {
     "doxygen_runner.configuration_file_override": "${workspaceFolder}/Doxyfile"
 }
+
 {
     "Codegeex.RepoIndex": true,
     "Codegeex.CommitMessage.LanguagePreference": "English"
+}
+
+{
+    "Codegeex.Chat.LanguagePreference": "English",
+    "Codegeex.Comment.LanguagePreference": "English",
+    "Codegeex.SidebarUI.LanguagePreference": "English",
+    "Codegeex.CommitMessage.LanguagePreference": "English"
+}
+
+{
+    "doxygen_runner.configuration_file_override": "${workspaceFolder}/Doxyfile"
+}
+
+{
+    "git.detectSubmodules": true
+}
+  
+{
+    "Codegeex.RepoIndex": true,
+    "Codegeex.CommitMessage.LanguagePreference": "English"
+}
+
+"latex-workshop.latex.tools": [
+ {
+  "name": "latexmk",
+  "command": "latexmk",
+  "args": [
+   "-synctex=1",
+   "-interaction=nonstopmode",
+   "-file-line-error",
+   "-pdf",
+   "-outdir=%OUTDIR%",
+   "%DOC%"
+  ],
+  "env": {}
+ },
+ {
+  "name": "xelatex",``
+  "command": "xelatex",
+  "args": [
+   "-synctex=1",
+   "-interaction=nonstopmode",
+   "-file-line-error",
+   "%DOC%"
+  ],
+  "env": {}
+ },
+ {
+  "name": "pdflatex",
+  "command": "pdflatex",
+  "args": [
+   "-synctex=1",
+   "-interaction=nonstopmode",
+   "-file-line-error",
+   "%DOC%"
+  ],
+  "env": {}
+ },
+ {
+  "name": "bibtex",
+  "command": "bibtex",
+  "args": [
+   "%DOCFILE%"
+  ],
+  "env": {}
+ }
+],
+
+
+"latex-workshop.latex.recipes": [
+    {
+     "name": "pdfLaTeX",
+     "tools": [
+      "pdflatex"
+     ]
+    },
+    {
+     "name": "latexmk 🔃",
+     "tools": [
+      "latexmk"
+     ]
+    },
+    {
+     "name": "xelatex",
+     "tools": [
+      "xelatex"
+     ]
+    },
+    {
+     "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
+     "tools": [
+      "pdflatex",
+      "bibtex",
+      "pdflatex",
+      "pdflatex"
+     ]
+    },
+    {
+    "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+    "tools": [
+      "xelatex",
+      "bibtex",
+      "xelatex",
+      "xelatex"
+     ]
+    }
+]
+
+{
+    "makefile.configureOnOpen": true,
+    "git.enableSmartCommit": true,
+    "git.confirmSync": false,
+    "RainbowBrackets.excludedLanguages": [
+        "c",
+        "cpp"
+    ],
+    "window.customTitleBarVisibility": "auto",
+    "open-in-browser.default": "Firefox"
 }

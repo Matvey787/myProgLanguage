@@ -1,7 +1,7 @@
 PUSH 100
 POP [0]
 PUSH [0]
-PUSH 40
+PUSH 100
 JNE label0:
 PUSH [0]
 OUT

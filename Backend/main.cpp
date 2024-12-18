@@ -7,18 +7,18 @@
 #include "../General/treeTransfer/treeTransfer.h"
 #include "../General/graphDump/graphDump.h"
 
+#include "convertToASM.h"
+
 int main()
 {
     nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
     node_t* progTree = pullTree(nameTable, "../progTree");
-    writeDotFile(progTree, "../dot_files/middlendDotFile.dot");
-    writePngFile("../dot_files/middlendDotFile.dot", "../png_files", "white");
+    writeDotFile(progTree, "../dot_files/backendDotFile.dot");
+    writePngFile("../dot_files/backendDotFile.dot", "../png_files", "white");
 
-    pushTree(progTree, "../progTree");
+    writeASMfile(progTree, nameTable, "../program.ASM");
+
     delTree(progTree);
     free(nameTable);
-    nameTable = nullptr;
-    system("../Backend/out");
     return 0;
-
 }

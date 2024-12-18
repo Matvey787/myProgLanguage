@@ -1,0 +1,441 @@
+Date : 2024-12-17 22:04:07
+Directory : /home/matvey/Рабочий стол/C/myProgLanguage
+Total : 379 files,  32093 codes, 1305 comments, 2683 blanks, all 36081 lines
+
+Languages
++--------------+------------+------------+------------+------------+------------+
+| language     | files      | code       | comment    | blank      | total      |
++--------------+------------+------------+------------+------------+------------+
+| HTML         |        176 |     24,572 |        880 |      1,119 |     26,571 |
+| C++          |         69 |      3,099 |        173 |        903 |      4,175 |
+| JavaScript   |        107 |      2,038 |        186 |        193 |      2,417 |
+| CSS          |          3 |      1,914 |         58 |        368 |      2,340 |
+| XML          |         16 |        263 |          2 |         16 |        281 |
+| Makefile     |          6 |        167 |          6 |         79 |        252 |
+| Markdown     |          1 |         39 |          0 |          4 |         43 |
+| Shell Script |          1 |          1 |          0 |          1 |          2 |
++--------------+------------+------------+------------+------------+------------+
+
+Directories
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| path                                                                                                       | files      | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+| .                                                                                                          |        379 |     32,093 |      1,305 |      2,683 |     36,081 |
+| . (Files)                                                                                                  |          2 |         67 |          0 |         17 |         84 |
+| Frontened                                                                                                  |         10 |        682 |         47 |        126 |        855 |
+| Frontened (Files)                                                                                          |          1 |         31 |          3 |         14 |         48 |
+| Frontened/include                                                                                          |          5 |         48 |         11 |         12 |         71 |
+| Frontened/source                                                                                           |          4 |        603 |         33 |        100 |        736 |
+| General                                                                                                    |         10 |        500 |         48 |        141 |        689 |
+| General (Files)                                                                                            |          1 |         10 |          0 |          2 |         12 |
+| General/graphDump                                                                                          |          4 |        246 |         17 |         74 |        337 |
+| General/programTree                                                                                        |          2 |        146 |         31 |         41 |        218 |
+| General/treeTransfer                                                                                       |          3 |         98 |          0 |         24 |        122 |
+| Middlend                                                                                                   |          2 |         43 |          3 |         15 |         61 |
+| doc                                                                                                        |        302 |     28,787 |      1,126 |      1,696 |     31,609 |
+| doc/html                                                                                                   |        302 |     28,787 |      1,126 |      1,696 |     31,609 |
+| doc/html (Files)                                                                                           |        193 |     26,720 |      1,055 |      1,465 |     29,240 |
+| doc/html/search                                                                                            |        109 |      2,067 |         71 |        231 |      2,369 |
+| include                                                                                                    |          3 |         20 |          0 |          8 |         28 |
+| myProcessor                                                                                                |         48 |      1,744 |         70 |        641 |      2,455 |
+| myProcessor (Files)                                                                                        |          1 |          1 |          0 |          1 |          2 |
+| myProcessor/Assembler                                                                                      |         11 |        536 |         28 |        200 |        764 |
+| myProcessor/Assembler (Files)                                                                              |          1 |         18 |          0 |          8 |         26 |
+| myProcessor/Assembler/cpp_files                                                                            |          4 |        424 |         28 |        166 |        618 |
+| myProcessor/Assembler/h_files                                                                              |          6 |         94 |          0 |         26 |        120 |
+| myProcessor/Processor                                                                                      |         16 |        772 |         34 |        248 |      1,054 |
+| myProcessor/Processor (Files)                                                                              |          1 |         38 |          0 |         20 |         58 |
+| myProcessor/Processor/cpp_files                                                                            |          6 |        627 |         34 |        190 |        851 |
+| myProcessor/Processor/h_files                                                                              |          9 |        107 |          0 |         38 |        145 |
+| myProcessor/workWithStack                                                                                  |         20 |        435 |          8 |        192 |        635 |
+| myProcessor/workWithStack (Files)                                                                          |          1 |         27 |          0 |         12 |         39 |
+| myProcessor/workWithStack/cpp_files                                                                        |          8 |        288 |          4 |        133 |        425 |
+| myProcessor/workWithStack/h_files                                                                          |         11 |        120 |          4 |         47 |        171 |
+| source                                                                                                     |          2 |        250 |         11 |         39 |        300 |
++------------------------------------------------------------------------------------------------------------+------------+------------+------------+------------+------------+
+
+Files
++------------------------------------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| filename                                                                                                   | language     | code       | comment    | blank      | total      |
++------------------------------------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/Makefile                                              | Makefile     |         31 |          3 |         14 |         48 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/include/codeGeneration_(refactorToTokens).h           | C++          |         22 |          0 |          1 |         23 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/include/constants.h                                   | C++          |          9 |          1 |          2 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/include/createPredprocessingTree.h                    | C++          |          5 |          0 |          3 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/include/refactorToTokens.h                            | C++          |          6 |          0 |          3 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/include/workWithFile.h                                | C++          |          6 |         10 |          3 |         19 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/source/createPredprocessingTree.cpp                   | C++          |        388 |         15 |         52 |        455 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/source/main.cpp                                       | C++          |         44 |          0 |          5 |         49 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/source/readFile.cpp                                   | C++          |         34 |          9 |         12 |         55 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Frontened/source/refactorToTokens.cpp                           | C++          |        137 |          9 |         31 |        177 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/errors.h                                                | C++          |         10 |          0 |          2 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/graphDump/choose_color_and_name_byType.cpp              | C++          |        121 |          0 |         45 |        166 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/graphDump/graphDump.h                                   | C++          |          8 |         16 |          7 |         31 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/graphDump/wrDotFile.cpp                                 | C++          |         89 |          0 |         16 |        105 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/graphDump/wrPngFile.cpp                                 | C++          |         28 |          1 |          6 |         35 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/programTree/tree.h                                      | C++          |         61 |         23 |         17 |        101 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/programTree/treeFuncs.cpp                               | C++          |         85 |          8 |         24 |        117 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/treeTransfer/pullTree.cpp                               | C++          |         61 |          0 |         12 |         73 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/treeTransfer/pushTree.cpp                               | C++          |         31 |          0 |          9 |         40 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/General/treeTransfer/treeTransfer.h                             | C++          |          6 |          0 |          3 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Makefile                                                        | Makefile     |         28 |          0 |         13 |         41 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Middlend/Makefile                                               | Makefile     |         25 |          3 |         12 |         40 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/Middlend/main.cpp                                               | C++          |         18 |          0 |          3 |         21 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/README.md                                                       | Markdown     |         39 |          0 |          4 |         43 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Assembler_2h__files_2commands_8h.html                  | HTML         |        205 |          5 |          7 |        217 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Assembler_2h__files_2commands_8h_source.html           | HTML         |        163 |          5 |          3 |        171 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Assembler_2h__files_2registers_8h.html                 | HTML         |        140 |          5 |          5 |        150 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Assembler_2h__files_2registers_8h_source.html          | HTML         |        103 |          5 |          3 |        111 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Processor_2h__files_2commands_8h.html                  | HTML         |        192 |          5 |          7 |        204 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Processor_2h__files_2commands_8h_source.html           | HTML         |        148 |          5 |          3 |        156 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Processor_2h__files_2macros_8h.html                    | HTML         |        121 |          5 |          5 |        131 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Processor_2h__files_2macros_8h_source.html             | HTML         |         97 |          5 |          3 |        105 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Processor_2h__files_2registers_8h.html                 | HTML         |        170 |          5 |          7 |        182 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/Processor_2h__files_2registers_8h_source.html          | HTML         |        106 |          5 |          3 |        114 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/README_8md.html                                        | HTML         |         74 |          5 |          3 |         82 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/annotated.html                                         | HTML         |         90 |          5 |          3 |         98 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/choose__color__and__name__byType_8cpp.html             | HTML         |        141 |          5 |          7 |        153 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/choose__color__and__name__byType_8h.html               | HTML         |        148 |          5 |          7 |        160 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/choose__color__and__name__byType_8h_source.html        | HTML         |         96 |          5 |          3 |        104 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/classes.html                                           | HTML         |        101 |          5 |          3 |        109 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/codeGeneration___07refactorToTokens_08_8h.html         | HTML         |        125 |          5 |          5 |        135 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/codeGeneration___07refactorToTokens_08_8h_source.html  | HTML         |        106 |          5 |          3 |        114 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/colors_8h.html                                         | HTML         |        211 |          5 |         19 |        235 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/colors_8h_source.html                                  | HTML         |         97 |          5 |          3 |        105 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/constants_8h.html                                      | HTML         |        181 |          5 |         15 |        201 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/constants_8h_source.html                               | HTML         |        100 |          5 |          3 |        108 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/convertAsmToCommands_8cpp.html                         | HTML         |        620 |          5 |         26 |        651 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/convertAsmToCommands_8h.html                           | HTML         |        227 |          5 |          9 |        241 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/convertAsmToCommands_8h_source.html                    | HTML         |        116 |          5 |          3 |        124 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/countHash_8cpp.html                                    | HTML         |        160 |          5 |          7 |        172 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/countHash_8h.html                                      | HTML         |        140 |          5 |          5 |        150 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/countHash_8h_source.html                               | HTML         |         94 |          5 |          3 |        102 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000001_000005.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000002_000006.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000002_000012.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000003_000007.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000004_000008.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000006_000012.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000010_000012.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_000011_000008.html                                 | HTML         |         75 |          5 |          3 |         83 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_17f39a1e2353b3b9451a3338f1f8274f.html              | HTML         |         99 |          5 |          3 |        107 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_18a8ba2972f4800c371f5ac2c204bd5b.html              | HTML         |        110 |          5 |          3 |        118 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_2c8fd431348f8c7e746249dd894de86f.html              | HTML         |        103 |          5 |          3 |        111 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_3ab5adf3688c1279663983f7c9ad4be6.html              | HTML         |        102 |          5 |          3 |        110 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_9986310560ae8f4d8f90170189a0e171.html              | HTML         |        113 |          5 |          3 |        121 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_a87963420b8aceb759ef72e469e7d83c.html              | HTML         |        101 |          5 |          3 |        109 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_b23e4db1eeb8e501646fb8f543d381d9.html              | HTML         |         99 |          5 |          3 |        107 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_b2f33c71d4aa5e7af42a1ca61ff5af1b.html              | HTML         |        113 |          5 |          3 |        121 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_b89c1a95b830604292bcbf080ed49305.html              | HTML         |        109 |          5 |          3 |        117 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_d13a9b8ecfeda9348fa0ca2d8093a287.html              | HTML         |        104 |          5 |          3 |        112 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_d44c64559bbebec7f509842c48db8b23.html              | HTML         |        100 |          5 |          3 |        108 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_f229e21fa9219833d724d276f84487fd.html              | HTML         |        112 |          5 |          3 |        120 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dir_f9dadf815a373a470b4c0cfd9ac78fed.html              | HTML         |        100 |          5 |          3 |        108 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/doc.svg                                                | XML          |         12 |          0 |          1 |         13 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/docd.svg                                               | XML          |         12 |          0 |          1 |         13 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/doxygen.css                                            | CSS          |      1,681 |         49 |        316 |      2,046 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/doxygen.svg                                            | XML          |         28 |          0 |          1 |         29 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/dynsections.js                                         | JavaScript   |        131 |         48 |         14 |        193 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/errorNames_8h.html                                     | HTML         |        140 |          5 |          5 |        150 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/errorNames_8h_source.html                              | HTML         |        105 |          5 |          3 |        113 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/errors_8h.html                                         | HTML         |        165 |          5 |          5 |        175 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/errors_8h_source.html                                  | HTML         |        103 |          5 |          3 |        111 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/files.html                                             | HTML         |        153 |          5 |          3 |        161 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/folderclosed.svg                                       | XML          |         11 |          0 |          1 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/folderclosedd.svg                                      | XML          |         11 |          0 |          1 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/folderopen.svg                                         | XML          |         17 |          0 |          1 |         18 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/folderopend.svg                                        | XML          |         12 |          0 |          1 |         13 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/functions.html                                         | HTML         |        126 |          5 |         24 |        155 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/functions_vars.html                                    | HTML         |        126 |          5 |         24 |        155 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getCommands_8cpp.html                                  | HTML         |        322 |          5 |         13 |        340 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getCommands_8h.html                                    | HTML         |        195 |          5 |          9 |        209 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getCommands_8h_source.html                             | HTML         |        108 |          5 |          3 |        116 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getData__of__BinaryFile_8cpp.html                      | HTML         |        144 |          5 |          5 |        154 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getData__of__BinaryFile_8h.html                        | HTML         |        152 |          5 |          5 |        162 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getData__of__BinaryFile_8h_source.html                 | HTML         |         96 |          5 |          3 |        104 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getFileStrings_8cpp.html                               | HTML         |        144 |          5 |          5 |        154 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getFileStrings_8h.html                                 | HTML         |        150 |          5 |          5 |        160 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getFileStrings_8h_source.html                          | HTML         |         96 |          5 |          3 |        104 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getNumber_8cpp.html                                    | HTML         |        147 |          5 |          7 |        159 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getNumber_8h.html                                      | HTML         |        127 |          5 |          5 |        137 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/getNumber_8h_source.html                               | HTML         |         90 |          5 |          3 |         98 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals.html                                           | HTML         |         79 |          5 |          4 |         88 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_b.html                                         | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_c.html                                         | HTML         |        121 |          5 |          4 |        130 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_d.html                                         | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_defs.html                                      | HTML         |         94 |          5 |          3 |        102 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_e.html                                         | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_enum.html                                      | HTML         |         81 |          5 |          3 |         89 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_eval.html                                      | HTML         |        172 |          5 |         24 |        201 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_f.html                                         | HTML         |         76 |          5 |          4 |         85 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_func.html                                      | HTML         |        194 |          5 |         30 |        229 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_g.html                                         | HTML         |        106 |          5 |          4 |        115 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_i.html                                         | HTML         |         80 |          5 |          4 |         89 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_l.html                                         | HTML         |         75 |          5 |          4 |         84 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_m.html                                         | HTML         |         84 |          5 |          4 |         93 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_n.html                                         | HTML         |        119 |          5 |          4 |        128 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_o.html                                         | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_p.html                                         | HTML         |         85 |          5 |          4 |         94 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_r.html                                         | HTML         |         81 |          5 |          4 |         90 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_s.html                                         | HTML         |         91 |          5 |          4 |        100 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_t.html                                         | HTML         |         75 |          5 |          4 |         84 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_type.html                                      | HTML         |         74 |          5 |          3 |         82 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_vars.html                                      | HTML         |         89 |          5 |          3 |         97 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_w.html                                         | HTML         |         89 |          5 |          4 |         98 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/globals_y.html                                         | HTML         |         76 |          5 |          4 |         85 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/graph_legend.html                                      | HTML         |        134 |          5 |          3 |        142 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/index.html                                             | HTML         |         74 |          5 |          3 |         82 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/jquery.js                                              | JavaScript   |          6 |         27 |          1 |         34 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/label_8h.html                                          | HTML         |        116 |          5 |          3 |        124 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/label_8h_source.html                                   | HTML         |        109 |          5 |          3 |        117 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/md_README.html                                         | HTML         |        107 |          5 |          3 |        115 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/menu.js                                                | JavaScript   |        108 |         27 |          2 |        137 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/menudata.js                                            | JavaScript   |         84 |         24 |          1 |        109 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/minus.svg                                              | XML          |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/minusd.svg                                             | XML          |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/myProcessor_2Assembler_2cpp__files_2main_8cpp.html     | HTML         |        264 |          5 |         13 |        282 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/myProcessor_2Processor_2cpp__files_2main_8cpp.html     | HTML         |        223 |          5 |         11 |        239 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/myProcessor_2workWithStack_2cpp__files_2main_8cpp.html | HTML         |        173 |          5 |          7 |        185 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/pages.html                                             | HTML         |         79 |          5 |          3 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/plus.svg                                               | XML          |          9 |          0 |          1 |         10 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/plusd.svg                                              | XML          |          9 |          0 |          1 |         10 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/predprocessing_8cpp.html                               | HTML         |        725 |          5 |         49 |        779 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/predprocessing_8h.html                                 | HTML         |        130 |          5 |          5 |        140 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/predprocessing_8h_source.html                          | HTML         |         94 |          5 |          3 |        102 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/putDataToFile_8cpp.html                                | HTML         |        215 |          5 |          9 |        229 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/putDataToFile_8h.html                                  | HTML         |        195 |          5 |          7 |        207 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/putDataToFile_8h_source.html                           | HTML         |        101 |          5 |          3 |        109 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/readFile_8cpp.html                                     | HTML         |        163 |          5 |          6 |        174 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/refactorToTokens_8cpp.html                             | HTML         |        346 |          5 |         12 |        363 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/refactorToTokens_8h.html                               | HTML         |        156 |          5 |          5 |        166 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/refactorToTokens_8h_source.html                        | HTML         |         94 |          5 |          3 |        102 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/runCode_8cpp.html                                      | HTML         |        334 |          5 |         18 |        357 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/runCode_8h.html                                        | HTML         |        156 |          5 |          5 |        166 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/runCode_8h_source.html                                 | HTML         |        103 |          5 |          3 |        111 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_0.js                                        | JavaScript   |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_1.js                                        | JavaScript   |          7 |          0 |          1 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_10.js                                       | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_11.js                                       | JavaScript   |         23 |          0 |          1 |         24 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_12.js                                       | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_13.js                                       | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_2.js                                        | JavaScript   |         66 |          0 |          1 |         67 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_3.js                                        | JavaScript   |         11 |          0 |          1 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_4.js                                        | JavaScript   |          9 |          0 |          1 |         10 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_5.js                                        | JavaScript   |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_6.js                                        | JavaScript   |         43 |          0 |          1 |         44 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_7.js                                        | JavaScript   |         13 |          0 |          1 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_8.js                                        | JavaScript   |         13 |          0 |          1 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_9.js                                        | JavaScript   |         16 |          0 |          1 |         17 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_a.js                                        | JavaScript   |         55 |          0 |          1 |         56 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_b.js                                        | JavaScript   |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_c.js                                        | JavaScript   |         19 |          0 |          1 |         20 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_d.js                                        | JavaScript   |         23 |          0 |          1 |         24 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_e.js                                        | JavaScript   |         43 |          0 |          1 |         44 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/all_f.js                                        | JavaScript   |          9 |          0 |          1 |         10 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_0.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_1.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_2.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_3.js                                    | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_4.js                                    | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_5.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_6.js                                    | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/classes_7.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/close.svg                                       | XML          |         18 |          0 |          1 |         19 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_0.js                                    | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_1.js                                    | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_2.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_3.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_4.js                                    | JavaScript   |          9 |          0 |          1 |         10 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_5.js                                    | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_6.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_7.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_8.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_9.js                                    | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/defines_a.js                                    | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enums_0.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enums_1.js                                      | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enums_2.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enums_3.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enums_4.js                                      | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enums_5.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_0.js                                 | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_1.js                                 | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_2.js                                 | JavaScript   |         24 |          0 |          1 |         25 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_3.js                                 | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_4.js                                 | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_5.js                                 | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_6.js                                 | JavaScript   |         44 |          0 |          1 |         45 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_7.js                                 | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_8.js                                 | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_9.js                                 | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/enumvalues_a.js                                 | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_0.js                                      | JavaScript   |         13 |          0 |          1 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_1.js                                      | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_2.js                                      | JavaScript   |         11 |          0 |          1 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_3.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_4.js                                      | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_5.js                                      | JavaScript   |          7 |          0 |          1 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_6.js                                      | JavaScript   |         10 |          0 |          1 |         11 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_7.js                                      | JavaScript   |         19 |          0 |          1 |         20 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_8.js                                      | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/files_9.js                                      | JavaScript   |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_0.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_1.js                                  | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_2.js                                  | JavaScript   |         13 |          0 |          1 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_3.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_4.js                                  | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_5.js                                  | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_6.js                                  | JavaScript   |         33 |          0 |          1 |         34 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_7.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_8.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_9.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_a.js                                  | JavaScript   |         12 |          0 |          1 |         13 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_b.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_c.js                                  | JavaScript   |         16 |          0 |          1 |         17 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/functions_d.js                                  | JavaScript   |         14 |          0 |          1 |         15 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/mag.svg                                         | XML          |         24 |          0 |          1 |         25 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/mag_d.svg                                       | XML          |         24 |          0 |          1 |         25 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/mag_sel.svg                                     | XML          |         30 |          1 |          1 |         32 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/mag_seld.svg                                    | XML          |         30 |          1 |          1 |         32 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_0.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_1.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_2.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_3.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_4.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_5.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_6.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/pages_7.js                                      | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/search.css                                      | CSS          |        232 |          9 |         51 |        292 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/search.js                                       | JavaScript   |        711 |         60 |         70 |        841 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/searchdata.js                                   | JavaScript   |         39 |          0 |          4 |         43 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/typedefs_0.js                                   | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_0.js                                  | JavaScript   |         20 |          0 |          1 |         21 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_1.js                                  | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_2.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_3.js                                  | JavaScript   |          5 |          0 |          1 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_4.js                                  | JavaScript   |          7 |          0 |          1 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_5.js                                  | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_6.js                                  | JavaScript   |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_7.js                                  | JavaScript   |          8 |          0 |          1 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_8.js                                  | JavaScript   |          7 |          0 |          1 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_9.js                                  | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_a.js                                  | JavaScript   |          6 |          0 |          1 |          7 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/search/variables_b.js                                  | JavaScript   |          4 |          0 |          1 |          5 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/source_2main_8cpp.html                                 | HTML         |        153 |          5 |          5 |        163 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/spu_8h.html                                            | HTML         |        140 |          5 |          3 |        148 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/spu_8h_source.html                                     | HTML         |        122 |          5 |          3 |        130 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackAssertFunction_8cpp.html                          | HTML         |        198 |          5 |          7 |        210 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackAssertFunction_8h.html                            | HTML         |        162 |          5 |          5 |        172 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackAssertFunction_8h_source.html                     | HTML         |         97 |          5 |          3 |        105 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackConstructor_8h.html                               | HTML         |        231 |          5 |          7 |        243 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackConstructor_8h_source.html                        | HTML         |        127 |          5 |          3 |        135 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackDump_8cpp.html                                    | HTML         |        151 |          5 |          7 |        163 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackDump_8h.html                                      | HTML         |        164 |          5 |          7 |        176 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackDump_8h_source.html                               | HTML         |        100 |          5 |          3 |        108 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackError_8cpp.html                                   | HTML         |        136 |          5 |          5 |        146 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackError_8h.html                                     | HTML         |        141 |          5 |          5 |        151 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackError_8h_source.html                              | HTML         |        100 |          5 |          3 |        108 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackInitDestroy_8cpp.html                             | HTML         |        294 |          5 |         15 |        314 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackInitDestroy_8h.html                               | HTML         |        267 |          5 |         13 |        285 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackInitDestroy_8h_source.html                        | HTML         |        106 |          5 |          3 |        114 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackPushPop_8cpp.html                                 | HTML         |        215 |          5 |          9 |        229 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackPushPop_8h.html                                   | HTML         |        170 |          5 |          7 |        182 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stackPushPop_8h_source.html                            | HTML         |         98 |          5 |          3 |        106 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stepByStep_8cpp.html                                   | HTML         |        365 |          5 |         21 |        391 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stepByStep_8h.html                                     | HTML         |        167 |          5 |          7 |        179 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stepByStep_8h_source.html                              | HTML         |         96 |          5 |          3 |        104 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stressTests_8cpp.html                                  | HTML         |        174 |          5 |          7 |        186 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stressTests_8h.html                                    | HTML         |        118 |          5 |          5 |        128 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/stressTests_8h_source.html                             | HTML         |         90 |          5 |          3 |         98 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structcommand__t-members.html                          | HTML         |         80 |          5 |          4 |         89 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structcommand__t.html                                  | HTML         |        142 |          5 |         12 |        159 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structinfoOfStack-members.html                         | HTML         |         79 |          5 |          4 |         88 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structinfoOfStack.html                                 | HTML         |        128 |          5 |         10 |        143 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structlabel__t-members.html                            | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structlabel__t.html                                    | HTML         |        114 |          5 |          8 |        127 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structlabelsData__t-members.html                       | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structlabelsData__t.html                               | HTML         |        124 |          5 |          8 |        137 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structnameTable__t-members.html                        | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structnameTable__t.html                                | HTML         |        114 |          5 |          8 |        127 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structnode__t-members.html                             | HTML         |         80 |          5 |          4 |         89 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structnode__t.html                                     | HTML         |        155 |          5 |         12 |        172 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structnumber__t-members.html                           | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structnumber__t.html                                   | HTML         |        114 |          5 |          8 |        127 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structprogInfo__t-members.html                         | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structprogInfo__t.html                                 | HTML         |        123 |          5 |          7 |        135 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structspu__t-members.html                              | HTML         |         82 |          5 |          4 |         91 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structspu__t.html                                      | HTML         |        182 |          5 |         16 |        203 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structstack__t-members.html                            | HTML         |         79 |          5 |          4 |         88 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structstack__t.html                                    | HTML         |        128 |          5 |         10 |        143 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structtortureChamber__t-members.html                   | HTML         |         79 |          5 |          4 |         88 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/structtortureChamber__t.html                           | HTML         |        137 |          5 |          9 |        151 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/tabs.css                                               | CSS          |          1 |          0 |          1 |          2 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/treeFuncs_8cpp.html                                    | HTML         |        272 |          5 |         17 |        294 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/tree_8h.html                                           | HTML         |        376 |          5 |         17 |        398 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/tree_8h_source.html                                    | HTML         |        215 |          5 |          3 |        223 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/uniondata__u-members.html                              | HTML         |         78 |          5 |          4 |         87 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/uniondata__u.html                                      | HTML         |        124 |          5 |          8 |        137 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/workWithFile_8h.html                                   | HTML         |        260 |          5 |         12 |        277 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/workWithFile_8h_source.html                            | HTML         |        104 |          5 |          3 |        112 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/workWithStack_2h__files_2macros_8h.html                | HTML         |        297 |          5 |         15 |        317 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/workWithStack_2h__files_2macros_8h_source.html         | HTML         |        127 |          5 |          3 |        135 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/wrDotFile_8cpp.html                                    | HTML         |        239 |          5 |         12 |        256 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/wrPngFile_8cpp.html                                    | HTML         |        157 |          5 |          6 |        168 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/writeASMfile_8cpp.html                                 | HTML         |        306 |          5 |         13 |        324 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/writeASMfile_8h.html                                   | HTML         |        140 |          5 |          5 |        150 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/doc/html/writeASMfile_8h_source.html                            | HTML         |         95 |          5 |          3 |        103 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/include/errors.h                                                | C++          |         10 |          0 |          2 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/include/predprocessing.h                                        | C++          |          5 |          0 |          3 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/include/writeASMfile.h                                          | C++          |          5 |          0 |          3 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/Makefile                                  | Makefile     |         18 |          0 |          8 |         26 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/cpp_files/convertAsmToCommands.cpp        | C++          |        273 |         17 |        102 |        392 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/cpp_files/getFileStrings.cpp              | C++          |         35 |          5 |         17 |         57 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/cpp_files/main.cpp                        | C++          |         63 |          4 |         25 |         92 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/cpp_files/putDataToFile.cpp               | C++          |         53 |          2 |         22 |         77 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/h_files/commands.h                        | C++          |         35 |          0 |          9 |         44 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/h_files/convertAsmToCommands.h            | C++          |         17 |          0 |          5 |         22 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/h_files/getFileStrings.h                  | C++          |          9 |          0 |          3 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/h_files/label.h                           | C++          |         12 |          0 |          4 |         16 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/h_files/putDataToFile.h                   | C++          |         11 |          0 |          3 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Assembler/h_files/registers.h                       | C++          |         10 |          0 |          2 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/Makefile                                  | Makefile     |         38 |          0 |         20 |         58 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/cpp_files/getCommands.cpp                 | C++          |         96 |          1 |         23 |        120 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/cpp_files/getData_of_BinaryFile.cpp       | C++          |         24 |          4 |         11 |         39 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/cpp_files/getNumber.cpp                   | C++          |         21 |          0 |          4 |         25 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/cpp_files/main.cpp                        | C++          |         41 |          4 |         16 |         61 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/cpp_files/runCode.cpp                     | C++          |        197 |         19 |         65 |        281 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/cpp_files/stepByStep.cpp                  | C++          |        248 |          6 |         71 |        325 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/commands.h                        | C++          |         29 |          0 |          8 |         37 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/getCommands.h                     | C++          |         11 |          0 |          5 |         16 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/getData_of_BinaryFile.h           | C++          |          9 |          0 |          3 |         12 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/getNumber.h                       | C++          |          4 |          0 |          2 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/macros.h                          | C++          |          8 |          0 |          6 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/registers.h                       | C++          |         11 |          0 |          3 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/runCode.h                         | C++          |         11 |          0 |          4 |         15 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/spu.h                             | C++          |         18 |          0 |          4 |         22 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/Processor/h_files/stepByStep.h                      | C++          |          6 |          0 |          3 |          9 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/go.sh                                               | Shell Script |          1 |          0 |          1 |          2 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/Makefile                              | Makefile     |         27 |          0 |         12 |         39 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/countHash.cpp               | C++          |         18 |          0 |         12 |         30 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/main.cpp                    | C++          |         31 |          1 |         18 |         50 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/stackAssertFunction.cpp     | C++          |         46 |          0 |         18 |         64 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/stackDump.cpp               | C++          |         35 |          1 |         12 |         48 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/stackError.cpp              | C++          |         15 |          0 |          8 |         23 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/stackInitDestroy.cpp        | C++          |         56 |          0 |         24 |         80 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/stackPushPop.cpp            | C++          |         60 |          1 |         29 |         90 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/cpp_files/stressTests.cpp             | C++          |         27 |          1 |         12 |         40 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/colors.h                      | C++          |         11 |          0 |          3 |         14 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/countHash.h                   | C++          |          5 |          0 |          3 |          8 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/errorNames.h                  | C++          |         11 |          0 |          2 |         13 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/macros.h                      | C++          |         27 |          4 |         13 |         44 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/stackAssertFunction.h         | C++          |          7 |          0 |          3 |         10 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/stackConstructor.h            | C++          |         20 |          0 |          7 |         27 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/stackDump.h                   | C++          |          8 |          0 |          3 |         11 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/stackError.h                  | C++          |          8 |          0 |          3 |         11 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/stackInitDestroy.h            | C++          |         12 |          0 |          5 |         17 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/stackPushPop.h                | C++          |          7 |          0 |          3 |         10 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/myProcessor/workWithStack/h_files/stressTests.h                 | C++          |          4 |          0 |          2 |          6 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/source/main.cpp                                                 | C++          |         41 |          1 |          7 |         49 |
+| /home/matvey/Рабочий стол/C/myProgLanguage/source/writeASMfile.cpp                                         | C++          |        209 |         10 |         32 |        251 |
+| Total                                                                                                      |              |     32,093 |      1,305 |      2,683 |     36,081 |
++------------------------------------------------------------------------------------------------------------+--------------+------------+------------+------------+------------+

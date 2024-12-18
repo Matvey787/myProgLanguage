@@ -1,9 +1,9 @@
 #include <stdio.h>
 #include <string.h>
 
-#include "tree.h"
+#include "../General/programTree/tree.h"
 
-#include "writeASMfile.h"
+#include "convertToASM.h"
 
 static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, int label_id, const char* currFuncName);
 static bool isSpecialOperator(types type);
@@ -18,9 +18,9 @@ struct progInfo_t
 };
 
 // function which is opens the file and writes the assembly code to it
-void writeASMfile(node_t* node, nameTable_t* nameTable)
+void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
 {
-    FILE* wFile = fopen("program.ASM", "wb");
+    FILE* wFile = fopen(asmFile, "wb");
     if (wFile == nullptr)
     {
         

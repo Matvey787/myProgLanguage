@@ -44,5 +44,6 @@ int main(int argc, char* argv[])
     tokens = nullptr;
     nameTable = nullptr;
     buffer = nullptr;
+    system("../../Middlend/out");
     return 0;
 }
