@@ -2,12 +2,15 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include "../General/programTree/tree.h"
 #include "../General/treeTransfer/treeTransfer.h"
 #include "../General/graphDump/graphDump.h"
 
 #include "convertToASM.h"
+
+void delTable(nameTable_t* nameTable);
 
 int main()
 {
@@ -19,6 +22,20 @@ int main()
     writeASMfile(progTree, nameTable, "../program.ASM");
 
     delTree(progTree);
-    free(nameTable);
+    progTree = nullptr;
+    
+    delTable(nameTable);
     return 0;
+}
+
+void delTable(nameTable_t* nameTable)
+{
+    assert(nameTable != nullptr);
+    int i = 0;
+    while (nameTable[i].str != nullptr)
+    {
+        free(nameTable[i].str);
+        nameTable[i++].str = nullptr;
+    }
+    free(nameTable);
 }

@@ -2,10 +2,13 @@
 #include <string.h>
 #include <ctype.h>
 #include <stdlib.h>
+#include <assert.h>
 
 #include "../General/programTree/tree.h"
 #include "../General/treeTransfer/treeTransfer.h"
 #include "../General/graphDump/graphDump.h"
+
+void delTable(nameTable_t* nameTable);
 
 int main()
 {
@@ -16,9 +19,22 @@ int main()
 
     pushTree(progTree, "../progTree");
     delTree(progTree);
-    free(nameTable);
+    
+    delTable(nameTable);
     nameTable = nullptr;
     system("../Backend/out");
     return 0;
 
+}
+
+void delTable(nameTable_t* nameTable)
+{
+    assert(nameTable != nullptr);
+    int i = 0;
+    while (nameTable[i].str != nullptr)
+    {
+        free(nameTable[i].str);
+        nameTable[i++].str = nullptr;
+    }
+    free(nameTable);
 }
