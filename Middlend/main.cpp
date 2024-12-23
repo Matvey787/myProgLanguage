@@ -16,13 +16,12 @@ int main()
     node_t* progTree = pullTree(nameTable, "../progTree");
     writeDotFile(progTree, "../dot_files/middlendDotFile.dot");
     writePngFile("../dot_files/middlendDotFile.dot", "../png_files", "white");
-
+    getchar();
     pushTree(progTree, "../progTree");
     delTree(progTree);
     
     delTable(nameTable);
     nameTable = nullptr;
-    system("../Backend/out");
     return 0;
 
 }

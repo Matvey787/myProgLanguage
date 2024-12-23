@@ -1,5 +1,16 @@
-d = 100
-if d == 100
+main()
+func main()
 {
-    print ( d )
+    a = 0
+    for i=0..4 ++
+    {
+        addTen(a)
+        print(a)
+    }
+    return ()
+}
+func addTen(x)
+{
+    x = x + 10
+    return (x)
 }

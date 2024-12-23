@@ -30,20 +30,30 @@ int main(int argc, char* argv[])
     if (readFile(&buffer, filePath, &numOfSmbls, &numOfStrs) != NO_ERRORS){
         return 1;
     }
-
+    char** systemVars = (char**)calloc(20, sizeof(char*));
+    for (int i = 0; i < 20; i++)
+    {
+        systemVars[i] = (char*)calloc(20, sizeof(char));
+    }
     nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
-    node_t* tokens = createTokens(buffer, numOfSmbls, nameTable, "../dot_files/frontenedDotFile.dot", "../png_files");
+    node_t* tokens = createTokens(buffer, numOfSmbls, nameTable, systemVars, "../dot_files/tokensDotFile.dot", "../png_files");
     node_t* predprocessingTree = createPredprocessingTree(tokens, "../dot_files/frontenedDotFile.dot", "../png_files");
     pushTree(predprocessingTree, "../progTree");
+    getchar();
     free(filePath);
     free(nameTable);
     delTree(predprocessingTree);
     free(tokens);
     free(buffer);
+    for (int i = 0; i < 20; i++)
+    {
+        free(systemVars[i]);
+    }
+    free(systemVars);
+
     predprocessingTree = nullptr;
     tokens = nullptr;
     nameTable = nullptr;
     buffer = nullptr;
-    system("../../Middlend/out");
     return 0;
 }

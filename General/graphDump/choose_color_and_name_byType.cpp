@@ -37,8 +37,7 @@ const char* getColor(types type)
     case ND_FUN:
     case ND_FUNCALL:
     case ND_RET:
-    case ND_START:
-    case ND_END:
+    case ND_ENDFOR:
         return "green";
         
         
@@ -145,10 +144,8 @@ const char* convertTypeToStr(types type)
     case ND_EOT:
         return "EOT";
 
-    case ND_START:
-        return "start";
-    case ND_END:
-        return "end";
+    case ND_ENDFOR:
+        return "END_FOR";
 
     case ND_PR:
         return "print";

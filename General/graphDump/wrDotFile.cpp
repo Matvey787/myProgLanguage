@@ -48,7 +48,6 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
     case ND_EOT:
     case ND_SEP:
     case ND_PR:
-    case ND_FUNCALL:
     case ND_RET:
     case ND_ISEQ:
     case ND_NISEQ:
@@ -63,8 +62,6 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
 
         break;
     }
-    case ND_START:
-    case ND_END:
     case ND_NUM:
     {
         fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | %s | %lg | \
@@ -74,8 +71,11 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
         break;
     }
     case ND_VAR:
+    case ND_ENDFOR:
+    case ND_FUNCALL:
     case ND_FUN:
     {
+        printf("------> %d\n", node->type);
         assert (node->data.var != nullptr);
         fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | %s | %s | \
         {<n%p_l> left | <n%p_r> right}} \" ];\n", 

@@ -49,3 +49,24 @@ func myFunc(a)
 ```
 ./run.sh ../myProgLang_files/program.myl
 ```
+# Easiest example what program you can write
+```
+main()
+func main()
+{
+    a = 0
+    for i=0..4 ++
+    {
+        addTen(a)
+        print(a)
+    }
+    return ()
+}
+func addTen(x)
+{
+    x = x + 10
+    return (x)
+}
+```
+
+

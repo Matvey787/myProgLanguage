@@ -2,7 +2,7 @@
 #define WORKWITHFILE
 
 #include <stdio.h>
-#include "errors.h"
+#include "../../General/errors.h"
 
 /**
  * @brief This function reads the contents of a file into a string.

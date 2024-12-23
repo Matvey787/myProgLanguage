@@ -36,7 +36,8 @@ static void pullTreeByRecursion(node_t** node, nameTable_t** nameTable, FILE** r
     counter++;
     *node = (node_t*)calloc(1, sizeof(node_t));
     fscanf(*rFile, "%d", (int*)&(*node)->type);
-    if ((*node)->type == ND_VAR || (*node)->type == ND_FUN)
+    printf("pullTreeByRec %d\n", (*node)->type);
+    if ((*node)->type == ND_VAR || (*node)->type == ND_FUN || (*node)->type == ND_ENDFOR || (*node)->type == ND_FUNCALL/* || (*node)->type == ND_START || (*node)->type == ND_END */)
     {
         char tempStr[100] = {0};
         fscanf(*rFile, "%s", tempStr);

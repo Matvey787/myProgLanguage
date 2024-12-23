@@ -5,7 +5,7 @@
 #include <assert.h>
 #include <math.h>
 #include "../../General/programTree/tree.h"
-#include "errors.h"
+#include "../../General/errors.h"
 #include "refactorToTokens.h"
 #include "../../General/graphDump/graphDump.h"
 
@@ -28,21 +28,32 @@ static const char* getVariableFromTable(nameTable_t* nameTable, size_t index);
 
 
 //TODO nameTable + tokens
-node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, const char* tokensDotFile, const char* directoryForSavingPictures)
+node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, char** systemVars, const char* tokensDotFile, const char* directoryForSavingPictures)
 {
     // need for scanning end of buffer
     char* last_addr = buffer + l_buff;
 
     node_t* tokens = (node_t*)calloc(100, sizeof(node_t));
     size_t i_toks = 0;
+    size_t i_sysVars = 0;
     size_t i_nameTab = 0;
 
     while (!bufferIsEmpty(buffer, last_addr))
     {
+        
         // it is needed for scaning interval in for
         if (strncmp(buffer, "..", 2) == 0)
         {
+            strcpy(systemVars[i_sysVars], "_end");
+            nameTable[i_nameTab].str = systemVars[i_sysVars];
+            nameTable[i_nameTab].numOfSymbols = strlen("_end");
+            tokens[i_toks] = {ND_ENDFOR, {0}, nullptr, nullptr};
+            tokens[i_toks].data.var = &nameTable[i_nameTab];
+            
             buffer += 2;
+            ++i_sysVars;
+            ++i_toks;
+            ++i_nameTab;
         }
 
         else if (*buffer == '\n')
@@ -152,7 +163,7 @@ static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameT
 
     for (size_t i = 0, j = 0; i < numOfTokens; i++)
     {
-        if (tokens[i].type == ND_VAR)
+        if (tokens[i].type == ND_VAR || tokens[i].type == ND_ENDFOR)
         {
             fprintf(wFile, "\ttoken_%lu:s -> tableCell_%p:n [ color = green; ]\n", i, nameTable[j++].str);
         }

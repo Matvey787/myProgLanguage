@@ -7,7 +7,7 @@
 #include "../../General/programTree/tree.h"
 #include "workWithFile.h"
 #include "../../General/graphDump/graphDump.h"
-#include "errors.h"
+#include "../../General/errors.h"
 #include "createPredprocessingTree.h"
 
 // Functions that allow recursive descent and construction of a program tree.
@@ -135,12 +135,14 @@ static node_t* getCallOfFunc(node_t** nodes)
     node_t* funcCallNode = copyNode(*nodes);
     // because firstly it was a ND_VAR. But we need to change it to  ND_FUNCALL
     funcCallNode->type = ND_FUNCALL;
-    char tmpStr[100] = {0};
-    snprintf(tmpStr, 100, "call %s", (*nodes)->data.var->str);
-    (funcCallNode->data.var)->str = (*nodes)->data.var->str;
     *nodes += 1;
+    printf("mnbvcx %d %s\n", (*nodes)->type, funcCallNode->data.var->str);
     node_t* passedParameters = getSubModule(nodes);
+    printf("qqqqqqqqqqqqqqqqqqqqqqqqqqqqqqqq %p\n", passedParameters);
     funcCallNode->left = passedParameters;
+    /* writeDotFile(funcCallNode, "../dot_files/frontenedDotFile.dot");
+    writePngFile("../dot_files/frontenedDotFile.dot", "../png_files", "white");
+    getchar(); */
     return funcCallNode;
 }
 
@@ -150,19 +152,26 @@ static node_t* getFor(node_t** nodes)
     assert(nodes != nullptr);
     *nodes += 1;
     node_t* iterator = getVar(nodes);
+
     if ((*nodes)->type == ND_EQ)
     {
+        
         *nodes += 1;
         node_t* start = getNum(nodes);
+        printf("after start\n");
+        node_t* varEndOfFor = Num_OR_Var(nodes);
+        printf("before end %lg\n", (*nodes)->data.num);
         node_t* end = getNum(nodes);
-        start->type = ND_START;
-        end->type = ND_END;
-        //printf("+++++++++%lg %lg\n", start->data.num, end->data.num);
         node_t* step = getAddSub(nodes);
-        *nodes += 2;
-        iterator->left = newNode(ND_SEP, {0}, start, end);
-        iterator->right = step;
-        return newNode(ND_FOR, {0}, iterator, getSubModule(nodes)); 
+        printf("start: %lg end: %lg\n", start->data.num, end->data.num);
+        
+        *nodes += 1;
+        return newNode(ND_FOR, {0}, 
+                                    newNode(ND_SEP, {0}, 
+                                                        newNode(ND_SEP, {0}, newNode(ND_EQ, {0}, iterator,    start) ,
+                                                                             newNode(ND_EQ, {0}, varEndOfFor, end  )),
+                                                        step),        
+                                    getSubModule(nodes)); 
     }
     else 
     {
@@ -250,8 +259,7 @@ node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** no
     case ND_SEP:
     case ND_POADD:
     case ND_ADD:
-    case ND_START:
-    case ND_END:
+    case ND_ENDFOR:
     case ND_PR:
     default:
         return copyNode(*nodes);
@@ -263,22 +271,25 @@ static node_t* getAppropriation(node_t** nodes)
 {
     assert(nodes != nullptr);
     node_t* l_subtree = getAddSub(nodes);
-    if ((*nodes)->type != ND_EQ)
+    
+    /* if ((*nodes)->type != ND_EQ && (*nodes)->type != ND_SEP)
     {
         return getAddSub(nodes);
     } 
-    else
+    else  */if ((*nodes)->type == ND_EQ)
     {
         *nodes += 1;
         node_t* r_subtree = getAddSub(nodes);
         return newNode(ND_EQ, {0}, l_subtree, r_subtree);
 
     }
+    return l_subtree;
 }
 
 static node_t* getAddSub(node_t** nodes)
 {
     assert(nodes != nullptr);
+    printf("getAddSub %d\n", (*nodes)->type);
     node_t* l_subtree = getMulDiv(nodes);
     while ((*nodes)->type == ND_ADD || (*nodes)->type == ND_SUB)
     {
@@ -291,12 +302,17 @@ static node_t* getAddSub(node_t** nodes)
         else
             l_subtree = newNode(ND_SUB, {0}, l_subtree, r_subtree);
     }
+    /* printf("after while\n");
+    writeDotFile(l_subtree, "../dot_files/frontenedDotFile.dot");
+    writePngFile("../dot_files/frontenedDotFile.dot", "../png_files", "white");
+    getchar(); */
     return l_subtree;
 }
 
 static node_t* getMulDiv(node_t** nodes)
 {
     assert(nodes != nullptr);
+    printf("getMulDiv %d\n", (*nodes)->type);
     node_t* l_subtree = getPOW(nodes);
     while ((*nodes)->type == ND_MUL || (*nodes)->type == ND_DIV)
     {
@@ -315,7 +331,7 @@ static node_t* getMulDiv(node_t** nodes)
 static node_t* getPOW(node_t** nodes)
 {
     assert(nodes != nullptr);
-
+    printf("getPOW %d\n", (*nodes)->type);
     node_t* l_subtree = getSubModule(nodes);
     while ((*nodes)->type == ND_POW)
     {
@@ -329,7 +345,7 @@ static node_t* getPOW(node_t** nodes)
 
 static node_t* getSubModule(node_t** nodes)
 {
-
+    printf("getSubModule %d\n", (*nodes)->type);
     if ((*nodes)->type == ND_LCIB || (*nodes)->type == ND_LCUB)
     {
         node_t* val = nullptr;
@@ -415,13 +431,15 @@ static node_t* Num_OR_Var(node_t** nodes)
 
     if ((*nodes)->type == ND_NUM)
         return getNum(nodes);
-    else if ((*nodes)->type == ND_VAR)
+    else if ((*nodes)->type == ND_VAR || (*nodes)->type == ND_ENDFOR)
         return getVar(nodes);
-    else if ((*nodes)->type != ND_EOT)
+    else if ((*nodes)->type == ND_POADD)
     {
-        return *nodes;
+        printf("I se poadd!\n");
+        node_t* poAdd = copyNode(*nodes);
+        (*nodes)++;
+        return poAdd;
     }
-        
     else 
         return nullptr;
 }
@@ -438,8 +456,11 @@ static node_t* getNum(node_t** nodes)
 // function for getting variable
 static node_t* getVar(node_t** nodes)
 {
+    printf(" --- -- -- - - %s\n", (*nodes)->data.var->str);
     if (*nodes + 1 != nullptr && (*nodes + 1)->type == ND_LCIB)
     {
+        printf(" dddd %s\n", (*nodes)->data.var->str);
+        
         return getCallOfFunc(nodes);
     }
     node_t* var = *nodes;

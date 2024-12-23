@@ -1,9 +1,39 @@
-PUSH 100
-POP [0]
-PUSH [0]
-PUSH 100
-JNE label0:
-PUSH [0]
-OUT
-label0:
+CALL main:
 HLT
+main:
+PUSH 0
+POP [FS+0]
+PUSH 0
+POP [FS+1]
+PUSH 4
+POP [FS+2]
+label0:
+PUSH [FS+1]
+PUSH 1
+ADD
+POP [FS+1]
+CALL addTen:
+PUSH CX
+POP [FS+0]
+PUSH [FS+0]
+OUT
+PUSH [FS+1]
+PUSH [FS+2]
+JB label0:
+RET
+addTen:
+PUSH FS
+PUSH [FS+0]
+PUSH FS
+PUSH 4
+ADD
+POP FS
+POP [FS+0]
+PUSH [FS+0]
+PUSH 10
+ADD
+POP [FS+0]
+PUSH [FS+0]
+POP CX
+POP FS
+RET
