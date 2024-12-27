@@ -17,7 +17,7 @@ MATH_LEVEL_50 ::= [0-9]+
 MATH_LEVEL_60 ::= [a-z]+
 ```
 
-### 💪 Language capabilities
+## 💪 Language capabilities
 
 - You can create variables which get only numbers
 ```
