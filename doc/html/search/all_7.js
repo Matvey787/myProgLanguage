@@ -1,13 +1,4 @@
 var searchData=
 [
-  ['in_20the_20form_20of_20rbnf_0',['Description of the language structure in the form of RBNF',['../md_README.html',1,'']]],
-  ['incorrect_5fcommand_1',['INCORRECT_COMMAND',['../convertAsmToCommands_8cpp.html#acc42076253600be964e110149b458971ac1d9214ce99e8a48c96e36011ea94817',1,'convertAsmToCommands.cpp']]],
-  ['incorrect_5fdata_5fpointer_2',['INCORRECT_DATA_POINTER',['../errorNames_8h.html#acc42076253600be964e110149b458971afaef7e7fd6c96553b40088198afde5e8',1,'errorNames.h']]],
-  ['incorrect_5fstack_5fpointer_3',['INCORRECT_STACK_POINTER',['../errorNames_8h.html#acc42076253600be964e110149b458971a41ad2e0ce48126a58bfd27e74a06e826',1,'errorNames.h']]],
-  ['infoofstack_4',['infoOfStack',['../structinfoOfStack.html',1,'']]],
-  ['initializationofvar_5',['initializationOfVar',['../writeASMfile_8cpp.html#a21158ba10030daea4c41955ceff5a7df',1,'writeASMfile.cpp']]],
-  ['initspu_6',['initSpu',['../myProcessor_2Processor_2cpp__files_2main_8cpp.html#a41030eaefd6bb88ee44b5ec5b5f8a2df',1,'main.cpp']]],
-  ['int_5fnum_7',['int_num',['../structnumber__t.html#ab165ef47937053e111d7fed9d991dcba',1,'number_t']]],
-  ['ip_8',['ip',['../structspu__t.html#a3e55d2c529b0d6e8b2566f6760458ba6',1,'spu_t']]],
-  ['isspecialoperator_9',['isSpecialOperator',['../writeASMfile_8cpp.html#aeb00f1a8ed6377bb75e7d2ea2e177e09',1,'writeASMfile.cpp']]]
+  ['how_20to_20run_20your_20own_20program_20on_20my_20language_20in_20your_20pc_0',['How to run your own program on my language in your pc',['../md_README.html#autotoc_md9',1,'']]]
 ];

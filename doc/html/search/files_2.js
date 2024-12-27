@@ -7,5 +7,6 @@ var searchData=
   ['getfilestrings_2ecpp_4',['getFileStrings.cpp',['../getFileStrings_8cpp.html',1,'']]],
   ['getfilestrings_2eh_5',['getFileStrings.h',['../getFileStrings_8h.html',1,'']]],
   ['getnumber_2ecpp_6',['getNumber.cpp',['../getNumber_8cpp.html',1,'']]],
-  ['getnumber_2eh_7',['getNumber.h',['../getNumber_8h.html',1,'']]]
+  ['getnumber_2eh_7',['getNumber.h',['../getNumber_8h.html',1,'']]],
+  ['graphdump_2eh_8',['graphDump.h',['../graphDump_8h.html',1,'']]]
 ];

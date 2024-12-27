@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['something_5fgo_5fwrong_5fwith_5fgetting_5fcommands_0',['SOMETHING_GO_WRONG_WITH_GETTING_COMMANDS',['../getCommands_8h.html#aac2b892a9ff0e85c7440fbc78b37944eac32253e9101cfb7d5492a2cbd2c656f3',1,'getCommands.h']]],
-  ['split_5fon_5fstrs_5ffail_1',['SPLIT_ON_STRS_FAIL',['../errors_8h.html#af10dacfa214e2575bb2e0ee407c242e0a8dedbdaa9ec9c0bb0d8b700d3a533ce0',1,'errors.h']]]
+  ['ram_5fmod_0',['ram_mod',['../Assembler_2h__files_2commands_8h.html#ad40e52e166700bbc1292f040353f1f53ad00a3f07a0a69d05546fbf9b9b3279c5',1,'RAM_MOD:&#160;commands.h'],['../Processor_2h__files_2commands_8h.html#ad40e52e166700bbc1292f040353f1f53ad00a3f07a0a69d05546fbf9b9b3279c5',1,'RAM_MOD:&#160;commands.h']]],
+  ['redefenition_5fof_5flabel_1',['REDEFENITION_OF_LABEL',['../convertAsmToCommands_8cpp.html#acc42076253600be964e110149b458971a3743bd5dc4b66b0ce073950c97396164',1,'convertAsmToCommands.cpp']]],
+  ['register_5fmod_2',['register_mod',['../Assembler_2h__files_2commands_8h.html#ad40e52e166700bbc1292f040353f1f53ae79bd34debcc72fd0b476d0b4dd0785a',1,'REGISTER_MOD:&#160;commands.h'],['../Processor_2h__files_2commands_8h.html#ad40e52e166700bbc1292f040353f1f53ae79bd34debcc72fd0b476d0b4dd0785a',1,'REGISTER_MOD:&#160;commands.h']]]
 ];

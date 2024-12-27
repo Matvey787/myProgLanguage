@@ -83,8 +83,8 @@ func myFunc(a)
 ```
 To call functions and start programming in my language, you need to write the main function.
 >[!IMPORTANT]
-> - <b>You must write main() firstly</b>
-> - main function nothing return but you must to write return() in the end of main function.
+> - You must write <b>main()</b> firstly
+> - main function nothing return but you must to write <b>return()</b> in the end of main function.
 Example:
 ```
 main()
@@ -142,7 +142,7 @@ func main()
 }
 ```
 
-# How to run your own program on my language in your pc
+## How to run your own program on my language in your pc
 - download this repository
 - go to this downloaded repository on your pc in terminal
 - copy file path of file which contain your program </br> (fast start you can open myProgLang_files/program.myl in downloaded repository)
@@ -152,5 +152,38 @@ func main()
 ```
 - you will see output of your program in terminal
 
+## Addition (editor, editor extensions)
+
+To write the project, I used the VS Code editor.
+I have different extensions for it:
+### Doxygen (for Linux)
+- Download doxygen
+    ```
+    sudo apt-add-repository universe
+    sudo apt-get update
+    sudo apt-get install doxygen
+    ```
+    
+- Download doxygen extension
+    Go to VS Code extensions, download <b>Doxygen Documentation Generator</b> and <b>Doxygen Runner</b>
+    Then open settings.json (ctrl + shift + p and find this file) and add this code:
+    ```
+    {
+        "doxygen_runner.configuration_file_override": "${workspaceFolder}/Doxyfile"
+    }
+    ```
+
+- Create Doxyfile
+    You can copy my doxyfile or create your own by opennid doxygen by this command in terminal:
+    ```
+    doxywizard
+    ```
+    Create your settings in <b>Expert</b>. Then go to <b>Run</b> and click on <b>Show configuration</b>. Copy this code, create Doxyfile in your repository from which you will run doxygen in your repository and paste this code in it.
+
+- Now we are ready for running doxygen in VS Code
+    Press ctrl + shift + p and write <b>Generate Doxygen documentation</b> and click on it. You will see your documentation in <b>doc</b> folder in your repository. Or you can create your own output folder
+    ![alt text](forReadme/doxygenOutputDir.png)
+
+- Go to this folder and find index.html, open it in your browser and be surprised!
 
 

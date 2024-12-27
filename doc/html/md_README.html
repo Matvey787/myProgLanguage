@@ -72,11 +72,15 @@ $(function() {
   <div class="headertitle"><div class="title">Description of the language structure in the form of RBNF</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p><div class="fragment"><div class="line">MAIN ::= </div>
-<div class="line">DEF_IF ::= &#39;if&#39; MATH_LEVEL_60 &#39;==&#39; MATH_LEVEL_50 &#39;{&#39; MAIN &#39;}&#39;</div>
-<div class="line">DEF_VAR ::= ID &#39;=&#39; E</div>
-<div class="line">DEF_FOR ::= &#39;for&#39; DEF_VAR &#39;..&#39; MATH_LEVEL_4 { MAIN }* </div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p><div class="fragment"><div class="line">GENERAL ::= {CHOOSE_APPR_or_IF_or_FOR_or_FUN_or_RET GET_NEWLINE}*</div>
 <div class="line"> </div>
+<div class="line">CHOOSE_APPR_IF_FOR_FUN_RET ::= GET_IF | GET_APPR | GET_FOR | GET_RET | GET_PR </div>
+<div class="line"> </div>
+<div class="line">GET_IF ::= &#39;if&#39; MATH_LEVEL_60 &#39;==&#39; MATH_LEVEL_50 &#39;{&#39; MAIN &#39;}&#39;</div>
+<div class="line">GET_APPR ::= MATH_LEVEL_60 &#39;=&#39; E &lt;-----------------------------------------  appropriation</div>
+<div class="line">GET_FOR ::= &#39;for&#39; DEF_VAR &#39;..&#39; MATH_LEVEL_4 { BODY } </div>
+<div class="line">GET_PR = MATH_LEVEL_10 &lt;---------------------------------------------------  print</div>
+<div class="line">GET_RET = MATH_LEVEL_10 &lt;--------------------------------------------------  return</div>
 <div class="line">MATH_LEVEL_10 ::= MATH_LEVEL_2 { [+-] MATH_LEVEL_2 }*</div>
 <div class="line">MATH_LEVEL_20 ::= MATH_LEVEL_3 { [*/] MATH_LEVEL_3 }*</div>
 <div class="line">MATH_LEVEL_30 ::= &#39;(&#39; MATH_LEVEL_1 &#39;)&#39; | MATH_LEVEL_4</div>
@@ -84,25 +88,130 @@ $(function() {
 <div class="line">MATH_LEVEL_50 ::= [0-9]+</div>
 <div class="line">MATH_LEVEL_60 ::= [a-z]+</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md1"></a>
-Сurrent language capabilities</h1>
+💪 Language capabilities</h1>
+<h2><a class="anchor" id="autotoc_md2"></a>
+Equations</h2>
+<p>You can create variables which get only numbers </p><div class="fragment"><div class="line">yourVariable = 90</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+If-constructions</h2>
+<p>In the if constructions, you can use the signs &lt;, &gt;, &lt;=, &gt;=, !=, == for comparison. In comparisons, you can compare variables and numbers (the order is not important).</p>
+<blockquote class="doxtable">
+<p>&zwj;[!IMPORTANT]</p><ul>
+<li>Unfortunately, the design only supports one comparison and no more.</li>
+<li>There is also no else and else if. </li>
+</ul>
+</blockquote>
+<p>There is some examples: Use variables </p><div class="fragment"><div class="line">if yourVariable1 == yourVariable2</div>
+<div class="line">{</div>
+<div class="line">    There is body of if</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> Use numbers </p><div class="fragment"><div class="line">if yourVariable1 &lt;= 90</div>
+<div class="line">{</div>
+<div class="line">    There is body of if</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+For-constructions</h2>
+<p>You can create cycles which get only one iterator. How to write them? It's not difficult, I showed an example below. But how does it work internally? Essentially, the program creates i = 0 and the system variable _end = 4 is created. </p><blockquote class="doxtable">
+<p>&zwj;[!WARNING] </p>
+</blockquote>
+<p>&gt;For this reason, I strongly recommend not using underscores in front of your variables. Afterwards, the program adds 1 to i. When i will be greater then _end, the cycle will stop. </p><div class="fragment"><div class="line">for i = 0..4 ++</div>
+<div class="line">{</div>
+<div class="line">    There is body of for</div>
+<div class="line">}</div>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md5"></a>
+Functions and calling of them</h2>
+<p>You can create functions which get only one parametr and return only one number. How to write them? The example of function which is nothing return: </p><div class="fragment"><div class="line">func myFunc(a)</div>
+<div class="line">{</div>
+<div class="line">    print(a)</div>
+<div class="line">    return()</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> The example of function with local variable x which return number: </p><div class="fragment"><div class="line">func myFunc(a)</div>
+<div class="line">{</div>
+<div class="line">    x = a + 1</div>
+<div class="line">    return(x)</div>
+<div class="line">}</div>
+</div><!-- fragment --><p> To call functions and start programming in my language, you need to write the main function. &gt;[!IMPORTANT] </p><blockquote class="doxtable">
+<p>&zwj;- You must write <b><a class="el" href="Backend_2main_8cpp.html#ae66f6b31b5ad750f1fe042a706a4e3d4">main()</a></b> firstly</p><ul>
+<li>main function nothing return but you must to write <b>return()</b> in the end of main function. </li>
+</ul>
+</blockquote>
+<p>Example: </p><div class="fragment"><div class="line">main()</div>
+<div class="line">func main()</div>
+<div class="line">{</div>
+<div class="line">    a = myFunc(1)</div>
+<div class="line">    print(a)</div>
+<div class="line">    return()</div>
+<div class="line">}</div>
+<div class="line">func myFunc(a)</div>
+<div class="line">{</div>
+<div class="line">    x = a + 1</div>
+<div class="line">    return(x)</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+🚀 Fast start</h1>
+<h2><a class="anchor" id="autotoc_md7"></a>
+Program for calculating factorial</h2>
+<div class="fragment"><div class="line">main()</div>
+<div class="line">func main()</div>
+<div class="line">{</div>
+<div class="line">    a = 1</div>
+<div class="line">    a = factorial(a)</div>
+<div class="line">    print(a)</div>
+<div class="line">    return ()</div>
+<div class="line">}</div>
+<div class="line">func factorial(x)</div>
+<div class="line">{</div>
+<div class="line">    if x != 1</div>
+<div class="line">    {</div>
+<div class="line">        f =    x   -   1</div>
+<div class="line">        x = x * factorial(f)</div>
+<div class="line">    }</div>
+<div class="line">    return (x)</div>
+<div class="line">}</div>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+Program for calculating Fibonacci numbers</h2>
+<div class="fragment"><div class="line">main()</div>
+<div class="line">func main()</div>
+<div class="line">{</div>
+<div class="line">    a = 1</div>
+<div class="line">    b = 1</div>
+<div class="line">    print(a)</div>
+<div class="line">    for i=0..5 ++</div>
+<div class="line">    {</div>
+<div class="line">        print(b)</div>
+<div class="line">        t = a</div>
+<div class="line">        a = b</div>
+<div class="line">        b = t + b</div>
+<div class="line">    }</div>
+<div class="line">    return ()</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+How to run your own program on my language in your pc</h1>
 <ul>
-<li>You can create variables which get only numbers <div class="fragment"><div class="line">yourVariable = 90</div>
+<li>download this repository</li>
+<li>go to this downloaded repository on your pc in terminal</li>
+<li>copy file path of file which contain your program  (fast start you can open myProgLang_files/program.myl in downloaded repository)</li>
+<li>run this file by this command ./run.sh &lt;file_path&gt; in terminal.  As example in previous paragraph: <div class="fragment"><div class="line">./run.sh ../myProgLang_files/program.myl</div>
 </div><!-- fragment --></li>
-<li>You can create if-constructions which get only numbers <div class="fragment"><div class="line">if yourVariable ==  90 // you can also use &#39;!=&#39; &#39;&lt;&#39; &#39;&gt;&#39; &#39;&lt;=&#39; &#39;&gt;=&#39;</div>
-<div class="line">{</div>
-<div class="line">    make = 1</div>
+<li>you will see output of your program in terminal</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md10"></a>
+Addition (editor, editor extensions)</h1>
+<p>To write the project, I used the VS Code editor. I have different extensions for it: </p>
+<h2><a class="anchor" id="autotoc_md11"></a>
+Doxygen (for Linux)</h2>
+<ul>
+<li>Download doxygen <div class="fragment"><div class="line">sudo apt-add-repository universe</div>
+<div class="line">sudo apt-get update</div>
+<div class="line">sudo apt-get install doxygen</div>
+</div><!-- fragment --></li>
+<li>Download doxygen extension Go to VS Code extensions, download <b>Doxygen Documentation Generator</b> and <b>Doxygen Runner</b> Then open settings.json (ctrl + shift + p and find this file) and add this code: <div class="fragment"><div class="line">{</div>
+<div class="line">    &quot;doxygen_runner.configuration_file_override&quot;: &quot;${workspaceFolder}/Doxyfile&quot;</div>
 <div class="line">}</div>
 </div><!-- fragment --></li>
-<li>You can create cycles which get only one iterator <div class="fragment"><div class="line">for i = 0..4 ++</div>
-<div class="line">{</div>
-<div class="line">    b = 99</div>
-<div class="line">}</div>
-</div><!-- fragment --></li>
-<li>You can create functions which get only one parametr <div class="fragment"><div class="line">func myFunc(a)</div>
-<div class="line">{</div>
-<div class="line">    a = a + 1</div>
-<div class="line">}</div>
-</div><!-- fragment --> </li>
+<li>Create Doxyfile You can copy my doxyfile or create your own by opennid doxygen by this command in terminal: <div class="fragment"><div class="line">doxywizard</div>
+</div><!-- fragment --> Create your settings in <b>Expert</b>. Then go to <b>Run</b> and click on <b>Show configuration</b>. Copy this code, create Doxyfile in your repository from which you will run doxygen in your repository and paste this code in it.</li>
+<li>Now we are ready for running doxygen in VS Code Press ctrl + shift + p and write <b>Generate Doxygen documentation</b> and click on it. You will see your documentation in <b>Doxygen</b> folder in your repository. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
