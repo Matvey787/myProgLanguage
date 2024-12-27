@@ -6,9 +6,9 @@ cd ../Middlend/
 ./out
 cd ../Backend/
 ./out
-clear
 cd ../myProcessor/Assembler/
 ./out
+clear
 cd ../Processor/
 ./out
 cd ..

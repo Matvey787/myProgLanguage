@@ -18,115 +18,120 @@ rankdir=TB;
 	token_10 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
 	token_11 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
 	token_12 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
-	token_13 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 0 }" ];
+	token_13 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 1 }" ];
 	token_14 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_15 [ shape=record, color = green, fontcolor = green, label = "{ (for) }" ];
-	token_16 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_17 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
-	token_18 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 0 }" ];
-	token_19 [ shape=record, color = green, fontcolor = green, label = "{ (END_FOR) }" ];
-	token_20 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 4 }" ];
-	token_21 [ shape=record, color = white, fontcolor = white, label = "{ (++) }" ];
-	token_22 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_23 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
-	token_24 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_15 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_16 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
+	token_17 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 1 }" ];
+	token_18 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_19 [ shape=record, color = green, fontcolor = green, label = "{ (print) }" ];
+	token_20 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
+	token_21 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_22 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
+	token_23 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_24 [ shape=record, color = green, fontcolor = green, label = "{ (for) }" ];
 	token_25 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_26 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
-	token_27 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_28 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
-	token_29 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_30 [ shape=record, color = green, fontcolor = green, label = "{ (print) }" ];
-	token_31 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
-	token_32 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_33 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
-	token_34 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_35 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
-	token_36 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_37 [ shape=record, color = green, fontcolor = green, label = "{ (return) }" ];
-	token_38 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
-	token_39 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
-	token_40 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_41 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
+	token_26 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
+	token_27 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 0 }" ];
+	token_28 [ shape=record, color = green, fontcolor = green, label = "{ (END_FOR) }" ];
+	token_29 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 5 }" ];
+	token_30 [ shape=record, color = white, fontcolor = white, label = "{ (++) }" ];
+	token_31 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_32 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
+	token_33 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_34 [ shape=record, color = green, fontcolor = green, label = "{ (print) }" ];
+	token_35 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
+	token_36 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_37 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
+	token_38 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_39 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_40 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
+	token_41 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
 	token_42 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_43 [ shape=record, color = green, fontcolor = green, label = "{ (function) }" ];
-	token_44 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_45 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
-	token_46 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_47 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
-	token_48 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_49 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
-	token_50 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_43 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_44 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
+	token_45 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_46 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_47 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_48 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
+	token_49 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
+	token_50 [ shape=record, color = white, fontcolor = white, label = "{ (+) }" ];
 	token_51 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_52 [ shape=record, color = green, fontcolor = green, label = "{ (=) }" ];
-	token_53 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_54 [ shape=record, color = white, fontcolor = white, label = "{ (+) }" ];
-	token_55 [ shape=record, color = blue, fontcolor = blue, label = "{ (num) | 10 }" ];
-	token_56 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_57 [ shape=record, color = green, fontcolor = green, label = "{ (return) }" ];
-	token_58 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
-	token_59 [ shape=record, color = blue, fontcolor = blue, label = "{ (var) }" ];
-	token_60 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
-	token_61 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_62 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
-	token_63 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
-	token_64 [ shape=record, color = red, fontcolor = red, label = "{ (EOT) }" ];
+	token_52 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_53 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
+	token_54 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_55 [ shape=record, color = green, fontcolor = green, label = "{ (return) }" ];
+	token_56 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (() }" ];
+	token_57 [ shape=record, color = yellow, fontcolor = yellow, label = "{ ()) }" ];
+	token_58 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_59 [ shape=record, color = yellow, fontcolor = yellow, label = "{ (fig braket) }" ];
+	token_60 [ shape=record, color = red, fontcolor = red, label = "{ (newLine) }" ];
+	token_61 [ shape=record, color = red, fontcolor = red, label = "{ (EOT) }" ];
 }
 {
 	rank=same; 
 	tableCell_0x50f000000040 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f000000040 | length: 4 }" ];
 	tableCell_0x50f00000004c [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f00000004c | length: 4 }" ];
 	tableCell_0x50f000000059 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f000000059 | length: 1 }" ];
-	tableCell_0x50f000000067 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f000000067 | length: 1 }" ];
+	tableCell_0x50f000000063 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f000000063 | length: 1 }" ];
+	tableCell_0x50f000000073 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f000000073 | length: 1 }" ];
+	tableCell_0x50f00000007e [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f00000007e | length: 1 }" ];
 	tableCell_0x503000000070 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x503000000070 | length: 4 }" ];
-	tableCell_0x50f00000007f [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f00000007f | length: 6 }" ];
-	tableCell_0x50f000000086 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f000000086 | length: 1 }" ];
-	tableCell_0x50f000000097 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f000000097 | length: 1 }" ];
-	tableCell_0x50f0000000b5 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000b5 | length: 6 }" ];
-	tableCell_0x50f0000000bc [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000bc | length: 1 }" ];
-	tableCell_0x50f0000000c5 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000c5 | length: 1 }" ];
-	tableCell_0x50f0000000c9 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000c9 | length: 1 }" ];
-	tableCell_0x50f0000000dc [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000dc | length: 1 }" ];
+	tableCell_0x50f00000009c [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f00000009c | length: 1 }" ];
+	tableCell_0x50f0000000a7 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000a7 | length: 1 }" ];
+	tableCell_0x50f0000000ab [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000ab | length: 1 }" ];
+	tableCell_0x50f0000000b5 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000b5 | length: 1 }" ];
+	tableCell_0x50f0000000b9 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000b9 | length: 1 }" ];
+	tableCell_0x50f0000000c3 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000c3 | length: 1 }" ];
+	tableCell_0x50f0000000c7 [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000c7 | length: 1 }" ];
+	tableCell_0x50f0000000cb [ shape=record, color = green, fontcolor = green, label = "         { buffer addr: 0x50f0000000cb | length: 1 }" ];
 }
 {
 	rank=same; 
 	openTableCell_0x50f000000040 [ shape=record, color = green, fontcolor = green, label = "{ main }" ];
 	openTableCell_0x50f00000004c [ shape=record, color = green, fontcolor = green, label = "{ main }" ];
 	openTableCell_0x50f000000059 [ shape=record, color = green, fontcolor = green, label = "{ a }" ];
-	openTableCell_0x50f000000067 [ shape=record, color = green, fontcolor = green, label = "{ i }" ];
+	openTableCell_0x50f000000063 [ shape=record, color = green, fontcolor = green, label = "{ b }" ];
+	openTableCell_0x50f000000073 [ shape=record, color = green, fontcolor = green, label = "{ a }" ];
+	openTableCell_0x50f00000007e [ shape=record, color = green, fontcolor = green, label = "{ i }" ];
 	openTableCell_0x503000000070 [ shape=record, color = green, fontcolor = green, label = "{ _end }" ];
-	openTableCell_0x50f00000007f [ shape=record, color = green, fontcolor = green, label = "{ addTen }" ];
-	openTableCell_0x50f000000086 [ shape=record, color = green, fontcolor = green, label = "{ a }" ];
-	openTableCell_0x50f000000097 [ shape=record, color = green, fontcolor = green, label = "{ a }" ];
-	openTableCell_0x50f0000000b5 [ shape=record, color = green, fontcolor = green, label = "{ addTen }" ];
-	openTableCell_0x50f0000000bc [ shape=record, color = green, fontcolor = green, label = "{ x }" ];
-	openTableCell_0x50f0000000c5 [ shape=record, color = green, fontcolor = green, label = "{ x }" ];
-	openTableCell_0x50f0000000c9 [ shape=record, color = green, fontcolor = green, label = "{ x }" ];
-	openTableCell_0x50f0000000dc [ shape=record, color = green, fontcolor = green, label = "{ x }" ];
+	openTableCell_0x50f00000009c [ shape=record, color = green, fontcolor = green, label = "{ b }" ];
+	openTableCell_0x50f0000000a7 [ shape=record, color = green, fontcolor = green, label = "{ t }" ];
+	openTableCell_0x50f0000000ab [ shape=record, color = green, fontcolor = green, label = "{ a }" ];
+	openTableCell_0x50f0000000b5 [ shape=record, color = green, fontcolor = green, label = "{ a }" ];
+	openTableCell_0x50f0000000b9 [ shape=record, color = green, fontcolor = green, label = "{ b }" ];
+	openTableCell_0x50f0000000c3 [ shape=record, color = green, fontcolor = green, label = "{ b }" ];
+	openTableCell_0x50f0000000c7 [ shape=record, color = green, fontcolor = green, label = "{ t }" ];
+	openTableCell_0x50f0000000cb [ shape=record, color = green, fontcolor = green, label = "{ b }" ];
 }
 	token_0:s -> tableCell_0x50f000000040:n [ color = green; ]
 	token_5:s -> tableCell_0x50f00000004c:n [ color = green; ]
 	token_11:s -> tableCell_0x50f000000059:n [ color = green; ]
-	token_16:s -> tableCell_0x50f000000067:n [ color = green; ]
-	token_19:s -> tableCell_0x503000000070:n [ color = green; ]
-	token_25:s -> tableCell_0x50f00000007f:n [ color = green; ]
-	token_27:s -> tableCell_0x50f000000086:n [ color = green; ]
-	token_32:s -> tableCell_0x50f000000097:n [ color = green; ]
-	token_44:s -> tableCell_0x50f0000000b5:n [ color = green; ]
-	token_46:s -> tableCell_0x50f0000000bc:n [ color = green; ]
-	token_51:s -> tableCell_0x50f0000000c5:n [ color = green; ]
-	token_53:s -> tableCell_0x50f0000000c9:n [ color = green; ]
-	token_59:s -> tableCell_0x50f0000000dc:n [ color = green; ]
+	token_15:s -> tableCell_0x50f000000063:n [ color = green; ]
+	token_21:s -> tableCell_0x50f000000073:n [ color = green; ]
+	token_25:s -> tableCell_0x50f00000007e:n [ color = green; ]
+	token_28:s -> tableCell_0x503000000070:n [ color = green; ]
+	token_36:s -> tableCell_0x50f00000009c:n [ color = green; ]
+	token_39:s -> tableCell_0x50f0000000a7:n [ color = green; ]
+	token_41:s -> tableCell_0x50f0000000ab:n [ color = green; ]
+	token_43:s -> tableCell_0x50f0000000b5:n [ color = green; ]
+	token_45:s -> tableCell_0x50f0000000b9:n [ color = green; ]
+	token_47:s -> tableCell_0x50f0000000c3:n [ color = green; ]
+	token_49:s -> tableCell_0x50f0000000c7:n [ color = green; ]
+	token_51:s -> tableCell_0x50f0000000cb:n [ color = green; ]
 	tableCell_0x50f000000040:s -> openTableCell_0x50f000000040:n [ color = green; ]
 	tableCell_0x50f00000004c:s -> openTableCell_0x50f00000004c:n [ color = green; ]
 	tableCell_0x50f000000059:s -> openTableCell_0x50f000000059:n [ color = green; ]
-	tableCell_0x50f000000067:s -> openTableCell_0x50f000000067:n [ color = green; ]
+	tableCell_0x50f000000063:s -> openTableCell_0x50f000000063:n [ color = green; ]
+	tableCell_0x50f000000073:s -> openTableCell_0x50f000000073:n [ color = green; ]
+	tableCell_0x50f00000007e:s -> openTableCell_0x50f00000007e:n [ color = green; ]
 	tableCell_0x503000000070:s -> openTableCell_0x503000000070:n [ color = green; ]
-	tableCell_0x50f00000007f:s -> openTableCell_0x50f00000007f:n [ color = green; ]
-	tableCell_0x50f000000086:s -> openTableCell_0x50f000000086:n [ color = green; ]
-	tableCell_0x50f000000097:s -> openTableCell_0x50f000000097:n [ color = green; ]
+	tableCell_0x50f00000009c:s -> openTableCell_0x50f00000009c:n [ color = green; ]
+	tableCell_0x50f0000000a7:s -> openTableCell_0x50f0000000a7:n [ color = green; ]
+	tableCell_0x50f0000000ab:s -> openTableCell_0x50f0000000ab:n [ color = green; ]
 	tableCell_0x50f0000000b5:s -> openTableCell_0x50f0000000b5:n [ color = green; ]
-	tableCell_0x50f0000000bc:s -> openTableCell_0x50f0000000bc:n [ color = green; ]
-	tableCell_0x50f0000000c5:s -> openTableCell_0x50f0000000c5:n [ color = green; ]
-	tableCell_0x50f0000000c9:s -> openTableCell_0x50f0000000c9:n [ color = green; ]
-	tableCell_0x50f0000000dc:s -> openTableCell_0x50f0000000dc:n [ color = green; ]
+	tableCell_0x50f0000000b9:s -> openTableCell_0x50f0000000b9:n [ color = green; ]
+	tableCell_0x50f0000000c3:s -> openTableCell_0x50f0000000c3:n [ color = green; ]
+	tableCell_0x50f0000000c7:s -> openTableCell_0x50f0000000c7:n [ color = green; ]
+	tableCell_0x50f0000000cb:s -> openTableCell_0x50f0000000cb:n [ color = green; ]
 }

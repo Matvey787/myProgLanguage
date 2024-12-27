@@ -17,19 +17,33 @@ MATH_LEVEL_50 ::= [0-9]+
 MATH_LEVEL_60 ::= [a-z]+
 ```
 
-# Сurrent language capabilities
+### 💪 Language capabilities
 
 - You can create variables which get only numbers
 ```
 yourVariable = 90
 ```
-- You can create if-constructions which get only numbers
+
+- You can create if-constructions like this examples
+In the if constructions, you can use the signs <, >, <=, >=, !=, == for comparison. In comparisons, 
+you can compare variables and numbers (the order is not important). Unfortunately, the design only 
+supports one comparison and no more.
+There is some examples:
+Use variables
 ```
-if yourVariable ==  90 // you can also use '!=' '<' '>' '<=' '>='
+if yourVariable1 ==  yourVariable2
 {
-    make = 1
+    There is body of if
 }
 ```
+Use numbers
+```
+if yourVariable1 <= 90
+{
+    There is body of if
+}
+```
+
 
 - You can create cycles which get only one iterator
 ```
@@ -49,24 +63,42 @@ func myFunc(a)
 ```
 ./run.sh ../myProgLang_files/program.myl
 ```
-# Easiest example what program you can write
+### Easiest examples what program you can write
+# Fast start from factorial program
 ```
 main()
 func main()
 {
-    a = 0
-    for i=0..4 ++
-    {
-        addTen(a)
-        print(a)
-    }
+    a = 1
+    a = factorial(a)
+    print(a)
     return ()
 }
-func addTen(x)
+func factorial(x)
 {
-    x = x + 10
+    if x != 1
+    {
+        f =    x   -   1
+        x = x * factorial(f)
+    }
     return (x)
 }
 ```
-
-
+# One more example by Fibonacci numbers
+```
+main()
+func main()
+{
+    a = 1
+    b = 1
+    print(a)
+    for i=0..5 ++
+    {
+        print(b)
+        t = a
+        a = b
+        b = t + b
+    }
+    return ()
+}
+```

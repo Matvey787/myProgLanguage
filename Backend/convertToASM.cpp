@@ -43,7 +43,7 @@ struct funcsInfo_t
         else if (node->left->type == ND_NUM && node->right->type == ND_VAR) \
         { \
             snprintf(tmp_str, 100, "label%d", label_id); \
-            fprintf(*wFile, "PUSH %lg\nPUSH [FS + %lu]\n%s %s:\n", \
+            fprintf(*wFile, "PUSH %lg\nPUSH [FS+%lu]\n%s %s:\n", \
             node->left->data.num, \
             findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, \
                                   funcsInfo->callSequence[i_callSequence - 1]), \
@@ -54,7 +54,7 @@ struct funcsInfo_t
         else if (node->left->type == ND_VAR && node->right->type == ND_NUM) \
         { \
             snprintf(tmp_str, 100, "label%d", label_id); \
-            fprintf(*wFile, "PUSH [FS + %lu]\nPUSH %lg\n%s %s:\n", \
+            fprintf(*wFile, "PUSH [FS+%lu]\nPUSH %lg\n%s %s:\n", \
             findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, \
                                   funcsInfo->callSequence[i_callSequence - 1]), \
             node->right->data.num, \
@@ -65,7 +65,7 @@ struct funcsInfo_t
         else \
         { \
             snprintf(tmp_str, 100, "label%d", label_id); \
-            fprintf(*wFile, "PUSH [FS + %lu]\nPUSH [FS + %lu]\n%s %s:\n", \
+            fprintf(*wFile, "PUSH [FS+%lu]\nPUSH [FS+%lu]\n%s %s:\n", \
             findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, \
                                   funcsInfo->callSequence[i_callSequence - 1]), \
             findLocalVarPosInFunc(funcsInfo, node->right->data.var->str, \
@@ -85,6 +85,7 @@ size_t getNumOfVarsInFunc(funcsInfo_t* funcsInfo, char* funcName);
 void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* node);
 void addNewFunc(funcsInfo_t* funcsInfo, char* funcName);
 void addNewVarToFunc(funcsInfo_t* funcsInfo, char* funcName, char* varName);
+// char* findVariableStructure(funcsInfo_t* funcsInfo, const char* funcName);
 
 // function which is opens the file and writes the assembly code to it
 void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
@@ -98,10 +99,11 @@ void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
     }
     funcsInfo_t funcsInfo = {0, 0, 0, nullptr};
     createFuncsInfo(&funcsInfo, nullptr, node);
-    /* for (size_t i = 0; i < funcsInfo.numOfFuncs; i++)
+    for (size_t i = 0; i < funcsInfo.numOfFuncs; i++)
     {
-        printf("%s  %lu\n", funcsInfo.funcs[i].name, funcsInfo.funcs[i].numOfVars);
-    } */
+        printf("%s  %lu %c %c\n", funcsInfo.funcs[i].name, funcsInfo.funcs[i].numOfVars, funcsInfo.funcs[i].vars[0].name[0],
+                                                                                         funcsInfo.funcs[i].vars[1].name[0]);
+    }
     //fprintf(wFile, "PUSH 64\n POP FS\n");
     wrTreeToASMfile(node, &wFile, nameTable, 0, &funcsInfo);
 
@@ -184,16 +186,6 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
             fprintf(*wFile, "%s:\n", node->data.var->str);
             funcsInfo->callSequence[i_callSequence++] = node->data.var->str;
             printf("func before %s %d\n", funcsInfo->callSequence[i_callSequence-1], i_callSequence);
-            if (strcmp(node->data.var->str, "main") != 0)
-            {
-                fprintf(*wFile, "PUSH FS\n");
-                if (node->left != nullptr)
-                    fprintf(*wFile, "PUSH [FS+%lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, node->data.var->str));
-                fprintf(*wFile, "PUSH FS\nPUSH %lu\nADD\n", getNumOfVarsInFunc(funcsInfo, funcsInfo->callSequence[i_callSequence - 2]));
-                fprintf(*wFile, "POP FS\n");
-                if (node->left != nullptr)
-                    fprintf(*wFile, "POP [FS+%lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, node->data.var->str));
-            }
              
 
             //wrTreeToASMfile(node->left, wFile, nameTable, label_id, funcsInfo);
@@ -270,7 +262,7 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
         fprintf(stderr, "i_callSequence = %d %s\n", i_callSequence, funcsInfo->callSequence[i_callSequence - 1]); */
         if (strcmp(funcsInfo->callSequence[i_callSequence - 1], "main") != 0)
         {
-            fprintf(*wFile, "PUSH [FS+%lu]\nPOP CX\nPOP FS\n",
+            fprintf(*wFile, "PUSH [FS+%lu]\nPOP CX\n",
             findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
             i_callSequence -= 1;
         }
@@ -279,13 +271,23 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
     }
     case ND_FUNCALL:
     {
+
         if (strcmp(node->data.var->str, "main") == 0)
             fprintf(*wFile, "CALL %s:\nHLT\n", node->data.var->str);
         else if (node->left != nullptr)
-            fprintf(*wFile, "CALL %s:\nPUSH CX\nPOP [FS+%lu]\n", node->data.var->str,
-             findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
+        {
+            fprintf(*wFile, "PUSH FS\n");
+            if (node->left != nullptr)
+                fprintf(*wFile, "PUSH [FS+%lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
+            
+            fprintf(*wFile, "PUSH FS\nPUSH %lu\nADD\nPOP FS\n", getNumOfVarsInFunc(funcsInfo, node->data.var->str));
+            if (node->left != nullptr)
+                fprintf(*wFile, "POP [FS]\n");
+
+            fprintf(*wFile, "CALL %s:\nPOP FS\nPUSH CX\n", node->data.var->str);
+        }
         else
-            fprintf(*wFile, "CALL %s:\n", node->data.var->str);
+            fprintf(*wFile, "CALL %s:\nPOP FS\n", node->data.var->str);
         break;
     }
     case ND_VAR:
@@ -347,7 +349,15 @@ static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, fu
     else if (node->type == ND_FUNCALL)
     {
         if (node->left != nullptr)
-            fprintf(*wFile, "CALL %s:\n", node->data.var->str);
+        {
+            fprintf(*wFile, "PUSH FS\n");
+            fprintf(*wFile, "PUSH [FS+%lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
+            
+            fprintf(*wFile, "PUSH FS\nPUSH %lu\nADD\nPOP FS\n", getNumOfVarsInFunc(funcsInfo, node->data.var->str));
+            if (node->left != nullptr)
+                fprintf(*wFile, "POP [FS]\n");
+        }
+            fprintf(*wFile, "CALL %s:\nPOP FS\nPUSH CX\n", node->data.var->str);
     }
 }
 
@@ -366,6 +376,18 @@ static bool isSpecialOperator(types type) // TODO rename
     }
 } */
 
+/* char* findVariableStructure(funcsInfo_t* funcsInfo, const char* funcName)
+{
+    assert(funcName != nullptr);
+    for (size_t i = 0; i < funcsInfo->numOfFuncs; i++)
+    {
+        if (strcmp(funcsInfo->funcs[i].name, funcName) == 0)
+        {
+            return funcsInfo->funcs[i].vars->name;
+        }
+    }
+} */
+
 size_t findLocalVarPosInFunc(funcsInfo_t* funcsInfo, char* varName, char* funcName)
 {
     assert(varName != nullptr);
@@ -381,6 +403,7 @@ size_t findLocalVarPosInFunc(funcsInfo_t* funcsInfo, char* varName, char* funcNa
             }
         }
     }
+    printf("I couldn't find this var -> %s in function -> %s\n", varName, funcName);
     return 66666666;
 }
 size_t getNumOfVarsInFunc(funcsInfo_t* funcsInfo, char* funcName)
@@ -392,37 +415,3 @@ size_t getNumOfVarsInFunc(funcsInfo_t* funcsInfo, char* funcName)
     }
     return 77777777;
 }
-/*
-void addNewFunc(funcsInfo_t* funcsInfo, char* funcName)
-{
-    // creating of new func
-    funcsInfo->funcs = (func_t*)realloc(funcsInfo->funcs, sizeof(func_t) * (funcsInfo->numOfFuncs + 1));
-    ++funcsInfo->numOfFuncs;
-    strcpy(funcsInfo->funcs[funcsInfo->numOfFuncs].name, funcName);
-    // initialization of start cell of func in ram
-}
-
-void addNewFuncAndV(funcsInfo_t* funcsInfo, char* varName, char* funcName)
-{
-    // creating of new func
-    funcsInfo->funcs = (func_t*)realloc(funcsInfo->funcs, sizeof(func_t) * (funcsInfo->numOfFuncs + 1));
-    
-    // initialization of start cell of func in ram
-    funcsInfo->funcs[funcsInfo->numOfFuncs].startCellInRam = funcsInfo->currFuncStartCell;
-
-    // creating of local vars array
-    funcsInfo->funcs[funcsInfo->numOfFuncs].vars = (localVar_t*)
-    realloc(
-    funcsInfo->funcs[funcsInfo->numOfFuncs].vars,
-    sizeof(localVar_t) * funcsInfo->funcs[funcsInfo->numOfFuncs].numOfVars
-    );
-    //-------------------------------------------------------------------------------------------------------------
-    // adding of new var
-    funcsInfo->funcs[funcsInfo->numOfFuncs].vars[funcsInfo->funcs[funcsInfo->numOfFuncs].numOfVars].name = varName;
-
-    funcsInfo->funcs[funcsInfo->numOfFuncs].vars[funcsInfo->funcs[funcsInfo->numOfFuncs].numOfVars].localPosInFunc =
-    funcsInfo->currFuncStartCell + funcsInfo->funcs[funcsInfo->numOfFuncs].numOfVars;
-
-    funcsInfo->funcs[funcsInfo->numOfFuncs].numOfVars += 1;
-    ++funcsInfo->numOfFuncs;
-} */
