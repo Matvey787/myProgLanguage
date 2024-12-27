@@ -1,4 +1,4 @@
-# Description of the language structure in the form of RBNF
+## Description of the language structure in the form of RBNF
 ```
 GENERAL ::= {CHOOSE_APPR_or_IF_or_FOR_or_FUN_or_RET GET_NEWLINE}*
 
@@ -19,19 +19,24 @@ MATH_LEVEL_60 ::= [a-z]+
 
 ## 💪 Language capabilities
 
-- You can create variables which get only numbers
+### Equations
+You can create variables which get only numbers
 ```
 yourVariable = 90
 ```
 
-- You can create if-constructions like this examples
+### If-constructions
 In the if constructions, you can use the signs <, >, <=, >=, !=, == for comparison. In comparisons, 
-you can compare variables and numbers (the order is not important). Unfortunately, the design only 
-supports one comparison and no more.
+you can compare variables and numbers (the order is not important).
+
+> [!IMPORTANT]
+> - Unfortunately, the design only supports one comparison and no more.
+> - There is also no else and else if.
+
 There is some examples:
 Use variables
 ```
-if yourVariable1 ==  yourVariable2
+if yourVariable1 == yourVariable2
 {
     There is body of if
 }
@@ -44,27 +49,60 @@ if yourVariable1 <= 90
 }
 ```
 
+### For-constructions
 
-- You can create cycles which get only one iterator
+You can create cycles which get only one iterator. How to write them? It's not difficult, I showed 
+an example below. But how does it work internally? Essentially, the program creates i = 0 and the 
+system variable _end = 4 is created. 
+> [!WARNING]
+>For this reason, I strongly recommend not using underscores in front of your variables. 
+Afterwards, the program adds 1 to i. When i will be greater then _end, the cycle will stop.
 ```
 for i = 0..4 ++
 {
-    b = 99
+    There is body of for
 }
 ```
-- You can create functions which get only one parametr
+### Functions and calling of them
+You can create functions which get only one parametr and return only one number. How to write them?
+The example of function which is nothing return:
 ```
 func myFunc(a)
 {
-    a = a + 1
+    print(a)
+    return()
 }
 ```
-# How to run your own program on my language in your pc
+The example of function with local variable x which return number:
 ```
-./run.sh ../myProgLang_files/program.myl
+func myFunc(a)
+{
+    x = a + 1
+    return(x)
+}
 ```
-### Easiest examples what program you can write
-# Fast start from factorial program
+To call functions and start programming in my language, you need to write the main function.
+>[!IMPORTANT]
+> - <b>You must write main() firstly</b>
+> - main function nothing return but you must to write return() in the end of main function.
+Example:
+```
+main()
+func main()
+{
+    a = myFunc(1)
+    print(a)
+    return()
+}
+func myFunc(a)
+{
+    x = a + 1
+    return(x)
+}
+```
+
+## 🚀 Fast start
+### Program for calculating factorial
 ```
 main()
 func main()
@@ -84,7 +122,8 @@ func factorial(x)
     return (x)
 }
 ```
-# One more example by Fibonacci numbers
+
+### Program for calculating Fibonacci numbers
 ```
 main()
 func main()
@@ -102,3 +141,17 @@ func main()
     return ()
 }
 ```
+
+# How to run your own program on my language in your pc
+- download this repository
+- go to this downloaded repository on your pc in terminal
+- copy file path of file which contain your program (fast start you can open 
+myProgLang_files/program.myl in downloaded repository)
+- run this file by this command ./run.sh <file_path> in terminal. As example in previous paragraph:
+``` 
+./run.sh ../myProgLang_files/program.myl
+```
+- you will see output of your program in terminal
+
+
+
