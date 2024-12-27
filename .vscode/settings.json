@@ -15,10 +15,6 @@
 }
 
 {
-    "git.detectSubmodules": true
-}
-  
-{
     "Codegeex.RepoIndex": true,
     "Codegeex.CommitMessage.LanguagePreference": "English"
 }

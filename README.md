@@ -163,7 +163,7 @@ I have different extensions for it:
     sudo apt-get update
     sudo apt-get install doxygen
     ```
-    
+
 - Download doxygen extension
     Go to VS Code extensions, download <b>Doxygen Documentation Generator</b> and <b>Doxygen Runner</b>
     Then open settings.json (ctrl + shift + p and find this file) and add this code:
@@ -186,4 +186,102 @@ I have different extensions for it:
 
 - Go to this folder and find index.html, open it in your browser and be surprised!
 
+### Latex
+- Download Latex
+    ```
+    sudo apt-get install texlive-full
+    ```
 
+- Download Latex extension
+    Go to VS Code extensions, download <b>LaTeX Workshop</b>
+    Then open settings.json (ctrl + shift + p and find this file) and add this code:
+    ```
+    "latex-workshop.latex.tools": [
+    {
+    "name": "latexmk",
+    "command": "latexmk",
+    "args": [
+    "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "-pdf",
+    "-outdir=%OUTDIR%",
+    "%DOC%"
+    ],
+    "env": {}
+    },
+    {
+    "name": "xelatex",``
+    "command": "xelatex",
+    "args": [
+    "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "%DOC%"
+    ],
+    "env": {}
+    },
+    {
+    "name": "pdflatex",
+    "command": "pdflatex",
+    "args": [
+    "-synctex=1",
+    "-interaction=nonstopmode",
+    "-file-line-error",
+    "%DOC%"
+    ],
+    "env": {}
+    },
+    {
+    "name": "bibtex",
+    "command": "bibtex",
+    "args": [
+    "%DOCFILE%"
+    ],
+    "env": {}
+    }
+    ],
+
+
+    "latex-workshop.latex.recipes": [
+        {
+        "name": "pdfLaTeX",
+        "tools": [
+        "pdflatex"
+        ]
+        },
+        {
+        "name": "latexmk 🔃",
+        "tools": [
+        "latexmk"
+        ]
+        },
+        {
+        "name": "xelatex",
+        "tools": [
+        "xelatex"
+        ]
+        },
+        {
+        "name": "pdflatex ➞ bibtex ➞ pdflatex`×2",
+        "tools": [
+        "pdflatex",
+        "bibtex",
+        "pdflatex",
+        "pdflatex"
+        ]
+        },
+        {
+        "name": "xelatex ➞ bibtex ➞ xelatex`×2",
+        "tools": [
+        "xelatex",
+        "bibtex",
+        "xelatex",
+        "xelatex"
+        ]
+        }
+    ]
+    ```
+
+- Now we are ready for running latex in VS Code
+    Create .tex file in your repository and write your code. Then press ctrl + s and you will see your auto generate pdf file in your repository.
