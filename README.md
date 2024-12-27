@@ -194,7 +194,7 @@ I have different extensions for it:
 
 - Download Latex extension
     Go to VS Code extensions, download <b>LaTeX Workshop</b>
-    Then open settings.json (ctrl + shift + p and find this file) and add this code from file ![alt text](forReadme/latexSettingJson.txt)
+    Then open settings.json (ctrl + shift + p and find this file) and copy code from ![latex settings for json file](forReadme/latexSettingJson.txt)
     ```
 
 - Now we are ready for running latex in VS Code
