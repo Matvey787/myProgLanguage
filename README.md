@@ -145,9 +145,9 @@ func main()
 # How to run your own program on my language in your pc
 - download this repository
 - go to this downloaded repository on your pc in terminal
-- copy file path of file which contain your program (fast start you can open 
+- copy file path of file which contain your program </br> (fast start you can open  
 myProgLang_files/program.myl in downloaded repository)
-- run this file by this command ./run.sh <file_path> in terminal. As example in previous paragraph:
+- run this file by this command ./run.sh <file_path> in terminal. </br> As example in previous paragraph:
 ``` 
 ./run.sh ../myProgLang_files/program.myl
 ```
