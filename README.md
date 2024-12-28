@@ -9,7 +9,7 @@
     - [Program for Calculating Factorial](#program-for-calculating-factorial)
     - [Program for Calculating Fibonacci Numbers](#program-for-calculating-fibonacci-numbers)
     - [Simple Program for Solving Quadratic Equations](#simple-program-for-solving-quadratic-equations)
-4. [How to Run Your Program on My Language in Your PC](#how-to-run-your-own-program-on-my-language-in-your-pc)
+4. [How to run your program on my language in your PC](#how-to-run-your-own-program-on-my-language-in-your-pc)
 5. [Addition (Editor, Editor Extensions)](#addition-editor-editor-extensions)
     - [Doxygen](#doxygen-for-linux)
     - [LaTeX](#latex)
