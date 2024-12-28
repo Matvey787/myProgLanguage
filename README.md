@@ -20,10 +20,12 @@ MATH_LEVEL_60 ::= [a-z]+
 ## 💪 Language capabilities
 
 ### Equations
-You can create variables which get only numbers
+You can create different and creative equations. In this regard, the language is very well expended. </b>
+So, you can do like this
 ```
-yourVariable = 90
+secondVar = 90 + firstVar * (1 + get()) / 120 - sin(130) + get()
 ```
+This is a rather difficult example. The program asks you to enter a number, one is added to this number. This bracket is then multiplied by the first variable. Next, 90 is added and the sine of 130 radians is subtracted. The program will again ask for a new number and add it to the entire expression. That's how it is. Fuhhh...
 
 ### If-constructions
 In the if constructions, you can use the signs <, >, <=, >=, !=, == for comparison. In comparisons, 
@@ -222,7 +224,7 @@ I have different extensions for it:
 
 - Download Latex extension
     Go to VS Code extensions, download <b>LaTeX Workshop</b>
-    Then open settings.json (ctrl + shift + p and find this file) and copy code from [latex settings for json file](forReadme/latexSettingJson.txt).
+    Then open settings.json (ctrl + shift + p and find this file) and copy code from [latex settings for settings.json](forReadme/latexSettingJson.txt).
 
-- Now we are ready for running latex in VS Code
+- Now we are ready for running latex in VS Code.
     Create .tex file in your repository and write your code. Then press ctrl + s and you will see your auto generate pdf file in your repository.
