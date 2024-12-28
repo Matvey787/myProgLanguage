@@ -1,3 +1,18 @@
+## Table of Contents
+1. [Description of the Language Structure in the Form of RBNF](#description-of-the-language-structure-in-the-form-of-rbnf)
+2. [💪 Language Capabilities](#-language-capabilities)
+    - [Equations](#equations)
+    - [If-Constructions](#if-constructions)
+    - [For-Constructions](#for-constructions)
+    - [Functions and Calling of Them](#functions-and-calling-of-them)
+3. [🚀 Fast Start](#-fast-start)
+    - [Program for Calculating Factorial](#program-for-calculating-factorial)
+    - [Program for Calculating Fibonacci Numbers](#program-for-calculating-fibonacci-numbers)
+    - [Simple Program for Solving Quadratic Equations](#simple-program-for-solving-quadratic-equations)
+4. [How to Run Your Program on My Language in Your PC](#how-to-run-your-own-program-on-my-language-in-your-pc)
+5. [Addition (Editor, Editor Extensions)](#addition-editor-editor-extensions)
+    - [Doxygen](#doxygen-for-linux)
+    - [LaTeX](#latex)
 ## Description of the language structure in the form of RBNF
 ```
 GENERAL ::= {CHOOSE_APPR_or_IF_or_FOR_or_FUN_or_RET GET_NEWLINE}*
@@ -26,6 +41,8 @@ So, you can do like this
 secondVar = 90 + firstVar * (1 + get()) / 120 - sin(130) + get()
 ```
 This is a rather difficult example. The program asks you to enter a number, one is added to this number. This bracket is then multiplied by the first variable. Next, 90 is added and the sine of 130 radians is subtracted. The program will again ask for a new number and add it to the entire expression. That's how it is. Fuhhh...
+> [!IMPORTANT]
+> - Unfortunately, the design doesn't support numbers in variables, be careful.
 
 ### If-constructions
 In the if constructions, you can use the signs <, >, <=, >=, !=, == for comparison. In comparisons, 
