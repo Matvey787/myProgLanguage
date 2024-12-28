@@ -99,11 +99,11 @@ void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
     }
     funcsInfo_t funcsInfo = {0, 0, 0, nullptr};
     createFuncsInfo(&funcsInfo, nullptr, node);
-    for (size_t i = 0; i < funcsInfo.numOfFuncs; i++)
+    /* for (size_t i = 0; i < funcsInfo.numOfFuncs; i++)
     {
         printf("%s  %lu %c %c\n", funcsInfo.funcs[i].name, funcsInfo.funcs[i].numOfVars, funcsInfo.funcs[i].vars[0].name[0],
                                                                                          funcsInfo.funcs[i].vars[1].name[0]);
-    }
+    } */
     //fprintf(wFile, "PUSH 64\n POP FS\n");
     wrTreeToASMfile(node, &wFile, nameTable, 0, &funcsInfo);
 
@@ -182,10 +182,10 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
         printf("I see left!\n");
         if (node->type == ND_FUN)
         {
-            printf("I see func!\n");
+            //printf("I see func!\n");
             fprintf(*wFile, "%s:\n", node->data.var->str);
             funcsInfo->callSequence[i_callSequence++] = node->data.var->str;
-            printf("func before %s %d\n", funcsInfo->callSequence[i_callSequence-1], i_callSequence);
+            //printf("func before %s %d\n", funcsInfo->callSequence[i_callSequence-1], i_callSequence);
              
 
             //wrTreeToASMfile(node->left, wFile, nameTable, label_id, funcsInfo);
@@ -234,6 +234,7 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
         fprintf(*wFile, "label%d:\n", label_id);
         break;
     }
+    
     case ND_PR:
     {
         printf("I see pr! var %s function %s\n", node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]);
@@ -313,6 +314,8 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
     case ND_EOT:
     case ND_SEP:
     case ND_NUM:
+    case ND_SQRT:
+    case ND_GET:
     default:
         break;
     }
@@ -320,13 +323,13 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
 
 static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, funcsInfo_t* funcsInfo, size_t i_callSequence) // TODO rename
 {
-    //printf("900000000000000000000000000000000000000\n");
+    printf("900000000000000000000000000000000000000\n");
     if (node->left != nullptr && node->type != ND_FUNCALL)
         equationToVar(wFile, nameTable, node->left, funcsInfo, i_callSequence);
     
     if (node->right != nullptr && node->type != ND_FUNCALL)
         equationToVar(wFile, nameTable, node->right, funcsInfo, i_callSequence);
-    //printf("equation %d\n", node->type);
+    printf("equation %d\n", node->type);
     if (node->type == ND_VAR)
         fprintf(*wFile, "PUSH [FS+%lu]\n", 
         findLocalVarPosInFunc(funcsInfo, node->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
@@ -345,7 +348,25 @@ static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, fu
 
     else if (node->type == ND_SUB)
         fprintf(*wFile, "SUB\n");
+
+    else if (node->type == ND_POW)
+        fprintf(*wFile, "POW\n");
+
+    else if (node->type == ND_COS)
+        fprintf(*wFile, "COS\n");
+
+    else if (node->type == ND_GET)
+        fprintf(*wFile, "IN\n");
     
+    else if (node->type == ND_SIN)
+        fprintf(*wFile, "SIN\n");
+
+    else if (node->type == ND_LOG)
+        fprintf(*wFile, "LOG\n");
+
+    else if (node->type == ND_SQRT)
+        fprintf(*wFile, "SQRT\n");
+
     else if (node->type == ND_FUNCALL)
     {
         if (node->left != nullptr)

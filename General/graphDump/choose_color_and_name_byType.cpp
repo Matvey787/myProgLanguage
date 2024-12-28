@@ -15,7 +15,8 @@ const char* getColor(types type)
     case ND_SIN:
     case ND_COS:
     case ND_LOG:
-        return "white";
+    case ND_SQRT:
+        return "grey";
         
 
     case ND_NUM:
@@ -32,6 +33,7 @@ const char* getColor(types type)
 
     case ND_EQ:
     case ND_PR:
+    case ND_GET:
     case ND_IF:
     case ND_FOR:
     case ND_FUN:
@@ -106,16 +108,16 @@ const char* convertTypeToStr(types type)
         return "!=";
         
     case ND_LS:
-        return "<";
+        return "belove";
         
     case ND_AB:
-        return ">";
+        return "above";
         
     case ND_ABE:
-        return ">=";
+        return "aboquel";
         
     case ND_LSE:
-        return "<=";
+        return "beloquel";
         
     case ND_RCIB:
         return ")";
@@ -155,6 +157,12 @@ const char* convertTypeToStr(types type)
 
     case ND_FUNCALL:
         return "funcall";
+    
+    case ND_SQRT:
+        return "sqrt";
+    
+    case ND_GET:
+        return "get";
 
     default:
         return "error";

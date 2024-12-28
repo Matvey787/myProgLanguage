@@ -16,7 +16,7 @@ static node_t* getAddSub(node_t** exp);
 static node_t* getMulDiv(node_t** exp);
 static node_t* getSubModule(node_t** exp);
 static node_t* getAppropriation(node_t** nodes);
-static node_t* Num_OR_Var(node_t** exp);
+static node_t* Num_OR_Var_OR_Get(node_t** exp);
 static node_t* getNum(node_t** exp);
 static node_t* getVar(node_t** exp);
 static node_t* getSin(node_t** exp);
@@ -31,6 +31,8 @@ static node_t* getPrint(node_t** nodes);
 static node_t* getFunc(node_t** nodes);
 static node_t* getReturn(node_t** nodes);
 static node_t* getCallOfFunc(node_t** nodes);
+static node_t* getSqrt(node_t** nodes);
+static node_t* getGet(node_t** nodes);
 
 // Handles syntax errors by printing an error message and exiting the program.
 
@@ -114,12 +116,9 @@ static node_t* A_or_IF_or_FOR(node_t** nodes)
 static node_t* getFunc(node_t** nodes)
 {
     assert(nodes != nullptr);
-    node_t* funcNode = copyNode(*nodes);
-    
     *nodes += 1;
-    assert(funcNode != nullptr);
-    funcNode->data.var = (nameTable_t*)calloc(1, sizeof(nameTable_t));
-    (funcNode->data.var)->str = (*nodes)->data.var->str;
+    node_t* funcNode = copyNode(*nodes);
+    funcNode->type = ND_FUN;
     *nodes += 1;
     node_t* parameters = getSubModule(nodes);
     *nodes += 1;
@@ -158,12 +157,11 @@ static node_t* getFor(node_t** nodes)
         
         *nodes += 1;
         node_t* start = getNum(nodes);
-        printf("after start\n");
-        node_t* varEndOfFor = Num_OR_Var(nodes);
-        printf("before end %lg\n", (*nodes)->data.num);
+        node_t* varEndOfFor = Num_OR_Var_OR_Get(nodes);
+        // printf("before end %lg\n", (*nodes)->data.num);
         node_t* end = getNum(nodes);
         node_t* step = getAddSub(nodes);
-        printf("start: %lg end: %lg\n", start->data.num, end->data.num);
+        // printf("start: %lg end: %lg\n", start->data.num, end->data.num);
         
         *nodes += 1;
         return newNode(ND_FOR, {0}, 
@@ -219,26 +217,27 @@ node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** no
     switch (type)
     {
     case ND_ISEQ:
-        return newNode(ND_IF, {0}, newNode(ND_ISEQ, {0}, l_subtree, r_subtree), getSubModule(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_ISEQ,  {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_NISEQ:
         return newNode(ND_IF, {0}, newNode(ND_NISEQ, {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_LS:
-        return newNode(ND_IF, {0}, newNode(ND_LS, {0}, l_subtree, r_subtree), getSubModule(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_LS,    {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_AB:
-        return newNode(ND_IF, {0}, newNode(ND_AB, {0}, l_subtree, r_subtree), getSubModule(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_AB,    {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_LSE:
-        return newNode(ND_IF, {0}, newNode(ND_LSE, {0}, l_subtree, r_subtree), getSubModule(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_LSE,   {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_ABE:
-        return newNode(ND_IF, {0}, newNode(ND_ABE, {0}, l_subtree, r_subtree), getSubModule(nodes));
+        return newNode(ND_IF, {0}, newNode(ND_ABE,   {0}, l_subtree, r_subtree), getSubModule(nodes));
         break;
     case ND_SUB:
     case ND_DIV:
     case ND_RET:
+    case ND_GET:
     case ND_MUL:
     case ND_NUM:
     case ND_VAR:
@@ -261,6 +260,7 @@ node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node_t** no
     case ND_ADD:
     case ND_ENDFOR:
     case ND_PR:
+    case ND_SQRT:
     default:
         return copyNode(*nodes);
         break;
@@ -291,7 +291,7 @@ static node_t* getAddSub(node_t** nodes)
     assert(nodes != nullptr);
     printf("getAddSub %d\n", (*nodes)->type);
     node_t* l_subtree = getMulDiv(nodes);
-    while ((*nodes)->type == ND_ADD || (*nodes)->type == ND_SUB)
+    while ((*nodes)->type == ND_ADD || (*nodes)->type == ND_SUB || (*nodes)->type == ND_GET)
     {
         types op = (*nodes)->type;
         (*nodes)++;
@@ -403,8 +403,32 @@ static node_t* getCos(node_t** nodes)
     }
     else
     {
-        return getLog(nodes);
+        return getSqrt(nodes);
     }   
+}
+
+static node_t* getSqrt(node_t** nodes)
+{
+    assert(nodes != nullptr);
+    assert(*nodes != nullptr);
+    
+    if ((*nodes)->type == ND_SQRT)
+    {
+        node_t* sqrt = *nodes;
+        (*nodes)++;
+        if ((*nodes)->type != ND_LCIB)
+        {
+            sqrt->right = Num_OR_Var_OR_Get(nodes);
+            sqrt->right->data.num = 1 / sqrt->right->data.num;
+            sqrt->type = ND_POW;
+        }
+        sqrt->left = getSubModule(nodes);
+        return copyNode(sqrt);
+    }
+    else
+    {
+        return getLog(nodes);
+    }
 }
 
 // function to get log
@@ -415,18 +439,18 @@ static node_t* getLog(node_t** nodes)
     {
         node_t* log = *nodes;
         (*nodes)++;
-        log->right = Num_OR_Var(nodes);
+        log->right = Num_OR_Var_OR_Get(nodes);
         log->left = getSubModule(nodes);
         return copyNode(log);
     }
     else
     {
-        return Num_OR_Var(nodes);
+        return Num_OR_Var_OR_Get(nodes);
     }
 }
 
 // function for understanf if node is number or variable
-static node_t* Num_OR_Var(node_t** nodes)
+static node_t* Num_OR_Var_OR_Get(node_t** nodes)
 {
 
     if ((*nodes)->type == ND_NUM)
@@ -440,8 +464,18 @@ static node_t* Num_OR_Var(node_t** nodes)
         (*nodes)++;
         return poAdd;
     }
+    else if ((*nodes)->type == ND_GET)
+        return getGet(nodes);
     else 
         return nullptr;
+}
+
+static node_t* getGet(node_t** nodes)
+{
+    assert(nodes != nullptr);
+    assert(*nodes != nullptr);
+    (*nodes)++;
+    return newNode(ND_GET, {0}, nullptr, nullptr);
 }
 
 

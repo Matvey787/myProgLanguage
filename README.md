@@ -55,7 +55,8 @@ You can create cycles which get only one iterator. How to write them? It's not d
 an example below. But how does it work internally? Essentially, the program creates i = 0 and the 
 system variable _end = 4 is created. 
 > [!WARNING]
->For this reason, I strongly recommend not using underscores in front of your variables. 
+>For this reason, I strongly recommend not using underscores in front of your variables.
+
 Afterwards, the program adds 1 to i. When i will be greater then _end, the cycle will stop.
 ```
 for i = 0..4 ++
@@ -85,6 +86,7 @@ To call functions and start programming in my language, you need to write the ma
 >[!IMPORTANT]
 > - You must write <b>main()</b> firstly
 > - main function nothing return but you must to write <b>return()</b> in the end of main function.
+
 Example:
 ```
 main()
@@ -141,6 +143,32 @@ func main()
     return ()
 }
 ```
+### Simple program for solve quad equations
+```
+main()
+func main()
+{
+    a = get()
+    b = get()
+    c = get()
+    diskr = b^2 - 4*a*c
+    if diskr > 0
+    {
+        first = ((0-1)*b + sqrt(diskr))/(2*a)
+        second = ((0-1)*b - sqrt(diskr))/(2*a)
+        print(first)
+        print(second)
+        return ()
+    }
+    if diskr == 0
+    {
+        first = ((0-1)*b + sqrt(diskr))/(2*a)
+        print(first)
+        return ()
+    }
+    return ()
+}
+```
 
 ## How to run your own program on my language in your pc
 - download this repository
@@ -154,7 +182,7 @@ func main()
 
 ## Addition (editor, editor extensions)
 
-To write the project, I used the VS Code editor.
+To write the project, I used the VS Code editor.</br>
 I have different extensions for it:
 ### Doxygen (for Linux)
 - Download doxygen
@@ -194,8 +222,7 @@ I have different extensions for it:
 
 - Download Latex extension
     Go to VS Code extensions, download <b>LaTeX Workshop</b>
-    Then open settings.json (ctrl + shift + p and find this file) and copy code from [latex settings for json file](forReadme/latexSettingJson.txt)
-    ```
+    Then open settings.json (ctrl + shift + p and find this file) and copy code from [latex settings for json file](forReadme/latexSettingJson.txt).
 
 - Now we are ready for running latex in VS Code
     Create .tex file in your repository and write your code. Then press ctrl + s and you will see your auto generate pdf file in your repository.

@@ -1,1 +1,23 @@
-
+main()
+func main()
+{
+    a = get()
+      b = get()
+        c = get()
+    diskr = b^2 - 4*a*c
+    if diskr > 0
+    {
+        first = ((0-1)*b + sqrt(diskr))/(2*a)
+        second = ((0-1)*b - sqrt(diskr))/(2*a)
+        print(first)
+        print(second)
+        return ()
+    }
+    if diskr == 0
+    {
+        first = ((0-1)*b + sqrt(diskr))/(2*a)
+        print(first)
+        return ()
+    }
+    return ()
+}

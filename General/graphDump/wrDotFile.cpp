@@ -34,6 +34,7 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
     switch (node->type)
     {
     case ND_DIV:
+    case ND_GET:
     case ND_MUL:
     case ND_POADD:
     case ND_ADD:
@@ -42,6 +43,7 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
     case ND_SIN:
     case ND_COS:
     case ND_LOG:
+    case ND_SQRT:
     case ND_IF:
     case ND_EQ:
     case ND_FOR:
@@ -56,7 +58,7 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
     case ND_ABE:
     case ND_LSE:
     {
-        fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | (%s) | \
+        fprintf(*wFile, "node%p [ shape=record, color = %s rank = %lu, label= \"{ %p | %s | \
         {<n%p_l> left | <n%p_r> right}} \" ];\n",
         node, getColor(node->type), rank, node, convertTypeToStr(node->type), node, node);
 

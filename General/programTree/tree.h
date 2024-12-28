@@ -15,7 +15,7 @@ enum types
     ND_SIN=8,
     ND_COS=9,
     ND_LOG=10,
-
+    ND_SQRT=11,
     
     ND_LCIB=100,
     ND_RCIB=101,
@@ -39,7 +39,8 @@ enum types
     ND_PR = 118,
     ND_FUN = 119,
     ND_RET = 120,
-    ND_FUNCALL = 121
+    ND_FUNCALL = 121,
+    ND_GET = 122
 };
 
 struct nameTable_t
