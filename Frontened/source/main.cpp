@@ -30,14 +30,18 @@ int main(int argc, char* argv[])
     if (readFile(&buffer, filePath, &numOfSmbls, &numOfStrs) != NO_ERRORS){
         return 1;
     }
-    char** systemVars = (char**)calloc(20, sizeof(char*));
-    for (int i = 0; i < 20; i++)
+    // array for saving system vars which are created during token processing
+    char** systemVars = (char**)calloc(c_numberOfSysVars, sizeof(char*));
+    for (int i = 0; i < c_numberOfSysVars; i++)
     {
-        systemVars[i] = (char*)calloc(20, sizeof(char));
+        systemVars[i] = (char*)calloc(c_lengthOfVarName, sizeof(char));
     }
-    nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
+    // table for saving user vars
+    nameTable_t* nameTable = (nameTable_t*)calloc(c_numberOfUserVars, sizeof(nameTable_t));
+
     node_t* tokens = createTokens(buffer, numOfSmbls, nameTable, systemVars, "../dot_files/tokensDotFile.dot", "../png_files");
     node_t* predprocessingTree = createPredprocessingTree(tokens, "../dot_files/frontenedDotFile.dot", "../png_files");
+    
     pushTree(predprocessingTree, "../progTree");
     getchar();
     free(filePath);
@@ -45,12 +49,12 @@ int main(int argc, char* argv[])
     delTree(predprocessingTree);
     free(tokens);
     free(buffer);
-    for (int i = 0; i < 20; i++)
-    {
+
+    for (int i = 0; i < c_numberOfSysVars; i++)
         free(systemVars[i]);
-    }
     free(systemVars);
 
+    systemVars = nullptr;
     predprocessingTree = nullptr;
     tokens = nullptr;
     nameTable = nullptr;

@@ -21,7 +21,7 @@ GENERAL ::= {CHOOSE_APPR_or_IF_or_FOR_or_FUN_or_RET GET_NEWLINE}*
 
 CHOOSE_APPR_IF_FOR_FUN_RET ::= GET_IF | GET_APPR | GET_FOR | GET_RET | GET_PR 
 
-GET_IF ::= 'if' MATH_LEVEL_60 '==' MATH_LEVEL_50 '{' MAIN '}'
+GET_IF ::= 'if' MATH_LEVEL_60 ('==' | '!=' | '<' | '>' | '<=' | '>=') MATH_LEVEL_50 '{' MAIN '}'
 GET_APPR ::= MATH_LEVEL_60 '=' E <-----------------------------------------  appropriation
 GET_FOR ::= 'for' DEF_VAR '..' MATH_LEVEL_4 { BODY } 
 GET_PR = MATH_LEVEL_10 <---------------------------------------------------  print

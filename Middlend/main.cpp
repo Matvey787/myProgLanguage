@@ -7,6 +7,7 @@
 #include "../General/programTree/tree.h"
 #include "../General/treeTransfer/treeTransfer.h"
 #include "../General/graphDump/graphDump.h"
+#include "progOptimization.h"
 
 void delTable(nameTable_t* nameTable);
 
@@ -14,9 +15,10 @@ int main()
 {
     nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
     node_t* progTree = pullTree(nameTable, "../progTree");
+    optimizeProgTree(progTree, nullptr, 'l');
     writeDotFile(progTree, "../dot_files/middlendDotFile.dot");
     writePngFile("../dot_files/middlendDotFile.dot", "../png_files", "white");
-    getchar();
+    
     pushTree(progTree, "../progTree");
     delTree(progTree);
     

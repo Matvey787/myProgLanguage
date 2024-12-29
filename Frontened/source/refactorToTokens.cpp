@@ -4,6 +4,7 @@
 #include <ctype.h>
 #include <assert.h>
 #include <math.h>
+#include "constants.h"
 #include "../../General/programTree/tree.h"
 #include "../../General/errors.h"
 #include "refactorToTokens.h"
@@ -33,7 +34,7 @@ node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, 
     // need for scanning end of buffer
     char* last_addr = buffer + l_buff;
 
-    node_t* tokens = (node_t*)calloc(500, sizeof(node_t));
+    node_t* tokens = (node_t*)calloc(c_numberOfTokens, sizeof(node_t));
     size_t i_toks = 0;
     size_t i_sysVars = 0;
     size_t i_nameTab = 0;
