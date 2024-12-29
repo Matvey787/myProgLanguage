@@ -18,7 +18,6 @@ int main()
     node_t* progTree = pullTree(nameTable, "../progTree");
     writeDotFile(progTree, "../dot_files/backendDotFile.dot");
     writePngFile("../dot_files/backendDotFile.dot", "../png_files", "white");
-    getchar();
     writeASMfile(progTree, nameTable, "../program.ASM");
 
     delTree(progTree);

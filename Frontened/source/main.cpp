@@ -43,7 +43,6 @@ int main(int argc, char* argv[])
     node_t* predprocessingTree = createPredprocessingTree(tokens, "../dot_files/frontenedDotFile.dot", "../png_files");
     
     pushTree(predprocessingTree, "../progTree");
-    getchar();
     free(filePath);
     free(nameTable);
     delTree(predprocessingTree);

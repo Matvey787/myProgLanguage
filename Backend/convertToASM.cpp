@@ -27,54 +27,75 @@ struct funcsInfo_t
     func_t* funcs;
 };
 
-#define comparOperator(name, jump) \
-    case (ND_##name): \
-    { \
-        if (node->left->type == ND_NUM && node->right->type == ND_NUM) \
-        { \
-            snprintf(tmp_str, 100, "label%d", label_id); \
-            fprintf(*wFile, "PUSH %lg\nPUSH %lg\n%s %s:\n", \
-            node->left->data.num, \
-            node->right->data.num, \
-            jump, \
-            tmp_str); \
-            break; \
-        }\
-        else if (node->left->type == ND_NUM && node->right->type == ND_VAR) \
-        { \
-            snprintf(tmp_str, 100, "label%d", label_id); \
-            fprintf(*wFile, "PUSH %lg\nPUSH [FS+%lu]\n%s %s:\n", \
-            node->left->data.num, \
-            findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, \
-                                  funcsInfo->callSequence[i_callSequence - 1]), \
-            jump, \
-            tmp_str); \
-            break; \
-        } \
-        else if (node->left->type == ND_VAR && node->right->type == ND_NUM) \
-        { \
-            snprintf(tmp_str, 100, "label%d", label_id); \
-            fprintf(*wFile, "PUSH [FS+%lu]\nPUSH %lg\n%s %s:\n", \
-            findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, \
-                                  funcsInfo->callSequence[i_callSequence - 1]), \
-            node->right->data.num, \
-            jump, \
-            tmp_str); \
-            break; \
-        } \
-        else \
-        { \
-            snprintf(tmp_str, 100, "label%d", label_id); \
-            fprintf(*wFile, "PUSH [FS+%lu]\nPUSH [FS+%lu]\n%s %s:\n", \
-            findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, \
-                                  funcsInfo->callSequence[i_callSequence - 1]), \
-            findLocalVarPosInFunc(funcsInfo, node->right->data.var->str, \
-                                  funcsInfo->callSequence[i_callSequence - 1]), \
-            jump, \
-            tmp_str); \
-            break; \
-        }\
-    }
+#define comparOperator(name, jump)                                                   \
+case (ND_##name):                                                                    \
+{                                                                                    \
+    if (node->left->type == ND_NUM && node->right->type == ND_NUM)                   \
+    {                                                                                \
+        snprintf(tmp_str, 100, "label%d", label_id);                                 \
+        fprintf(*wFile,                                                              \
+                "; ---> start of if\n"                                              \
+                "PUSH %lg\n"                                                         \
+                "PUSH %lg\n"                                                         \
+                "%s %s:\n",                                                          \
+                node->left->data.num,                                                \
+                node->right->data.num,                                               \
+                jump,                                                                \
+                tmp_str);                                                            \
+        break;                                                                       \
+    }                                                                                \
+    else if (node->left->type == ND_NUM && node->right->type == ND_VAR)              \
+    {                                                                                \
+        snprintf(tmp_str, 100, "label%d", label_id);                                 \
+        fprintf(*wFile,                                                              \
+                "; ---> start of if\n"                                              \
+                "PUSH %lg\n"                                                         \
+                "PUSH [FS + %lu]\n"                                                  \
+                "%s %s:\n",                                                          \
+                node->left->data.num,                                                \
+                findLocalVarPosInFunc(funcsInfo,                                     \
+                                       node->left->data.var->str,                    \
+                                       funcsInfo->callSequence[i_callSequence - 1]), \
+                jump,                                                                \
+                tmp_str);                                                            \
+        break;                                                                       \
+    }                                                                                \
+    else if (node->left->type == ND_VAR && node->right->type == ND_NUM)              \
+    {                                                                                \
+        snprintf(tmp_str, 100, "label%d", label_id);                                 \
+        fprintf(*wFile,                                                              \
+                "; ---> start of if\n"                                               \
+                "PUSH [FS + %lu]\n"                                                  \
+                "PUSH %lg\n"                                                         \
+                "%s %s:\n",                                                          \
+                findLocalVarPosInFunc(funcsInfo,                                     \
+                                       node->left->data.var->str,                    \
+                                       funcsInfo->callSequence[i_callSequence - 1]), \
+                node->right->data.num,                                               \
+                jump,                                                                \
+                tmp_str);                                                            \
+        break;                                                                       \
+    }                                                                                \
+    else                                                                             \
+    {                                                                                \
+        snprintf(tmp_str, 100, "label%d", label_id);                                 \
+        fprintf(*wFile,                                                              \
+                "; ---> start of if\n"                                               \
+                "PUSH [FS + %lu]\n"                                                  \
+                "PUSH [FS + %lu]\n"                                                  \
+                "%s %s:\n",                                                          \
+                findLocalVarPosInFunc(funcsInfo,                                     \
+                                       node->left->data.var->str,                    \
+                                       funcsInfo->callSequence[i_callSequence - 1]), \
+                findLocalVarPosInFunc(funcsInfo,                                     \
+                                       node->right->data.var->str,                   \
+                                       funcsInfo->callSequence[i_callSequence - 1]), \
+                jump,                                                                \
+                tmp_str);                                                            \
+        break;                                                                       \
+    }                                                                                \
+}
+
 static void wrTreeToASMfile   (node_t* node, FILE** wFile, nameTable_t* nameTable, int label_id, funcsInfo_t* funcsInfo);
 static bool isSpecialOperator (types type);
 static void equationToVar     (FILE** wFile, nameTable_t* nameTable, node_t* node, funcsInfo_t* funcsInfo, size_t i_callSequence);
@@ -86,7 +107,8 @@ static void createFuncsInfo (funcsInfo_t* funcsInfo, char* currFuncName, node_t*
 static void clearFuncsInfo  (funcsInfo_t* funcsInfo);
 static void addNewFunc      (funcsInfo_t* funcsInfo, char* funcName);
 static void addNewVarToFunc (funcsInfo_t* funcsInfo, char* funcName, char* varName);
-// char* findVariableStructure(funcsInfo_t* funcsInfo, const char* funcName);
+void addTabs(size_t numOfTabs, FILE** wFile);
+
 
 // function which is opens the file and writes the assembly code to it
 void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
@@ -155,7 +177,6 @@ static void addNewVarToFunc(funcsInfo_t* funcsInfo, char* funcName, char* varNam
 {
     assert(funcName != nullptr);
     assert(varName != nullptr);
-    printf("===== %s\n", varName);
     for (size_t i = 0; i < funcsInfo->numOfFuncs; ++i)
     {
         if (strcmp(funcsInfo->funcs[i].name, funcName) == 0)
@@ -171,6 +192,7 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
 {
     static int last_label_id = 0;
     static size_t i_callSequence = 0;
+    static size_t numOfTabs = 0;
     char tmp_str[100] = {0};
 
     if (node == nullptr)
@@ -184,8 +206,9 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
         if (node->type == ND_FUN)
         {
             //printf("I see func!\n");
-            fprintf(*wFile, "%s:\n", node->data.var->str);
+            fprintf(*wFile, "; ---------> create function %s\n%s:\n", node->data.var->str, node->data.var->str);
             funcsInfo->callSequence[i_callSequence++] = node->data.var->str;
+            numOfTabs++;
             //printf("func before %s %d\n", funcsInfo->callSequence[i_callSequence-1], i_callSequence);
              
 
@@ -208,20 +231,20 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
         if (node->type == ND_FOR)
         {
             //printf("qwerty %d %s %s\n", label_id, node->left->left->data.var->str, node->left->right->data.var->str);
-            fprintf(*wFile, "label%d:\nPUSH [FS+%lu]\nPUSH 1\nADD\nPOP [FS+%lu]\n",
+            fprintf(*wFile, "label%d:\nPUSH [FS + %lu]\nPUSH 1\nADD\nPOP [FS + %lu]\n; ---> end of for\n",
             label_id,
             findLocalVarPosInFunc(funcsInfo, node->left->left->left->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]),
             findLocalVarPosInFunc(funcsInfo, node->left->left->left->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
         }
         wrTreeToASMfile(node->right, wFile, nameTable, label_id, funcsInfo);
     }
-    
+
     switch (node->type)
     {
 
     case ND_EQ:
         equationToVar(wFile, nameTable, node->right, funcsInfo, i_callSequence);
-        fprintf(*wFile, "POP [FS+%lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
+        fprintf(*wFile, "POP [FS + %lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
         break;
 
     comparOperator(ISEQ, "JNE")
@@ -239,16 +262,16 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
     
     case ND_PR:
     {
-        printf("I see pr! var %s function %s\n", node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]);
+        //printf("I see pr! var %s function %s\n", node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]);
         if (node->left->type == ND_NUM)
             fprintf(*wFile, "PUSH %lg\nOUT\n", node->left->data.num);
         else
-            fprintf(*wFile, "PUSH [FS+%lu]\nOUT\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
+            fprintf(*wFile, "PUSH [FS + %lu]\nOUT\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
         break;
     }
     case ND_FOR:
     {
-        fprintf(*wFile, "PUSH [FS+%lu]\nPUSH [FS+%lu]\nJB label%d:\n",
+        fprintf(*wFile, "; ---------> start of for\nPUSH [FS + %lu]\nPUSH [FS + %lu]\nJB label%d:\n",
         findLocalVarPosInFunc(funcsInfo, node->left->left->left->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]),
             findLocalVarPosInFunc(funcsInfo, node->left->left->right->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]),
         label_id);
@@ -261,27 +284,26 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
     } */
     case ND_RET:
     {
-        /* printf("I see ret! --------------- \n");
-        fprintf(stderr, "i_callSequence = %d %s\n", i_callSequence, funcsInfo->callSequence[i_callSequence - 1]); */
         if (strcmp(funcsInfo->callSequence[i_callSequence - 1], "main") != 0)
         {
-            fprintf(*wFile, "PUSH [FS+%lu]\nPOP CX\n",
+            fprintf(*wFile, "PUSH [FS + %lu]\nPOP CX\n",
             findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
             i_callSequence -= 1;
         }
-        fprintf(*wFile, "RET\n");
+        fprintf(*wFile, "RET\n\n");
+        --numOfTabs;
         break;
     }
     case ND_FUNCALL:
     {
-
+        printf("; ---------> call %s\n", node->data.var->str);
         if (strcmp(node->data.var->str, "main") == 0)
             fprintf(*wFile, "CALL %s:\nHLT\n", node->data.var->str);
         else if (node->left != nullptr)
         {
             fprintf(*wFile, "PUSH FS\n");
             if (node->left != nullptr)
-                fprintf(*wFile, "PUSH [FS+%lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
+                fprintf(*wFile, "PUSH [FS + %lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
             
             fprintf(*wFile, "PUSH FS\nPUSH %lu\nADD\nPOP FS\n", getNumOfVarsInFunc(funcsInfo, node->data.var->str));
             if (node->left != nullptr)
@@ -325,15 +347,13 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
 
 static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, funcsInfo_t* funcsInfo, size_t i_callSequence) // TODO rename
 {
-    printf("900000000000000000000000000000000000000\n");
     if (node->left != nullptr && node->type != ND_FUNCALL)
         equationToVar(wFile, nameTable, node->left, funcsInfo, i_callSequence);
     
     if (node->right != nullptr && node->type != ND_FUNCALL)
         equationToVar(wFile, nameTable, node->right, funcsInfo, i_callSequence);
-    printf("equation %d\n", node->type);
     if (node->type == ND_VAR)
-        fprintf(*wFile, "PUSH [FS+%lu]\n", 
+        fprintf(*wFile, "PUSH [FS + %lu]\n", 
         findLocalVarPosInFunc(funcsInfo, node->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
 
     else if (node->type == ND_NUM)
@@ -374,8 +394,11 @@ static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, fu
         if (node->left != nullptr)
         {
             fprintf(*wFile, "PUSH FS\n");
-            fprintf(*wFile, "PUSH [FS+%lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
-            
+            if (node->left->type == ND_VAR)
+                fprintf(*wFile, "PUSH [FS + %lu]\n", findLocalVarPosInFunc(funcsInfo, node->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]));
+            else
+                fprintf(*wFile, "PUSH %lg\n", node->left->data.num);
+
             fprintf(*wFile, "PUSH FS\nPUSH %lu\nADD\nPOP FS\n", getNumOfVarsInFunc(funcsInfo, node->data.var->str));
             if (node->left != nullptr)
                 fprintf(*wFile, "POP [FS]\n");
@@ -384,32 +407,17 @@ static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, fu
     }
 }
 
+void addTabs(size_t numOfTabs, FILE** wFile)
+{
+    for (size_t i = 0; i < numOfTabs; i++)
+        fprintf(*wFile, "\t");
+}
+
 static bool isSpecialOperator(types type) // TODO rename
 {
     return type == ND_EQ || type == ND_ISEQ || type == ND_NISEQ ||
            type == ND_AB || type == ND_LS   || type == ND_ABE   || type == ND_LSE;
 }
-
-/* size_t findStartOfFuncInRam(funcsInfo_t* funcsInfo, char* funcName)
-{
-    for (size_t i = 0; i < funcsInfo->numOfFuncs; i++)
-    {
-        if (strcmp(funcsInfo->funcs[i].name, funcName) == 0)
-            return funcsInfo->funcs[i].startCellInRam;
-    }
-} */
-
-/* char* findVariableStructure(funcsInfo_t* funcsInfo, const char* funcName)
-{
-    assert(funcName != nullptr);
-    for (size_t i = 0; i < funcsInfo->numOfFuncs; i++)
-    {
-        if (strcmp(funcsInfo->funcs[i].name, funcName) == 0)
-        {
-            return funcsInfo->funcs[i].vars->name;
-        }
-    }
-} */
 
 size_t findLocalVarPosInFunc(funcsInfo_t* funcsInfo, char* varName, char* funcName)
 {
@@ -426,8 +434,7 @@ size_t findLocalVarPosInFunc(funcsInfo_t* funcsInfo, char* varName, char* funcNa
             }
         }
     }
-    printf("I couldn't find this var -> %s in function -> %s\n", varName, funcName);
-    return 66666666;
+    return 666666;
 }
 size_t getNumOfVarsInFunc(funcsInfo_t* funcsInfo, char* funcName)
 {
