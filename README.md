@@ -1,3 +1,5 @@
+# My Language
+![alt text](forReadme/logo.png)
 ## Table of Contents
 1. [Description of the Language Structure in the Form of RBNF](#description-of-the-language-structure-in-the-form-of-rbnf)
 2. [💪 Language Capabilities](#-language-capabilities)

@@ -75,16 +75,17 @@ struct funcsInfo_t
             break; \
         }\
     }
-static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, int label_id, funcsInfo_t* funcsInfo);
-static bool isSpecialOperator(types type);
-static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, funcsInfo_t* funcsInfo, size_t i_callSequence);
+static void wrTreeToASMfile   (node_t* node, FILE** wFile, nameTable_t* nameTable, int label_id, funcsInfo_t* funcsInfo);
+static bool isSpecialOperator (types type);
+static void equationToVar     (FILE** wFile, nameTable_t* nameTable, node_t* node, funcsInfo_t* funcsInfo, size_t i_callSequence);
 
-size_t findLocalVarPosInFunc(funcsInfo_t* funcsInfo, char* varName, char* funcName);
-size_t getNumOfVarsInFunc(funcsInfo_t* funcsInfo, char* funcName);
+size_t findLocalVarPosInFunc (funcsInfo_t* funcsInfo, char* varName, char* funcName);
+size_t getNumOfVarsInFunc    (funcsInfo_t* funcsInfo, char* funcName);
 
-void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* node);
-void addNewFunc(funcsInfo_t* funcsInfo, char* funcName);
-void addNewVarToFunc(funcsInfo_t* funcsInfo, char* funcName, char* varName);
+static void createFuncsInfo (funcsInfo_t* funcsInfo, char* currFuncName, node_t* node);
+static void clearFuncsInfo  (funcsInfo_t* funcsInfo);
+static void addNewFunc      (funcsInfo_t* funcsInfo, char* funcName);
+static void addNewVarToFunc (funcsInfo_t* funcsInfo, char* funcName, char* varName);
 // char* findVariableStructure(funcsInfo_t* funcsInfo, const char* funcName);
 
 // function which is opens the file and writes the assembly code to it
@@ -99,20 +100,15 @@ void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
     }
     funcsInfo_t funcsInfo = {0, 0, 0, nullptr};
     createFuncsInfo(&funcsInfo, nullptr, node);
-    /* for (size_t i = 0; i < funcsInfo.numOfFuncs; i++)
-    {
-        printf("%s  %lu %c %c\n", funcsInfo.funcs[i].name, funcsInfo.funcs[i].numOfVars, funcsInfo.funcs[i].vars[0].name[0],
-                                                                                         funcsInfo.funcs[i].vars[1].name[0]);
-    } */
-    //fprintf(wFile, "PUSH 64\n POP FS\n");
+
     wrTreeToASMfile(node, &wFile, nameTable, 0, &funcsInfo);
 
-    //fprintf(wFile, "HLT\n");
+    clearFuncsInfo();
 
     fclose(wFile);
 }
 
-void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* node)
+static void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* node)
 {
     assert(node != nullptr);
     char* currFuncName_ = currFuncName;
@@ -121,15 +117,12 @@ void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* node)
         currFuncName_ = node->data.var->str;
         addNewFunc(funcsInfo, currFuncName_);
     }
+
     if (node->type == ND_VAR || node->type == ND_ENDFOR)
     {
         addNewVarToFunc(funcsInfo, currFuncName_, node->data.var->str);
     }
-    /* if (node->type == ND_FOR)
-    {
-        addNewVarToFunc(funcsInfo, currFuncName_, node->left->data.var->str);
-        addNewVarToFunc(funcsInfo, currFuncName_, "_end");
-    } */
+
     if (node->left != nullptr && node->type != ND_PR && node->type != ND_RET)
     {
         createFuncsInfo(funcsInfo, currFuncName_, node->left);
@@ -138,10 +131,18 @@ void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* node)
     {
         createFuncsInfo(funcsInfo, currFuncName_, node->right);
     }
-
 }
 
-void addNewFunc(funcsInfo_t* funcsInfo, char* funcName)
+static void clearFuncsInfo(funcsInfo_t* funcsInfo)
+{
+    for (size_t i = 0; i < funcsInfo->numOfFuncs; ++i)
+    {
+        free(funcsInfo->funcs[i].vars);
+    }
+    free(funcsInfo->funcs);
+}
+
+static void addNewFunc(funcsInfo_t* funcsInfo, char* funcName)
 {
     funcsInfo->funcs = (func_t*)realloc(funcsInfo->funcs, sizeof(func_t) * (funcsInfo->numOfFuncs + 1));
     funcsInfo->funcs[funcsInfo->numOfFuncs].numOfVars = 0;
@@ -150,7 +151,7 @@ void addNewFunc(funcsInfo_t* funcsInfo, char* funcName)
     ++funcsInfo->numOfFuncs;
 }
 
-void addNewVarToFunc(funcsInfo_t* funcsInfo, char* funcName, char* varName)
+static void addNewVarToFunc(funcsInfo_t* funcsInfo, char* funcName, char* varName)
 {
     assert(funcName != nullptr);
     assert(varName != nullptr);
