@@ -41,7 +41,8 @@ enum types
     ND_FUN = 119,
     ND_RET = 120,
     ND_FUNCALL = 121,
-    ND_GET = 122
+    ND_GET = 122,
+    ND_GETDIFF = 123
 };
 
 struct nameTable_t

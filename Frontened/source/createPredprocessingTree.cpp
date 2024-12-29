@@ -33,6 +33,7 @@ static node_t* getReturn(node_t** nodes);
 static node_t* getCallOfFunc(node_t** nodes);
 static node_t* getSqrt(node_t** nodes);
 static node_t* getGet(node_t** nodes);
+static node_t* getDiff(node_t** nodes);
 
 // Handles syntax errors by printing an error message and exiting the program.
 
@@ -107,7 +108,10 @@ static node_t* chooseMode(node_t** nodes)
     {
         return getReturn(nodes);
     }
-    
+    else if ((*nodes)->type == ND_GETDIFF)
+    {
+        return getDiff(nodes);
+    }
     else
         return getAddSub(nodes);
 }
@@ -126,6 +130,16 @@ static node_t* getFunc(node_t** nodes)
     funcNode->right = funcBody; // create right subtree of func body in funcNode
     return funcNode;
 }   
+
+static node_t* getDiff(node_t** nodes)
+{
+    assert(nodes != nullptr);
+    node_t* diffNode = copyNode(*nodes);
+    *nodes += 1;
+    node_t* parameters = getSubModule(nodes);
+    diffNode->left = parameters;
+    return diffNode;
+}
 
 static node_t* getCallOfFunc(node_t** nodes)
 {
@@ -250,6 +264,7 @@ static node_t* newNode_by_ComparisonOperator(types type, node_t* l_subtree, node
     case ND_FOR:
     case ND_SEP:
     case ND_POADD:
+    case ND_GETDIFF:
     case ND_ADD:
     case ND_ENDFOR:
     case ND_PR:
@@ -444,6 +459,9 @@ static node_t* Num_OR_Var_OR_Get(node_t** nodes)
     }
     else if ((*nodes)->type == ND_GET)
         return getGet(nodes);
+
+    else if ((*nodes)->type == ND_GETDIFF)
+        return getDiff(nodes);
     else 
         return nullptr;
 }

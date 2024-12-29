@@ -55,6 +55,9 @@ const char* getColor(types type)
     case ND_SEP:
         return "red";
         
+    case ND_GETDIFF:
+        return "purple";
+        
     default:
         return "blue";
         
@@ -163,6 +166,9 @@ const char* convertTypeToStr(types type)
     
     case ND_GET:
         return "get";
+
+    case ND_GETDIFF:
+        return "diff";
 
     default:
         return "error";

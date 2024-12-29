@@ -50,6 +50,7 @@ static void writeTreeToDotFile(node_t* node, FILE** wFile, size_t rank){
     case ND_EOT:
     case ND_SEP:
     case ND_PR:
+    case ND_GETDIFF:
     case ND_RET:
     case ND_ISEQ:
     case ND_NISEQ:

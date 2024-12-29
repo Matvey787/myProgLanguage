@@ -2,55 +2,29 @@ digraph
 { 
 rankdir=HR;
 
-node0x5030000008e0 [ shape=record, color = red rank = 1, label= "{ 0x5030000008e0 | newLine |         {<n0x5030000008e0_l> left | <n0x5030000008e0_r> right}} " ];
-node0x5030000008b0 [ shape=record, color = red rank = 2, label= "{ 0x5030000008b0 | newLine |         {<n0x5030000008b0_l> left | <n0x5030000008b0_r> right}} " ];
-node0x503000000670 [ shape=record, color = red rank = 3, label= "{ 0x503000000670 | newLine |         {<n0x503000000670_l> left | <n0x503000000670_r> right}} " ];
-node0x503000000430 [ shape=record, color = green rank = 4, label= "{ 0x503000000430 | funcall | main |         {<n0x503000000430_l> left | <n0x503000000430_r> right}} " ];
-node0x503000000670:<n0x503000000670_l>:s -> node0x503000000430:n [ color = black; ]
-node0x503000000460 [ shape=record, color = green rank = 5, label= "{ 0x503000000460 | function | main |         {<n0x503000000460_l> left | <n0x503000000460_r> right}} " ];
-node0x503000000640 [ shape=record, color = red rank = 6, label= "{ 0x503000000640 | newLine |         {<n0x503000000640_l> left | <n0x503000000640_r> right}} " ];
-node0x503000000610 [ shape=record, color = red rank = 7, label= "{ 0x503000000610 | newLine |         {<n0x503000000610_l> left | <n0x503000000610_r> right}} " ];
-node0x5030000005b0 [ shape=record, color = red rank = 8, label= "{ 0x5030000005b0 | newLine |         {<n0x5030000005b0_l> left | <n0x5030000005b0_r> right}} " ];
-node0x503000000520 [ shape=record, color = green rank = 9, label= "{ 0x503000000520 | = |         {<n0x503000000520_l> left | <n0x503000000520_r> right}} " ];
-node0x503000000490 [ shape=record, color = blue rank = 10, label= "{ 0x503000000490 | var | a |         {<n0x503000000490_l> left | <n0x503000000490_r> right}} " ];
-node0x503000000520:<n0x503000000520_l>:s -> node0x503000000490:n [ color = black; ]
-node0x5030000004c0 [ shape=record, color = green rank = 11, label= "{ 0x5030000004c0 | funcall | myFunc |         {<n0x5030000004c0_l> left | <n0x5030000004c0_r> right}} " ];
-node0x5030000004f0 [ shape=record, color = blue rank = 12, label= "{ 0x5030000004f0 | num | 1 |         {<n0x5030000004f0_l> left | <n0x5030000004f0_r> right}} " ];
-node0x5030000004c0:<n0x5030000004c0_l>:s -> node0x5030000004f0:n [ color = black; ]
-node0x503000000520:<n0x503000000520_r>:s -> node0x5030000004c0:n [ color = black; ]
+node0x503000000670 [ shape=record, color = red rank = 1, label= "{ 0x503000000670 | newLine |         {<n0x503000000670_l> left | <n0x503000000670_r> right}} " ];
+node0x503000000640 [ shape=record, color = red rank = 2, label= "{ 0x503000000640 | newLine |         {<n0x503000000640_l> left | <n0x503000000640_r> right}} " ];
+node0x503000000430 [ shape=record, color = green rank = 3, label= "{ 0x503000000430 | funcall | main |         {<n0x503000000430_l> left | <n0x503000000430_r> right}} " ];
+node0x503000000640:<n0x503000000640_l>:s -> node0x503000000430:n [ color = black; ]
+node0x503000000460 [ shape=record, color = green rank = 4, label= "{ 0x503000000460 | function | main |         {<n0x503000000460_l> left | <n0x503000000460_r> right}} " ];
+node0x503000000610 [ shape=record, color = red rank = 5, label= "{ 0x503000000610 | newLine |         {<n0x503000000610_l> left | <n0x503000000610_r> right}} " ];
+node0x5030000005e0 [ shape=record, color = red rank = 6, label= "{ 0x5030000005e0 | newLine |         {<n0x5030000005e0_l> left | <n0x5030000005e0_r> right}} " ];
+node0x5030000004f0 [ shape=record, color = green rank = 7, label= "{ 0x5030000004f0 | = |         {<n0x5030000004f0_l> left | <n0x5030000004f0_r> right}} " ];
+node0x503000000490 [ shape=record, color = blue rank = 8, label= "{ 0x503000000490 | var | b |         {<n0x503000000490_l> left | <n0x503000000490_r> right}} " ];
+node0x5030000004f0:<n0x5030000004f0_l>:s -> node0x503000000490:n [ color = black; ]
+node0x5030000004c0 [ shape=record, color = blue rank = 9, label= "{ 0x5030000004c0 | num | 100 |         {<n0x5030000004c0_l> left | <n0x5030000004c0_r> right}} " ];
+node0x5030000004f0:<n0x5030000004f0_r>:s -> node0x5030000004c0:n [ color = black; ]
+node0x5030000005e0:<n0x5030000005e0_l>:s -> node0x5030000004f0:n [ color = black; ]
+node0x5030000005b0 [ shape=record, color = green rank = 8, label= "{ 0x5030000005b0 | = |         {<n0x5030000005b0_l> left | <n0x5030000005b0_r> right}} " ];
+node0x503000000520 [ shape=record, color = blue rank = 9, label= "{ 0x503000000520 | var | a |         {<n0x503000000520_l> left | <n0x503000000520_r> right}} " ];
 node0x5030000005b0:<n0x5030000005b0_l>:s -> node0x503000000520:n [ color = black; ]
-node0x503000000580 [ shape=record, color = green rank = 10, label= "{ 0x503000000580 | print |         {<n0x503000000580_l> left | <n0x503000000580_r> right}} " ];
-node0x503000000550 [ shape=record, color = blue rank = 11, label= "{ 0x503000000550 | var | a |         {<n0x503000000550_l> left | <n0x503000000550_r> right}} " ];
-node0x503000000580:<n0x503000000580_l>:s -> node0x503000000550:n [ color = black; ]
-node0x5030000005b0:<n0x5030000005b0_r>:s -> node0x503000000580:n [ color = black; ]
-node0x503000000610:<n0x503000000610_l>:s -> node0x5030000005b0:n [ color = black; ]
-node0x5030000005e0 [ shape=record, color = green rank = 9, label= "{ 0x5030000005e0 | return |         {<n0x5030000005e0_l> left | <n0x5030000005e0_r> right}} " ];
-node0x503000000610:<n0x503000000610_r>:s -> node0x5030000005e0:n [ color = black; ]
-node0x503000000640:<n0x503000000640_l>:s -> node0x503000000610:n [ color = black; ]
-node0x503000000460:<n0x503000000460_r>:s -> node0x503000000640:n [ color = black; ]
-node0x503000000670:<n0x503000000670_r>:s -> node0x503000000460:n [ color = black; ]
-node0x5030000008b0:<n0x5030000008b0_l>:s -> node0x503000000670:n [ color = black; ]
-node0x5030000006a0 [ shape=record, color = green rank = 4, label= "{ 0x5030000006a0 | function | myFunc |         {<n0x5030000006a0_l> left | <n0x5030000006a0_r> right}} " ];
-node0x5030000006d0 [ shape=record, color = blue rank = 5, label= "{ 0x5030000006d0 | var | a |         {<n0x5030000006d0_l> left | <n0x5030000006d0_r> right}} " ];
-node0x5030000006a0:<n0x5030000006a0_l>:s -> node0x5030000006d0:n [ color = black; ]
-node0x503000000880 [ shape=record, color = red rank = 6, label= "{ 0x503000000880 | newLine |         {<n0x503000000880_l> left | <n0x503000000880_r> right}} " ];
-node0x503000000850 [ shape=record, color = red rank = 7, label= "{ 0x503000000850 | newLine |         {<n0x503000000850_l> left | <n0x503000000850_r> right}} " ];
-node0x5030000007c0 [ shape=record, color = green rank = 8, label= "{ 0x5030000007c0 | = |         {<n0x5030000007c0_l> left | <n0x5030000007c0_r> right}} " ];
-node0x503000000700 [ shape=record, color = blue rank = 9, label= "{ 0x503000000700 | var | x |         {<n0x503000000700_l> left | <n0x503000000700_r> right}} " ];
-node0x5030000007c0:<n0x5030000007c0_l>:s -> node0x503000000700:n [ color = black; ]
-node0x503000000790 [ shape=record, color = grey rank = 10, label= "{ 0x503000000790 | + |         {<n0x503000000790_l> left | <n0x503000000790_r> right}} " ];
-node0x503000000730 [ shape=record, color = blue rank = 11, label= "{ 0x503000000730 | var | a |         {<n0x503000000730_l> left | <n0x503000000730_r> right}} " ];
-node0x503000000790:<n0x503000000790_l>:s -> node0x503000000730:n [ color = black; ]
-node0x503000000760 [ shape=record, color = blue rank = 12, label= "{ 0x503000000760 | num | 1 |         {<n0x503000000760_l> left | <n0x503000000760_r> right}} " ];
-node0x503000000790:<n0x503000000790_r>:s -> node0x503000000760:n [ color = black; ]
-node0x5030000007c0:<n0x5030000007c0_r>:s -> node0x503000000790:n [ color = black; ]
-node0x503000000850:<n0x503000000850_l>:s -> node0x5030000007c0:n [ color = black; ]
-node0x503000000820 [ shape=record, color = green rank = 9, label= "{ 0x503000000820 | return |         {<n0x503000000820_l> left | <n0x503000000820_r> right}} " ];
-node0x5030000007f0 [ shape=record, color = blue rank = 10, label= "{ 0x5030000007f0 | var | x |         {<n0x5030000007f0_l> left | <n0x5030000007f0_r> right}} " ];
-node0x503000000820:<n0x503000000820_l>:s -> node0x5030000007f0:n [ color = black; ]
-node0x503000000850:<n0x503000000850_r>:s -> node0x503000000820:n [ color = black; ]
-node0x503000000880:<n0x503000000880_l>:s -> node0x503000000850:n [ color = black; ]
-node0x5030000006a0:<n0x5030000006a0_r>:s -> node0x503000000880:n [ color = black; ]
-node0x5030000008b0:<n0x5030000008b0_r>:s -> node0x5030000006a0:n [ color = black; ]
-node0x5030000008e0:<n0x5030000008e0_l>:s -> node0x5030000008b0:n [ color = black; ]
+node0x503000000550 [ shape=record, color = purple rank = 10, label= "{ 0x503000000550 | diff |         {<n0x503000000550_l> left | <n0x503000000550_r> right}} " ];
+node0x503000000580 [ shape=record, color = blue rank = 11, label= "{ 0x503000000580 | var | b |         {<n0x503000000580_l> left | <n0x503000000580_r> right}} " ];
+node0x503000000550:<n0x503000000550_l>:s -> node0x503000000580:n [ color = black; ]
+node0x5030000005b0:<n0x5030000005b0_r>:s -> node0x503000000550:n [ color = black; ]
+node0x5030000005e0:<n0x5030000005e0_r>:s -> node0x5030000005b0:n [ color = black; ]
+node0x503000000610:<n0x503000000610_l>:s -> node0x5030000005e0:n [ color = black; ]
+node0x503000000460:<n0x503000000460_r>:s -> node0x503000000610:n [ color = black; ]
+node0x503000000640:<n0x503000000640_r>:s -> node0x503000000460:n [ color = black; ]
+node0x503000000670:<n0x503000000670_l>:s -> node0x503000000640:n [ color = black; ]
 }

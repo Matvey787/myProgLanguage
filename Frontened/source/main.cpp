@@ -36,6 +36,7 @@ int main(int argc, char* argv[])
     {
         systemVars[i] = (char*)calloc(c_lengthOfVarName, sizeof(char));
     }
+    
     // table for saving user vars
     nameTable_t* nameTable = (nameTable_t*)calloc(c_numberOfUserVars, sizeof(nameTable_t));
 

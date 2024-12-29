@@ -1,12 +1,6 @@
 main()
 func main()
 {
-    a = myFunc(1)
-    print(a)
-    return()
-}
-func myFunc(a)
-{
-    x = a + 1
-    return(x)
+    b = 100
+    a = diff(b)
 }
