@@ -103,7 +103,7 @@ void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
 
     wrTreeToASMfile(node, &wFile, nameTable, 0, &funcsInfo);
 
-    clearFuncsInfo();
+    clearFuncsInfo(&funcsInfo);
 
     fclose(wFile);
 }
@@ -194,7 +194,8 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
         // in "for" or "if" clauses we need to add one to label_id because we need to jump to the new label
         else if ((node->type == ND_IF || node->type == ND_FOR) && node->left != nullptr)
         {
-            wrTreeToASMfile(node->left, wFile, nameTable, last_label_id++, funcsInfo);
+            label_id += last_label_id++;
+            wrTreeToASMfile(node->left, wFile, nameTable, label_id, funcsInfo);
         }
         else if (node->left != nullptr)
         {

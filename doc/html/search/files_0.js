@@ -4,7 +4,7 @@ var searchData=
   ['codegeneration_5f_28refactortotokens_29_2eh_1',['codeGeneration_(refactorToTokens).h',['../codeGeneration___07refactorToTokens_08_8h.html',1,'']]],
   ['colors_2eh_2',['colors.h',['../colors_8h.html',1,'']]],
   ['commands_2eh_3',['commands.h',['../Assembler_2h__files_2commands_8h.html',1,'(Global Namespace)'],['../Processor_2h__files_2commands_8h.html',1,'(Global Namespace)']]],
-  ['constants_2eh_4',['constants.h',['../constants_8h.html',1,'']]],
+  ['constants_2eh_4',['constants.h',['../Frontened_2include_2constants_8h.html',1,'(Global Namespace)'],['../General_2constants_8h.html',1,'(Global Namespace)']]],
   ['convertasmtocommands_2ecpp_5',['convertAsmToCommands.cpp',['../convertAsmToCommands_8cpp.html',1,'']]],
   ['convertasmtocommands_2eh_6',['convertAsmToCommands.h',['../convertAsmToCommands_8h.html',1,'']]],
   ['converttoasm_2ecpp_7',['convertToASM.cpp',['../convertToASM_8cpp.html',1,'']]],

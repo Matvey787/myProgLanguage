@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.8"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>My Project: Description of the language structure in the form of RBNF</title>
+<title>My Project: My Language</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -69,14 +69,41 @@ $(function() {
 
 </div><!-- top -->
 <div><div class="header">
-  <div class="headertitle"><div class="title">Description of the language structure in the form of RBNF</div></div>
+  <div class="headertitle"><div class="title">My Language</div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a></p><div class="fragment"><div class="line">GENERAL ::= {CHOOSE_APPR_or_IF_or_FOR_or_FUN_or_RET GET_NEWLINE}*</div>
+<div class="textblock"><p><a class="anchor" id="autotoc_md0"></a><img src="forReadme/logo.png" alt="alt text" class="inline"/> </p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Table of Contents</h1>
+<ol type="1">
+<li>Description of the Language Structure in the Form of RBNF</li>
+<li>💪 Language Capabilities<ul>
+<li>Equations</li>
+<li>If-Constructions</li>
+<li>For-Constructions</li>
+<li>Functions and Calling of Them</li>
+</ul>
+</li>
+<li>🚀 Fast Start<ul>
+<li>Program for Calculating Factorial</li>
+<li>Program for Calculating Fibonacci Numbers</li>
+<li>Simple Program for Solving Quadratic Equations</li>
+</ul>
+</li>
+<li>How to run your program on my language in your PC</li>
+<li>Addition (Editor, Editor Extensions)<ul>
+<li>Doxygen</li>
+<li>LaTeX </li>
+</ul>
+</li>
+</ol>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Description of the language structure in the form of RBNF</h1>
+<div class="fragment"><div class="line">GENERAL ::= {CHOOSE_APPR_or_IF_or_FOR_or_FUN_or_RET GET_NEWLINE}*</div>
 <div class="line"> </div>
 <div class="line">CHOOSE_APPR_IF_FOR_FUN_RET ::= GET_IF | GET_APPR | GET_FOR | GET_RET | GET_PR </div>
 <div class="line"> </div>
-<div class="line">GET_IF ::= &#39;if&#39; MATH_LEVEL_60 &#39;==&#39; MATH_LEVEL_50 &#39;{&#39; MAIN &#39;}&#39;</div>
+<div class="line">GET_IF ::= &#39;if&#39; MATH_LEVEL_60 (&#39;==&#39; | &#39;!=&#39; | &#39;&lt;&#39; | &#39;&gt;&#39; | &#39;&lt;=&#39; | &#39;&gt;=&#39;) MATH_LEVEL_50 &#39;{&#39; MAIN &#39;}&#39;</div>
 <div class="line">GET_APPR ::= MATH_LEVEL_60 &#39;=&#39; E &lt;-----------------------------------------  appropriation</div>
 <div class="line">GET_FOR ::= &#39;for&#39; DEF_VAR &#39;..&#39; MATH_LEVEL_4 { BODY } </div>
 <div class="line">GET_PR = MATH_LEVEL_10 &lt;---------------------------------------------------  print</div>
@@ -87,12 +114,17 @@ $(function() {
 <div class="line">MATH_LEVEL_40 ::= MATH_LEVEL_50 | MATH_LEVEL_60</div>
 <div class="line">MATH_LEVEL_50 ::= [0-9]+</div>
 <div class="line">MATH_LEVEL_60 ::= [a-z]+</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md1"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md3"></a>
 💪 Language capabilities</h1>
-<h2><a class="anchor" id="autotoc_md2"></a>
+<h2><a class="anchor" id="autotoc_md4"></a>
 Equations</h2>
-<p>You can create variables which get only numbers </p><div class="fragment"><div class="line">yourVariable = 90</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md3"></a>
+<p>You can create different and creative equations. In this regard, the language is very well expended.  So, you can do like this </p><div class="fragment"><div class="line">secondVar = 90 + firstVar * (1 + get()) / 120 - sin(130) + get()</div>
+</div><!-- fragment --><p> This is a rather difficult example. The program asks you to enter a number, one is added to this number. This bracket is then multiplied by the first variable. Next, 90 is added and the sine of 130 radians is subtracted. The program will again ask for a new number and add it to the entire expression. That's how it is. Fuhhh... </p><blockquote class="doxtable">
+<p>&zwj;[!IMPORTANT]</p><ul>
+<li>Unfortunately, the design doesn't support numbers in variables, be careful. </li>
+</ul>
+</blockquote>
+<h2><a class="anchor" id="autotoc_md5"></a>
 If-constructions</h2>
 <p>In the if constructions, you can use the signs &lt;, &gt;, &lt;=, &gt;=, !=, == for comparison. In comparisons, you can compare variables and numbers (the order is not important).</p>
 <blockquote class="doxtable">
@@ -109,16 +141,17 @@ If-constructions</h2>
 <div class="line">{</div>
 <div class="line">    There is body of if</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md4"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md6"></a>
 For-constructions</h2>
 <p>You can create cycles which get only one iterator. How to write them? It's not difficult, I showed an example below. But how does it work internally? Essentially, the program creates i = 0 and the system variable _end = 4 is created. </p><blockquote class="doxtable">
 <p>&zwj;[!WARNING] </p>
 </blockquote>
-<p>&gt;For this reason, I strongly recommend not using underscores in front of your variables. Afterwards, the program adds 1 to i. When i will be greater then _end, the cycle will stop. </p><div class="fragment"><div class="line">for i = 0..4 ++</div>
+<p>&gt;For this reason, I strongly recommend not using underscores in front of your variables.</p>
+<p>Afterwards, the program adds 1 to i. When i will be greater then _end, the cycle will stop. </p><div class="fragment"><div class="line">for i = 0..4 ++</div>
 <div class="line">{</div>
 <div class="line">    There is body of for</div>
 <div class="line">}</div>
-</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md5"></a>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md7"></a>
 Functions and calling of them</h2>
 <p>You can create functions which get only one parametr and return only one number. How to write them? The example of function which is nothing return: </p><div class="fragment"><div class="line">func myFunc(a)</div>
 <div class="line">{</div>
@@ -147,9 +180,9 @@ Functions and calling of them</h2>
 <div class="line">    x = a + 1</div>
 <div class="line">    return(x)</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md8"></a>
 🚀 Fast start</h1>
-<h2><a class="anchor" id="autotoc_md7"></a>
+<h2><a class="anchor" id="autotoc_md9"></a>
 Program for calculating factorial</h2>
 <div class="fragment"><div class="line">main()</div>
 <div class="line">func main()</div>
@@ -168,7 +201,7 @@ Program for calculating factorial</h2>
 <div class="line">    }</div>
 <div class="line">    return (x)</div>
 <div class="line">}</div>
-</div><!-- fragment --><h2><a class="anchor" id="autotoc_md8"></a>
+</div><!-- fragment --><h2><a class="anchor" id="autotoc_md10"></a>
 Program for calculating Fibonacci numbers</h2>
 <div class="fragment"><div class="line">main()</div>
 <div class="line">func main()</div>
@@ -185,7 +218,32 @@ Program for calculating Fibonacci numbers</h2>
 <div class="line">    }</div>
 <div class="line">    return ()</div>
 <div class="line">}</div>
-</div><!-- fragment --><h1><a class="anchor" id="autotoc_md9"></a>
+</div><!-- fragment --> <h2><a class="anchor" id="autotoc_md11"></a>
+Simple program for solve quad equations</h2>
+<div class="fragment"><div class="line">main()</div>
+<div class="line">func main()</div>
+<div class="line">{</div>
+<div class="line">    a = get()</div>
+<div class="line">    b = get()</div>
+<div class="line">    c = get()</div>
+<div class="line">    diskr = b^2 - 4*a*c</div>
+<div class="line">    if diskr &gt; 0</div>
+<div class="line">    {</div>
+<div class="line">        first = ((0-1)*b + sqrt(diskr))/(2*a)</div>
+<div class="line">        second = ((0-1)*b - sqrt(diskr))/(2*a)</div>
+<div class="line">        print(first)</div>
+<div class="line">        print(second)</div>
+<div class="line">        return ()</div>
+<div class="line">    }</div>
+<div class="line">    if diskr == 0</div>
+<div class="line">    {</div>
+<div class="line">        first = ((0-1)*b + sqrt(diskr))/(2*a)</div>
+<div class="line">        print(first)</div>
+<div class="line">        return ()</div>
+<div class="line">    }</div>
+<div class="line">    return ()</div>
+<div class="line">}</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md12"></a>
 How to run your own program on my language in your pc</h1>
 <ul>
 <li>download this repository</li>
@@ -195,10 +253,10 @@ How to run your own program on my language in your pc</h1>
 </div><!-- fragment --></li>
 <li>you will see output of your program in terminal</li>
 </ul>
-<h1><a class="anchor" id="autotoc_md10"></a>
+<h1><a class="anchor" id="autotoc_md13"></a>
 Addition (editor, editor extensions)</h1>
 <p>To write the project, I used the VS Code editor. I have different extensions for it: </p>
-<h2><a class="anchor" id="autotoc_md11"></a>
+<h2><a class="anchor" id="autotoc_md14"></a>
 Doxygen (for Linux)</h2>
 <ul>
 <li>Download doxygen <div class="fragment"><div class="line">sudo apt-add-repository universe</div>
@@ -211,7 +269,16 @@ Doxygen (for Linux)</h2>
 </div><!-- fragment --></li>
 <li>Create Doxyfile You can copy my doxyfile or create your own by opennid doxygen by this command in terminal: <div class="fragment"><div class="line">doxywizard</div>
 </div><!-- fragment --> Create your settings in <b>Expert</b>. Then go to <b>Run</b> and click on <b>Show configuration</b>. Copy this code, create Doxyfile in your repository from which you will run doxygen in your repository and paste this code in it.</li>
-<li>Now we are ready for running doxygen in VS Code Press ctrl + shift + p and write <b>Generate Doxygen documentation</b> and click on it. You will see your documentation in <b>Doxygen</b> folder in your repository. </li>
+<li>Now we are ready for running doxygen in VS Code Press ctrl + shift + p and write <b>Generate Doxygen documentation</b> and click on it. You will see your documentation in <b>doc</b> folder in your repository. Or you can create your own output folder <img src="forReadme/doxygenOutputDir.png" alt="alt text" class="inline"/></li>
+<li>Go to this folder and find index.html, open it in your browser and be surprised!</li>
+</ul>
+<h2><a class="anchor" id="autotoc_md15"></a>
+Latex</h2>
+<ul>
+<li>Download Latex <div class="fragment"><div class="line">sudo apt-get install texlive-full</div>
+</div><!-- fragment --></li>
+<li>Download Latex extension Go to VS Code extensions, download <b>LaTeX Workshop</b> Then open settings.json (ctrl + shift + p and find this file) and copy code from <a href="forReadme/latexSettingJson.txt">latex settings for settings.json</a>.</li>
+<li>Now we are ready for running latex in VS Code. Create .tex file in your repository and write your code. Then press ctrl + s and you will see your auto generate pdf file in your repository. </li>
 </ul>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -3,6 +3,11 @@
 
 #include "../General/programTree/tree.h"
 
+/// @brief  Function that optimize the program tree
+/// @param daughter programm tree to optimize
+/// @param parent same as daughter but it is need to delete daughter subtree
+/// @param side the side of the parent where the daughter is
+
 void optimizeProgTree(node_t* daughter, node_t* parent, char side);
 
 #endif // PROGOPTIMIZATION_H

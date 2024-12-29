@@ -8,6 +8,7 @@
 #include "progOptimization.h"
 #include "../General/constants.h"
 
+
 static void bothOprtsNumbs(node_t* daughter);
 static void oneOprtIsZero(node_t* daughter, node_t* parent, char side);
 static void oneOprtIsOne(node_t* daughter, node_t* parent, char side);

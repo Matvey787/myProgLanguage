@@ -1,23 +1,14 @@
 main()
 func main()
 {
-    a = get()
-      b = get()
-        c = get()
-    diskr = b^2 - 4*a*c
-    if diskr > 0
+    a = 100
+    if a > 10
     {
-        first = ((0-1)*b + sqrt(diskr))/(2*a)
-        second = ((0-1)*b - sqrt(diskr))/(2*a)
-        print(first)
-        print(second)
-        return ()
+        print(a)
     }
-    if diskr == 0
+    if a != 100
     {
-        first = ((0-1)*b + sqrt(diskr))/(2*a)
-        print(first)
-        return ()
+        print(a)
     }
     return ()
 }

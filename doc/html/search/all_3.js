@@ -6,8 +6,8 @@ var searchData=
   ['delbranches_3',['delBranches',['../treeFuncs_8cpp.html#ae48aaf4b1fe441cac010bfe59c682721',1,'treeFuncs.cpp']]],
   ['deltable_4',['deltable',['../Backend_2main_8cpp.html#a54abea23f956f0f828068dd916a1c130',1,'delTable(nameTable_t *nameTable):&#160;main.cpp'],['../Middlend_2main_8cpp.html#a54abea23f956f0f828068dd916a1c130',1,'delTable(nameTable_t *nameTable):&#160;main.cpp']]],
   ['deltree_5',['deltree',['../tree_8h.html#a65d05e67b507eee520e62fed07693515',1,'delTree(node_t *node):&#160;treeFuncs.cpp'],['../treeFuncs_8cpp.html#a65d05e67b507eee520e62fed07693515',1,'delTree(node_t *node):&#160;treeFuncs.cpp']]],
-  ['description_20of_20the_20language_20structure_20in_20the_20form_20of_20rbnf_6',['Description of the language structure in the form of RBNF',['../md_README.html',1,'']]],
+  ['description_20of_20the_20language_20structure_20in_20the_20form_20of_20rbnf_6',['Description of the language structure in the form of RBNF',['../md_README.html#autotoc_md2',1,'']]],
   ['destroyspu_7',['destroySpu',['../myProcessor_2Processor_2cpp__files_2main_8cpp.html#a1d31687891ec91708775d7f6b082d8f5',1,'main.cpp']]],
-  ['doxygen_20for_20linux_8',['Doxygen (for Linux)',['../md_README.html#autotoc_md11',1,'']]],
+  ['doxygen_20for_20linux_8',['Doxygen (for Linux)',['../md_README.html#autotoc_md14',1,'']]],
   ['dx_9',['dx',['../Assembler_2h__files_2registers_8h.html#a0eeb8505336965013ef70ab66625bb8da22dc95a35fbd833d9908928812979156',1,'DX:&#160;registers.h'],['../Processor_2h__files_2registers_8h.html#a0eeb8505336965013ef70ab66625bb8da22dc95a35fbd833d9908928812979156',1,'DX:&#160;registers.h']]]
 ];

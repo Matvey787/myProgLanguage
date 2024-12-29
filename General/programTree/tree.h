@@ -3,6 +3,7 @@
 
 #include "../errors.h"
 
+/// @brief types of nodes in programm tree
 enum types 
 {
     ND_ADD=1,
@@ -52,7 +53,6 @@ struct nameTable_t
 union data_u
 {
     double num;
-    char* strVar;
     nameTable_t* var;
 };
 

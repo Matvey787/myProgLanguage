@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['form_20of_20rbnf_0',['Description of the language structure in the form of RBNF',['../md_README.html',1,'']]]
+  ['my_20language_0',['My Language',['../md_README.html',1,'']]]
 ];

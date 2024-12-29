@@ -115,8 +115,10 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:af05593707940491cdfd3a659579d931e" id="r_af05593707940491cdfd3a659579d931e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="treeTransfer_8h.html#af05593707940491cdfd3a659579d931e">pushTree</a> (<a class="el" href="structnode__t.html">node_t</a> *node, const char *transferFileName)</td></tr>
+<tr class="memdesc:af05593707940491cdfd3a659579d931e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pushes the tree to a file for transfer.  <br /></td></tr>
 <tr class="separator:af05593707940491cdfd3a659579d931e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a52689eb528097434a292c9f90238ed33" id="r_a52689eb528097434a292c9f90238ed33"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structnode__t.html">node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="treeTransfer_8h.html#a52689eb528097434a292c9f90238ed33">pullTree</a> (<a class="el" href="structnameTable__t.html">nameTable_t</a> *nameTable, const char *transferFileName)</td></tr>
+<tr class="memdesc:a52689eb528097434a292c9f90238ed33"><td class="mdescLeft">&#160;</td><td class="mdescRight">Pulls the program tree from a file for transfer.  <br /></td></tr>
 <tr class="separator:a52689eb528097434a292c9f90238ed33"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -146,6 +148,16 @@ Functions</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p>Pulls the program tree from a file for transfer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">nameTable</td><td>the name table to save vars for the prog tree </td></tr>
+    <tr><td class="paramname">transferFileName</td><td>the name of the file to pull the tree from </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>the pointer to the root of the prog tree </dd></dl>
+
 </div>
 </div>
 <a id="af05593707940491cdfd3a659579d931e" name="af05593707940491cdfd3a659579d931e"></a>
@@ -173,6 +185,15 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>Pushes the tree to a file for transfer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>the pointer to the root of the tree </td></tr>
+    <tr><td class="paramname">transferFileName</td><td>the name of the file to push the tree to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

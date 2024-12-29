@@ -112,6 +112,7 @@ This graph shows which files directly or indirectly include this file:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="func-members" name="func-members"></a>
 Functions</h2></td></tr>
 <tr class="memitem:a55115f0ac23fd0ad322602d91b565e86" id="r_a55115f0ac23fd0ad322602d91b565e86"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structnode__t.html">node_t</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="refactorToTokens_8h.html#a55115f0ac23fd0ad322602d91b565e86">createTokens</a> (char *buffer, const size_t l_buff, <a class="el" href="structnameTable__t.html">nameTable_t</a> *nameTable, char **systemVars, const char *tokensDotFile, const char *directoryForSavingPictures)</td></tr>
+<tr class="memdesc:a55115f0ac23fd0ad322602d91b565e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function splits the string into tokens. The tokens are stored in the array of nodes.  <br /></td></tr>
 <tr class="separator:a55115f0ac23fd0ad322602d91b565e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Function Documentation</h2>
@@ -164,6 +165,20 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+<p>This function splits the string into tokens. The tokens are stored in the array of nodes. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">buffer</td><td>the string to split on tokens </td></tr>
+    <tr><td class="paramname">l_buff</td><td>the length of the string </td></tr>
+    <tr><td class="paramname">nameTable</td><td>the table for saving variables (faster then copy substrings) </td></tr>
+    <tr><td class="paramname">systemVars</td><td>the array of system variables </td></tr>
+    <tr><td class="paramname">tokensDotFile</td><td>// the file for writing tokens and make graphic dump </td></tr>
+    <tr><td class="paramname">directoryForSavingPictures</td><td>// the directory for saving pictures </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The pointer to tokens array </dd></dl>
 
 </div>
 </div>
