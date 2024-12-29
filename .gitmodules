@@ -1,3 +1,6 @@
 [submodule "myProcessor"]
 	path = myProcessor
 	url = https://github.com/Matvey787/myProcessor.git
+[submodule "myDiffCalculus"]
+	path = myDiffCalculus
+	url = https://github.com/Matvey787/myDiffCalculus.git
