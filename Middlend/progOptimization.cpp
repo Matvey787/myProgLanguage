@@ -4,6 +4,8 @@
 #include <string.h>
 #include <assert.h>
 #include <math.h>
+#include "../General/graphDump/graphDump.h"
+#include "../General/treeTransfer/treeTransfer.h"
 #include "../General/programTree/tree.h"
 #include "progOptimization.h"
 #include "../General/constants.h"
@@ -12,16 +14,26 @@
 static void bothOprtsNumbs(node_t* daughter);
 static void oneOprtIsZero(node_t* daughter, node_t* parent, char side);
 static void oneOprtIsOne(node_t* daughter, node_t* parent, char side);
+static node_t* findSubtreeOfVar(node_t* progTree, const char* var);
 
-void optimizeProgTree(node_t* daughter, node_t* parent, char side)
+void optimizeProgTree(node_t* root, node_t* daughter, nameTable_t** nameTable, node_t* parent, char side)
 { // TODO split into functions
     assert(daughter != nullptr);
-
-    if (daughter->left != nullptr)
-        optimizeProgTree(daughter->left, daughter, 'l');
-    
+    types leftSubtreeType = ND_SEP;
+    types rightSubtreeType = ND_SEP;
+    /* if (daughter->left != nullptr)
+        leftSubtreeType = daughter->left->type;
     if (daughter->right != nullptr)
-        optimizeProgTree(daughter->right, daughter, 'r');
+        rightSubtreeType = daughter->right->type; */
+
+    if (daughter->left != nullptr /* && daughterType != ND_GETDIFF */)
+        optimizeProgTree(root, daughter->left, nameTable, daughter, 'l');
+    
+    if (daughter->right != nullptr /* && daughterType != ND_GETDIFF */)
+    {
+        //printf("right subtree type %d\n", daughter->type);
+        optimizeProgTree(root, daughter->right, nameTable, daughter, 'r');
+    }
     
     
     // if subtree is multiplited by zero
@@ -73,9 +85,59 @@ void optimizeProgTree(node_t* daughter, node_t* parent, char side)
     {
         oneOprtIsZero(daughter, parent, side);
     }
+    else if (daughter->type == ND_GETDIFF)
+    {
+        node_t* copiedSubtreeOfVar = copySubtree(findSubtreeOfVar(root, daughter->left->data.var->str));
+        writeDotFile(copiedSubtreeOfVar, "../dot_files/test.dot");
+        writePngFile("../dot_files/test.dot", "../png_files", "white");
+        printf("-------------------------------------after getting tree in optimization\n");
+        getchar();
+        pushTree(copiedSubtreeOfVar, "../progTree");
+        delTree(copiedSubtreeOfVar);
+        copiedSubtreeOfVar = nullptr;
+        system("../myDiffCalculus/./out 1 ../png_files");
+        copiedSubtreeOfVar = pullTree(nameTable, "../progTree");
+        writeDotFile(copiedSubtreeOfVar, "../dot_files/test.dot");
+        writePngFile("../dot_files/test.dot", "../png_files", "white");
+        getchar();
+        if (side == 'r')
+        {
+            delTree(parent->right);
+            parent->right = copiedSubtreeOfVar;
+        }
+        else
+        {
+            delTree(parent->left);
+            parent->left = copiedSubtreeOfVar;
+        }
+    }
+}
+
+static node_t* findSubtreeOfVar(node_t* progTree, const char* var)
+{
+    node_t* foundedSubtree = nullptr;
+    if (progTree->type == ND_EQ)
+    {
+        if (strcmp(progTree->left->data.var->str, var) == 0)
+            return progTree->right;
+    }
+
+    if (progTree->left != nullptr)
+    {
+        foundedSubtree = findSubtreeOfVar(progTree->left, var);
+    }
+
+    if (progTree->right != nullptr && foundedSubtree == nullptr)
+    {
+        foundedSubtree = findSubtreeOfVar(progTree->right, var);
+    }
+
+    return foundedSubtree;
 }
 
 // reduce tree if both of daughter subtrees is nummbers and daughter type is + - / *
+// Define a static function to perform arithmetic operations on a binary tree node
+// and update its value if both operands are numbers.
 static void bothOprtsNumbs(node_t* daughter)
 {
     if (daughter->type == ND_ADD)
@@ -94,9 +156,13 @@ static void bothOprtsNumbs(node_t* daughter)
         daughter->data.num = pow(daughter->left->data.num, daughter->right->data.num);
 
     daughter->type = ND_NUM;
+    
     delTree(daughter->left);
+    
     delTree(daughter->right);
+    
     daughter->left = nullptr;
+   
     daughter->right = nullptr;
 }
 

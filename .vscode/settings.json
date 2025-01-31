@@ -101,4 +101,7 @@
     ],
     "open-php-html-js-in-browser.selectedBrowser": "Firefox",
     "workbench.tree.indent": 20,
+    "files.associations": {
+        "typeinfo": "cpp"
+    },
 }

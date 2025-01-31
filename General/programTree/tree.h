@@ -96,7 +96,6 @@ node_t* copyNode(node_t* node);
  */
 
 node_t* copySubtree(node_t* node);
-
 error delTree(node_t* node);
 
 #endif

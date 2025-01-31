@@ -340,6 +340,7 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
     case ND_NUM:
     case ND_SQRT:
     case ND_GET:
+    case ND_GETDIFF:
     default:
         break;
     }

@@ -5,29 +5,57 @@
 #include <string.h>
 
 static void pullTreeByRecursion(node_t** node, nameTable_t** nameTable, FILE** rFile);
+static size_t count_lines_in_file(FILE* file);
 
-node_t* pullTree(nameTable_t* nameTable, const char* transferFileName)
+node_t* pullTree(nameTable_t** nameTable, const char* transferFileName)
 {
     FILE* rFile = fopen(transferFileName, "r");
     int counter = 0;
     int c = 0;
+    node_t* mainNode = (node_t*)calloc(1, sizeof(node_t));
+
+    fscanf(rFile, "%d", (int*)&(mainNode->type));
+
+    // first line should be missed 
     while ( c != EOF && counter != 1)
     {
         c = fgetc(rFile);
         if (c == '\n')
             counter++;
-
     }
 
-    node_t* mainNode = (node_t*)calloc(1, sizeof(node_t));
     mainNode->data = {0};
-    mainNode->type = ND_SEP;
     mainNode->left = nullptr;
     mainNode->right = nullptr;
 
-    pullTreeByRecursion(&mainNode->left, &nameTable, &rFile);
+    pullTreeByRecursion(&mainNode->left, nameTable, &rFile);
+    printf("mainNode type %d\n", mainNode->type);
+    if (mainNode->type != ND_SEP)
+    {
+        printf("get right subtree in pullTree");
+        pullTreeByRecursion(&mainNode->right, nameTable, &rFile);
+    }
 
     return mainNode;
+}
+
+static size_t count_lines_in_file(FILE* file) {
+    if (file == NULL) {
+        perror("Error opening file");
+        return 0;
+    }
+
+    char *line = NULL; // Указатель для строки
+    size_t len = 0;    // Длина буфера
+    size_t lines = 0;
+
+    while (getline(&line, &len, file) != -1) {
+        lines++;
+    }
+
+    free(line);  // Освобождаем память, выделенную getline
+    fclose(file);
+    return lines;
 }
 
 static void pullTreeByRecursion(node_t** node, nameTable_t** nameTable, FILE** rFile)

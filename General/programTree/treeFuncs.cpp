@@ -5,7 +5,7 @@
 #include <assert.h>
 
 #include "tree.h"
-#include "errors.h"
+#include "../errors.h"
 
 static error delBranches(node_t* node);
 
@@ -83,7 +83,7 @@ error delTree(node_t* node){
 // Function need for recursivity delete branches. Used in delTree
 
 static error delBranches(node_t* node){
-    printf("cuurent node: %p left: %p right: %p\n", node, node, node);
+    printf("curent node: %p left: %p right: %p\n", node, node, node);
     assert(node != nullptr);
 
     error status = NO_ERRORS;

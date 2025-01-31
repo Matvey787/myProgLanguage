@@ -1,6 +1,8 @@
 main()
 func main()
 {
-    b = 100
+    x = 100
+    b = sin(x)+cos(x)
     a = diff(b)
+    return ()
 }

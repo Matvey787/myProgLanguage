@@ -14,8 +14,9 @@ void delTable(nameTable_t* nameTable);
 
 int main()
 {
-    nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
-    node_t* progTree = pullTree(nameTable, "../progTree");
+    nameTable_t* nameTable = (nameTable_t*)calloc(500, sizeof(nameTable_t));
+    nameTable_t* startOfNameTable = nameTable;
+    node_t* progTree = pullTree(&nameTable, "../progTree");
     writeDotFile(progTree, "../dot_files/backendDotFile.dot");
     writePngFile("../dot_files/backendDotFile.dot", "../png_files", "white");
     writeASMfile(progTree, nameTable, "../program.ASM");
@@ -23,14 +24,16 @@ int main()
     delTree(progTree);
     progTree = nullptr;
     
-    delTable(nameTable);
+    delTable(startOfNameTable);
+    nameTable = nullptr;
+    startOfNameTable = nullptr;
     return 0;
 }
 
 void delTable(nameTable_t* nameTable)
 {
     assert(nameTable != nullptr);
-    int i = 0;
+    size_t i = 0;
     while (nameTable[i].str != nullptr)
     {
         free(nameTable[i].str);

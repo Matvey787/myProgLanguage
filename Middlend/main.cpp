@@ -13,16 +13,17 @@ void delTable(nameTable_t* nameTable);
 
 int main()
 {
-    nameTable_t* nameTable = (nameTable_t*)calloc(100, sizeof(nameTable_t));
-    node_t* progTree = pullTree(nameTable, "../progTree");
-    //optimizeProgTree(progTree, nullptr, 'l');
+    nameTable_t* nameTable = (nameTable_t*)calloc(1000, sizeof(nameTable_t));
+    nameTable_t* startOfNameTable = nameTable;
+    node_t* progTree = pullTree(&nameTable, "../progTree");
+    optimizeProgTree(progTree, progTree, &nameTable, nullptr, 'l');
     writeDotFile(progTree, "../dot_files/middlendDotFile.dot");
     writePngFile("../dot_files/middlendDotFile.dot", "../png_files", "white");
-    
+    getchar();
     pushTree(progTree, "../progTree");
     delTree(progTree);
     
-    delTable(nameTable);
+    delTable(startOfNameTable);
     nameTable = nullptr;
     return 0;
 

@@ -8,7 +8,7 @@ cd ../Backend/
 ./out
 cd ../myProcessor/Assembler/
 ./out
-clear
+#clear
 cd ../Processor/
 ./out
 cd ..
