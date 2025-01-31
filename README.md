@@ -123,7 +123,7 @@ func myFunc(a)
     return(x)
 }
 ```
-Update 2.0 </br> You can differentiate mathematical expressions. In math expression you should use only x-variable or numbers if you need
+**Update 2.0** </br> You can differentiate mathematical expressions. In math expression you should use only x-variable or numbers if you need
 ```
 main()
 func main()
