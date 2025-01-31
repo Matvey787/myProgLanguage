@@ -131,6 +131,7 @@ func main()
     x = 100
     b = sin(x)+cos(x)
     a = diff(b)
+    print(a)
     return ()
 }
 
