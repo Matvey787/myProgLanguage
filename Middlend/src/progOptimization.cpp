@@ -17,14 +17,8 @@ static void oneOprtIsOne(node_t* daughter, node_t* parent, char side);
 static node_t* findSubtreeOfVar(node_t* progTree, const char* var);
 
 void optimizeProgTree(node_t* root, node_t* daughter, nameTable_t** nameTable, node_t* parent, char side)
-{ // TODO split into functions
+{
     assert(daughter != nullptr);
-    types leftSubtreeType = ND_SEP;
-    types rightSubtreeType = ND_SEP;
-    /* if (daughter->left != nullptr)
-        leftSubtreeType = daughter->left->type;
-    if (daughter->right != nullptr)
-        rightSubtreeType = daughter->right->type; */
 
     if (daughter->left != nullptr /* && daughterType != ND_GETDIFF */)
         optimizeProgTree(root, daughter->left, nameTable, daughter, 'l');
@@ -37,10 +31,9 @@ void optimizeProgTree(node_t* root, node_t* daughter, nameTable_t** nameTable, n
     
     
     // if subtree is multiplited by zero
-    if (daughter->type == ND_MUL && (
-                        (daughter->left->type  == ND_NUM && abs(daughter->left->data.num)  < c_compareZero) ||
-                        (daughter->right->type == ND_NUM && abs(daughter->right->data.num) < c_compareZero)
-                                    ))
+    if (daughter->type == ND_MUL && 
+        ((daughter->left->type  == ND_NUM && abs(daughter->left->data.num)  < c_compareZero) ||
+         (daughter->right->type == ND_NUM && abs(daughter->right->data.num) < c_compareZero)))
     {
         daughter->type = ND_NUM;
         daughter->data.num = 0;

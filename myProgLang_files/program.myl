@@ -1,8 +1,17 @@
 main()
 func main()
 {
-    x = 100
-    b = sin(x)+cos(x)
-    a = diff(b)
+    a = 5
+    a = factorial(a)
+    print(a)
     return ()
+}
+func factorial(x)
+{
+    if x != 1
+    {
+        f =    x   -   1
+        x = x * factorial(f)
+    }
+    return (x)
 }

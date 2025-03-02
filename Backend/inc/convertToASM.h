@@ -1,7 +1,7 @@
 #ifndef CONVERTTOASM_H
 #define CONVERTTOASM_H
 
-#include "../General/programTree/tree.h"
+#include "programTree/tree.h"
 
 /// @brief Converts the program tree to assembly code and writes it to a file.
 /// @param node the root of the program tree

@@ -3,7 +3,8 @@
 #include <stdlib.h>
 #include <assert.h>
 
-#include "../General/programTree/tree.h"
+#include "programTree/tree.h"
+#include "errors.h"
 
 #include "convertToASM.h"
 
@@ -34,7 +35,7 @@ case (ND_##name):                                                               
     {                                                                                \
         snprintf(tmp_str, 100, "label%d", label_id);                                 \
         fprintf(*wFile,                                                              \
-                "; ---> start of if\n"                                              \
+                "; ---> start of if\n"                                               \
                 "PUSH %lg\n"                                                         \
                 "PUSH %lg\n"                                                         \
                 "%s %s:\n",                                                          \
@@ -48,7 +49,7 @@ case (ND_##name):                                                               
     {                                                                                \
         snprintf(tmp_str, 100, "label%d", label_id);                                 \
         fprintf(*wFile,                                                              \
-                "; ---> start of if\n"                                              \
+                "; ---> start of if\n"                                               \
                 "PUSH %lg\n"                                                         \
                 "PUSH [FS + %lu]\n"                                                  \
                 "%s %s:\n",                                                          \
@@ -113,10 +114,12 @@ void addTabs(size_t numOfTabs, FILE** wFile);
 // function which is opens the file and writes the assembly code to it
 void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
 {
+    assert(node != nullptr);
+    assert(asmFile != nullptr);
+
     FILE* wFile = fopen(asmFile, "wb");
     if (wFile == nullptr)
     {
-        
         printf("Error opening file\n");
         return;
     }
@@ -132,6 +135,7 @@ void writeASMfile(node_t* node, nameTable_t* nameTable, const char* asmFile)
 
 static void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* node)
 {
+    assert(funcsInfo != nullptr);
     assert(node != nullptr);
     char* currFuncName_ = currFuncName;
     if (node->type == ND_FUN)
@@ -157,6 +161,7 @@ static void createFuncsInfo(funcsInfo_t* funcsInfo, char* currFuncName, node_t* 
 
 static void clearFuncsInfo(funcsInfo_t* funcsInfo)
 {
+    assert(funcsInfo != nullptr);
     for (size_t i = 0; i < funcsInfo->numOfFuncs; ++i)
     {
         free(funcsInfo->funcs[i].vars);
@@ -166,6 +171,8 @@ static void clearFuncsInfo(funcsInfo_t* funcsInfo)
 
 static void addNewFunc(funcsInfo_t* funcsInfo, char* funcName)
 {
+    assert(funcsInfo != nullptr);
+    assert(funcName != nullptr);
     funcsInfo->funcs = (func_t*)realloc(funcsInfo->funcs, sizeof(func_t) * (funcsInfo->numOfFuncs + 1));
     funcsInfo->funcs[funcsInfo->numOfFuncs].numOfVars = 0;
     funcsInfo->funcs[funcsInfo->numOfFuncs].vars = nullptr;
@@ -175,6 +182,7 @@ static void addNewFunc(funcsInfo_t* funcsInfo, char* funcName)
 
 static void addNewVarToFunc(funcsInfo_t* funcsInfo, char* funcName, char* varName)
 {
+    assert(funcsInfo != nullptr);
     assert(funcName != nullptr);
     assert(varName != nullptr);
     for (size_t i = 0; i < funcsInfo->numOfFuncs; ++i)
@@ -190,6 +198,10 @@ static void addNewVarToFunc(funcsInfo_t* funcsInfo, char* funcName, char* varNam
 
 static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, int label_id, funcsInfo_t* funcsInfo)
 {
+    assert(node != nullptr);
+    assert(wFile != nullptr);
+    assert(nameTable != nullptr);
+    assert(funcsInfo != nullptr);
     static int last_label_id = 0;
     static size_t i_callSequence = 0;
     static size_t numOfTabs = 0;
@@ -273,7 +285,7 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
     {
         fprintf(*wFile, "; ---------> start of for\nPUSH [FS + %lu]\nPUSH [FS + %lu]\nJB label%d:\n",
         findLocalVarPosInFunc(funcsInfo, node->left->left->left->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]),
-            findLocalVarPosInFunc(funcsInfo, node->left->left->right->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]),
+        findLocalVarPosInFunc(funcsInfo, node->left->left->right->left->data.var->str, funcsInfo->callSequence[i_callSequence - 1]),
         label_id);
         break;
     }
@@ -348,6 +360,10 @@ static void wrTreeToASMfile(node_t* node, FILE** wFile, nameTable_t* nameTable, 
 
 static void equationToVar(FILE** wFile, nameTable_t* nameTable, node_t* node, funcsInfo_t* funcsInfo, size_t i_callSequence) // TODO rename
 {
+    assert(wFile != nullptr);
+    assert(nameTable != nullptr);
+    assert(node != nullptr);
+    assert(funcsInfo != nullptr);
     if (node->left != nullptr && node->type != ND_FUNCALL)
         equationToVar(wFile, nameTable, node->left, funcsInfo, i_callSequence);
     
@@ -416,8 +432,8 @@ void addTabs(size_t numOfTabs, FILE** wFile)
 
 static bool isSpecialOperator(types type) // TODO rename
 {
-    return type == ND_EQ || type == ND_ISEQ || type == ND_NISEQ ||
-           type == ND_AB || type == ND_LS   || type == ND_ABE   || type == ND_LSE;
+    return type == ND_EQ || type == ND_ISEQ || type == ND_NISEQ || type == ND_AB ||
+           type == ND_LS || type == ND_ABE  || type == ND_LSE;
 }
 
 size_t findLocalVarPosInFunc(funcsInfo_t* funcsInfo, char* varName, char* funcName)
@@ -435,7 +451,7 @@ size_t findLocalVarPosInFunc(funcsInfo_t* funcsInfo, char* varName, char* funcNa
             }
         }
     }
-    return 666666;
+    return UNDEFINED_VAR;
 }
 size_t getNumOfVarsInFunc(funcsInfo_t* funcsInfo, char* funcName)
 {
@@ -444,5 +460,5 @@ size_t getNumOfVarsInFunc(funcsInfo_t* funcsInfo, char* funcName)
         if (strcmp(funcsInfo->funcs[i].name, funcName) == 0)
             return funcsInfo->funcs[i].numOfVars;
     }
-    return 77777777;
+    return UNDEFINED_FUNC;
 }

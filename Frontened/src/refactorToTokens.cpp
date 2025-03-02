@@ -4,11 +4,15 @@
 #include <ctype.h>
 #include <assert.h>
 #include <math.h>
-#include "constants.h"
-#include "../../General/programTree/tree.h"
-#include "../../General/errors.h"
+
+// from General
+#include "../../General/constants.h"
+#include "errors.h"
+#include "programTree/tree.h"
+#include "graphDump/graphDump.h"
+
 #include "refactorToTokens.h"
-#include "../../General/graphDump/graphDump.h"
+
 
 // Special local function for correct write tokens to .dot file
 static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameTable_t* nameTable, const size_t lengthOfNameTable, const char* tokensDotFile);
@@ -46,10 +50,10 @@ node_t* createTokens(char* buffer, const size_t l_buff, nameTable_t* nameTable, 
         if (strncmp(buffer, "..", 2) == 0)
         {
             strcpy(systemVars[i_sysVars], "_end");
-            nameTable[i_nameTab].str = systemVars[i_sysVars];
+            nameTable[i_nameTab].str          = systemVars[i_sysVars];
             nameTable[i_nameTab].numOfSymbols = strlen("_end");
-            tokens[i_toks] = {ND_ENDFOR, {0}, nullptr, nullptr};
-            tokens[i_toks].data.var = &nameTable[i_nameTab];
+            tokens[i_toks]                    = {ND_ENDFOR, {0}, nullptr, nullptr};
+            tokens[i_toks].data.var           = &nameTable[i_nameTab];
             
             buffer += 2;
             ++i_sysVars;
@@ -119,9 +123,13 @@ static bool bufferIsEmpty(char* buffer, char* last_addr)
         return false;
 }
 
-static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameTable_t* nameTable, const size_t lengthOfNameTable, const char* tokensDotFile)
+static error wrTokensToDot(const node_t* tokens, const size_t numOfTokens, nameTable_t* nameTable,
+                           const size_t lengthOfNameTable, const char* tokensDotFile)
 {
-    assert(tokens != nullptr);
+    assert(tokens        != nullptr);
+    assert(nameTable     != nullptr);
+    assert(tokensDotFile != nullptr);
+
     FILE* wFile = fopen(tokensDotFile, "w");
     if (wFile == nullptr){
         printf("couldn't open file");

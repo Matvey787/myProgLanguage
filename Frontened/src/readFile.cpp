@@ -6,22 +6,22 @@
 
 error readFile(char** buffer, const char* file_name, size_t* numOfSymbols, size_t* numOfStrs){
     // check if the pointers are not null
-    assert(buffer != nullptr);
-    assert(file_name != nullptr);
-    assert(numOfStrs != nullptr);
+    assert(buffer       != nullptr);
+    assert(file_name    != nullptr);
+    assert(numOfStrs    != nullptr);
     assert(numOfSymbols != nullptr);
 
     // open file for read
     FILE* rFile = fopen(file_name, "rb");
 
     // if the file can't be opened, return an error
-    if (rFile == nullptr){
+    if (rFile == nullptr)
+    {
         printf("can't open read file\n");
         return OPEN_FILE_FAIL;
     }
 
     // find size of file
-
     fseek(rFile, 0, SEEK_END);
     *numOfSymbols = (size_t)ftell(rFile);
     fseek(rFile, 0, SEEK_SET);

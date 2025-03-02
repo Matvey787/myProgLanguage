@@ -7,7 +7,7 @@
 #include "workWithFile.h"
 #include "refactorToTokens.h"
 #include "createPredprocessingTree.h"
-#include "../include/constants.h"
+#include "../../General/constants.h"
 #include "../../General/treeTransfer/treeTransfer.h"
 
 int main(int argc, char* argv[])
@@ -27,18 +27,19 @@ int main(int argc, char* argv[])
     char* buffer = nullptr;
     size_t numOfSmbls = 0;
     size_t numOfStrs = 0;
-    if (readFile(&buffer, filePath, &numOfSmbls, &numOfStrs) != NO_ERRORS){
+    if (readFile(&buffer, filePath, &numOfSmbls, &numOfStrs) != NO_ERRORS)
+    {
         return 1;
     }
     // array for saving system vars which are created during token processing
-    char** systemVars = (char**)calloc(c_numberOfSysVars, sizeof(char*));
+    char** systemVars = (char**)calloc(c_startSysVarsAmount, sizeof(char*));
     for (int i = 0; i < c_numberOfSysVars; i++)
     {
         systemVars[i] = (char*)calloc(c_lengthOfVarName, sizeof(char));
     }
     
     // table for saving user vars
-    nameTable_t* nameTable = (nameTable_t*)calloc(c_numberOfUserVars, sizeof(nameTable_t));
+    nameTable_t* nameTable = (nameTable_t*)calloc(c_nameTableSize, sizeof(nameTable_t));
 
     node_t* tokens = createTokens(buffer, numOfSmbls, nameTable, systemVars, "../dot_files/tokensDotFile.dot", "../png_files");
     node_t* predprocessingTree = createPredprocessingTree(tokens, "../dot_files/frontenedDotFile.dot", "../png_files");
@@ -54,7 +55,7 @@ int main(int argc, char* argv[])
         free(systemVars[i]);
     free(systemVars);
 
-    systemVars = nullptr;
+    systemVars = nullptr; // FIXME
     predprocessingTree = nullptr;
     tokens = nullptr;
     nameTable = nullptr;

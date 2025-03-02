@@ -8,12 +8,13 @@
 #include "../General/treeTransfer/treeTransfer.h"
 #include "../General/graphDump/graphDump.h"
 #include "progOptimization.h"
+#include "../General/constants.h" // Include the constants header
 
 void delTable(nameTable_t* nameTable);
 
 int main()
 {
-    nameTable_t* nameTable = (nameTable_t*)calloc(1000, sizeof(nameTable_t));
+    nameTable_t* nameTable = (nameTable_t*)calloc(c_nameTableSize, sizeof(nameTable_t)); // Use the constant here
     nameTable_t* startOfNameTable = nameTable;
     node_t* progTree = pullTree(&nameTable, "../progTree");
     optimizeProgTree(progTree, progTree, &nameTable, nullptr, 'l');
@@ -26,7 +27,6 @@ int main()
     delTable(startOfNameTable);
     nameTable = nullptr;
     return 0;
-
 }
 
 void delTable(nameTable_t* nameTable)

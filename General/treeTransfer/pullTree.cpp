@@ -5,7 +5,7 @@
 #include <string.h>
 
 static void pullTreeByRecursion(node_t** node, nameTable_t** nameTable, FILE** rFile);
-static size_t count_lines_in_file(FILE* file);
+// static size_t count_lines_in_file(FILE* file);
 
 node_t* pullTree(nameTable_t** nameTable, const char* transferFileName)
 {
@@ -39,24 +39,24 @@ node_t* pullTree(nameTable_t** nameTable, const char* transferFileName)
     return mainNode;
 }
 
-static size_t count_lines_in_file(FILE* file) {
-    if (file == NULL) {
-        perror("Error opening file");
-        return 0;
-    }
+// static size_t count_lines_in_file(FILE* file) {
+//     if (file == NULL) {
+//         perror("Error opening file");
+//         return 0;
+//     }
 
-    char *line = NULL; // Указатель для строки
-    size_t len = 0;    // Длина буфера
-    size_t lines = 0;
+//     char *line = NULL; // Указатель для строки
+//     size_t len = 0;    // Длина буфера
+//     size_t lines = 0;
 
-    while (getline(&line, &len, file) != -1) {
-        lines++;
-    }
+//     while (getline(&line, &len, file) != -1) {
+//         lines++;
+//     }
 
-    free(line);  // Освобождаем память, выделенную getline
-    fclose(file);
-    return lines;
-}
+//     free(line);  // Освобождаем память, выделенную getline
+//     fclose(file);
+//     return lines;
+// }
 
 static void pullTreeByRecursion(node_t** node, nameTable_t** nameTable, FILE** rFile)
 {

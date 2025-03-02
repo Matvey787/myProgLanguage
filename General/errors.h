@@ -9,4 +9,6 @@ enum error {
     NULLPTR_ERROR = 4
 };
 
+const int UNDEFINED_VAR  = 999;
+const int UNDEFINED_FUNC = 999; 
 #endif

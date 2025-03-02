@@ -4,7 +4,7 @@
 #include <string.h>
 
 #include "graphDump.h"
-#include "constants.h"
+#include "../constants.h"
 
 int writePngFile(const char* dotFile, const char* directory, const char* backGrColor)
 {    
@@ -15,7 +15,7 @@ int writePngFile(const char* dotFile, const char* directory, const char* backGrC
     char command[300] = {0};
 
     // get only name of file path
-    char fileName[c_length_of_strs] = {0};
+    char fileName[tempStrLength] = {0};
     size_t k = 0;
     for (size_t i = 0; i < strlen(dotFile); i++)
     {
